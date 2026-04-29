@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "title": "Boston Dynamics Atlas Humanoid Robot Begins First Commercial Factory Deployment at Hyundai",
+    "body": "On January 4, 2026, CBS News '60 Minutes' documented Boston Dynamics' Atlas humanoid robot performing autonomous roof-rack sorting tasks at Hyundai's manufacturing facility near Savannah, Georgia—marking the first paid field deployment of a fully electric, AI-powered humanoid in a live production environment. Standing 5'9\" and powered by NVIDIA's AI chip, Atlas uses motion-capture learning and virtual reality remote control to train over 4,000 digital twins simultaneously. The deployment represents a definitive 'ChatGPT moment' for industrial humanoid robotics, validating Goldman Sachs' projection of a $38B humanoid market over the next decade.",
+    "source": "Boston Dynamics",
+    "email": "media@bostondynamics.com",
+    "date": "2026-01-04"
+  },
+  {
+    "id": 2,
+    "title": "Z.ai (Zhipu AI) Completes Hong Kong IPO, Becoming One of the First Publicly Traded Foundation-Model Companies",
+    "body": "Z.ai, the Beijing-based lab behind the GLM model family, raised approximately HKD 4.35 billion (~$560M USD) via its Hong Kong Stock Exchange listing on January 8, 2026, becoming one of the first frontier foundation-model companies to achieve a public market listing. The IPO signals a maturation of the Chinese AI sector and provides Z.ai with public-market capital to fund continued training runs entirely on Huawei Ascend hardware, independent of NVIDIA supply chains. This listing established a strategic template for other Chinese AI labs considering public offerings in non-US jurisdictions.",
+    "source": "Z.ai (Zhipu AI)",
+    "email": "press@zhipuai.cn",
+    "date": "2026-01-08"
+  },
+  {
+    "id": 3,
+    "title": "Meta Signs 6.6 GW Nuclear Energy Contracts to Power Prometheus AI Supercluster",
+    "body": "Meta announced on January 9, 2026 that it had executed contracts with Vistra, TerraPower, and Oklo to secure up to 6.6 gigawatts of nuclear power, earmarked for the Prometheus AI Supercluster data center in New Albany, Ohio, expected to come online during 2026. The move underscores the mounting energy demands of next-generation AI training clusters and signals nuclear power as the preferred solution to decarbonize hyperscale compute. It also positioned Meta as the most aggressive buyer of advanced nuclear capacity in the tech sector, ahead of anticipated federal regulatory approvals for small modular reactors.",
+    "source": "Meta",
+    "email": "press@meta.com",
+    "date": "2026-01-09"
+  },
+  {
+    "id": 4,
+    "title": "OpenAI and SoftBank Jointly Invest $1 Billion in SB Energy for Stargate Milam County 1.2 GW Data Center",
+    "body": "OpenAI and SoftBank Group each invested $500 million into SB Energy on January 9, 2026, accelerating construction of the 1.2 GW 'Freebird' AI data center in Milam County, Texas—the first facility to leverage SB Energy's rapid-build data center design framework under the Stargate initiative. The partnership designates SB Energy as a strategic execution partner for multi-gigawatt AI campus deployments, with the initial 548,950-square-foot phase projected to cost approximately $470 million and enter service by October 2026. This deal solidified Stargate's trajectory toward its stated $500 billion, 10-gigawatt infrastructure commitment announced at the White House in January 2025.",
+    "source": "OpenAI",
+    "email": "press@openai.com",
+    "date": "2026-01-09"
+  },
+  {
+    "id": 5,
+    "title": "Technology Innovation Institute Releases Falcon-H1R 7B — a Transformer-Mamba Hybrid Matching Models 7x Its Size",
+    "body": "The UAE's Technology Innovation Institute unveiled Falcon-H1R 7B in January 2026, a compact language model built on a novel Transformer-Mamba hybrid architecture that delivers benchmark performance comparable to models with over 50 billion parameters. The design achieves elite reasoning outputs at dramatically reduced memory and energy consumption, making it well-suited for robotics, autonomous vehicles, and edge AI deployments where compute budgets are constrained. Falcon-H1R's release marked a paradigm shift away from pure parameter scaling toward architecture-level efficiency, demonstrating that open-source labs in the Middle East had reached frontier-class design capability.",
+    "source": "Technology Innovation Institute",
+    "email": "media@tii.ae",
+    "date": "2026-01-10"
+  },
+  {
+    "id": 6,
+    "title": "Multiple Major Retailers Deploy Agentic AI Systems at NRF 2026 Retail Conference",
+    "body": "At the National Retail Federation's annual conference on January 11, 2026, The Kroger Co. announced adoption of Google Cloud's Gemini Enterprise for Customer Experience platform, alongside similar agentic AI rollouts announced by several other large retail chains. These deployments moved AI in retail from recommendation engines and chatbots to autonomous systems capable of planning, recommending, and completing transactions with minimal human intervention. The NRF 2026 announcements signaled that agentic AI had crossed the threshold from pilot projects to enterprise-scale production deployment in one of the world's largest consumer sectors.",
+    "source": "National Retail Federation",
+    "email": "press@nrf.com",
+    "date": "2026-01-11"
+  },
+  {
+    "id": 7,
+    "title": "NVIDIA Releases Alpamayo: 10-Billion-Parameter Vision-Language-Action Model for Autonomous Vehicles",
+    "body": "NVIDIA released Alpamayo in January 2026, a 10-billion-parameter Vision-Language-Action (VLA) model purpose-built for autonomous driving and incorporating chain-of-thought reasoning to handle complex, real-world driving scenarios. Alongside it, NVIDIA launched AlpaSim, a simulator that reduces validation metric variance by up to 83%, enabling autonomous systems to log millions of virtual test miles before real-world deployment. The Alpamayo release reflected NVIDIA's expansion from pure hardware into full-stack physical AI, directly competing with Waymo, Tesla, and Mobileye at the model layer.",
+    "source": "NVIDIA",
+    "email": "media@nvidia.com",
+    "date": "2026-01-15"
+  },
+  {
+    "id": 8,
+    "title": "India's Office of the Principal Scientific Adviser Publishes Techno-Legal AI Governance Framework",
+    "body": "India's Office of the Principal Scientific Adviser released a comprehensive whitepaper in January 2026 advancing a 'techno-legal' framework for AI governance, calling for compliance mechanisms—including watermarking, bias detection, and audit trails—to be embedded directly into AI system architectures rather than imposed as external rules. The paper proposed a seven-principle 'sutra' model for responsible AI and recommended the creation of an inter-ministerial AI Governance Group alongside the IndiaAI Safety Institute. This document laid the technical groundwork for India's regulatory approach ahead of the February 2026 Global AI Impact Summit, signaling India's preference for innovation-first, architecture-embedded governance over EU-style ex ante legislation.",
+    "source": "Office of the Principal Scientific Adviser, Government of India",
+    "email": "psa@gov.in",
+    "date": "2026-01-15"
+  },
+  {
+    "id": 9,
+    "title": "European Commission Proposes the Digital Networks Act to Modernize EU Connectivity Regulation",
+    "body": "On January 21, 2026, the European Commission formally adopted a proposal for the Digital Networks Act (DNA), a sweeping single regulation designed to replace the European Electronic Communications Code and multiple other EU directives governing network connectivity. The DNA introduces a Single Passport authorization enabling telecom operators to provide services across all 27 EU member states via one notification, and creates a new EU-level satellite spectrum authorization to support the growth of direct-to-device services. Strategically, the proposal is a deliberate effort to accelerate AI, cloud, and 5G/6G adoption by eliminating the fragmented national compliance landscape that has long disadvantaged European operators relative to US and Chinese counterparts.",
+    "source": "European Commission",
+    "email": "press-secretariat@ec.europa.eu",
+    "date": "2026-01-21"
+  },
+  {
+    "id": 10,
+    "title": "Shield AI Raises $2.3 Billion, Cementing Position as Leading Defense AI Unicorn",
+    "body": "Shield AI, the developer of AI-powered autonomous military aircraft systems, closed a $2.3 billion funding round in Q1 2026, making it one of the most heavily capitalized defense-technology AI companies in the United States. The round reflects growing institutional appetite for defense-grade AI as the US Department of Defense accelerates its AI adoption roadmap, and follows a broader trend of sovereign wealth funds and strategic investors flowing capital into defense-adjacent AI platforms. Shield AI's Hivemind autonomy stack—capable of flying military aircraft without GPS, communications, or a human pilot—represents one of the most advanced real-world deployments of agentic AI in a safety-critical, contested environment.",
+    "source": "Shield AI",
+    "email": "press@shield.ai",
+    "date": "2026-01-25"
+  },
+  {
+    "id": 11,
+    "title": "AMI Labs Closes €1 Billion Seed Round, Largest Seed Funding in European Tech History",
+    "body": "Advanced Machine Intelligence (AMI Labs), a Paris-based frontier AI lab, closed a €1 billion seed funding round in early February 2026, establishing a new record as the largest seed-stage investment in European technology history and positioning France as the primary European hub for frontier AI research. The round attracted sovereign wealth participation and reflects European policymakers' and investors' determination to build domestic alternatives to US foundation models under the EU's AI sovereignty agenda. AMI's emergence signals that post-DeepSeek confidence in the viability of smaller national frontier labs has become a permanent structural feature of the global AI investment landscape.",
+    "source": "Advanced Machine Intelligence (AMI Labs)",
+    "email": "press@ami-labs.ai",
+    "date": "2026-02-01"
+  },
+  {
+    "id": 12,
+    "title": "Waymo Raises $16 Billion Series D at $126 Billion Valuation, Validating Commercial Robotaxi Viability",
+    "body": "Waymo announced a $16 billion Series D funding round in February 2026, valuing the Alphabet-backed autonomous driving company at $126 billion and ranking it among the most highly valued non-foundation-model AI startups in the world. The round, backed by a consortium including Andreessen Horowitz, Tiger Global, Fidelity, and Mubadala, directly reflected the demonstrated commercial viability of Waymo One, which was completing millions of paid driverless rides across San Francisco, Los Angeles, Phoenix, and Austin. The capital is earmarked to scale the robotaxi fleet to additional US and international cities, accelerate next-generation sensor development, and expand into autonomous freight and logistics.",
+    "source": "Waymo",
+    "email": "press@waymo.com",
+    "date": "2026-02-03"
+  },
+  {
+    "id": 13,
+    "title": "Anthropic Closes $30 Billion Series G at $380 Billion Post-Money Valuation",
+    "body": "Anthropic announced the close of a $30 billion Series G funding round on February 12, 2026, led by Singapore's GIC sovereign wealth fund and Coatue Management, with co-leadership from D.E. Shaw Ventures, Dragoneer, Founders Fund, ICONIQ, and MGX, valuing the company at $380 billion—more than double its September 2025 Series F valuation of $183 billion. The company disclosed that its annualized revenue had reached $14 billion, growing more than 10x annually for three consecutive years, with Claude Code alone generating over $2.5 billion in annualized revenue at the time of the raise. The round marked the second-largest private financing deal in technology history and cemented Anthropic as the primary enterprise-grade alternative to OpenAI, with over 80% of its revenue derived from business customers.",
+    "source": "Anthropic",
+    "email": "media@anthropic.com",
+    "date": "2026-02-12"
+  },
+  {
+    "id": 14,
+    "title": "India's MeitY Enforces New Rules Mandating Labeling and Traceability of AI-Generated Content",
+    "body": "India's Ministry of Electronics and Information Technology notified the IT (Intermediary Guidelines and Digital Media Ethics Code) Amendment Rules on February 14, 2026, creating legally binding obligations for platforms to prominently label all synthetically generated information (SGI) and to remove flagged AI-generated content within three hours—or two hours for sexual material—of a takedown notice. The rules define SGI broadly, require platforms to implement consent verification and metadata embedding, and impose particular scrutiny on content that appears indistinguishably authentic to humans. These rules set one of the fastest AI-content compliance timelines globally and signaled India's willingness to enforce aggressive obligations on major social media intermediaries operating on Indian soil.",
+    "source": "Ministry of Electronics and Information Technology, Government of India",
+    "email": "webmaster@meity.gov.in",
+    "date": "2026-02-14"
+  },
+  {
+    "id": 15,
+    "title": "Google Releases Gemini 3.1 Pro, Setting New Records in Scientific Reasoning and Multimodal Benchmarks",
+    "body": "Google released Gemini 3.1 Pro in February 2026, establishing new state-of-the-art scores of 94.3% on GPQA Diamond (graduate-level scientific reasoning) and 77.1% on ARC-AGI-2—more than double its predecessor's score on the latter—while maintaining strong multimodal capability across text, image, audio, video, and PDF inputs. Priced at $2 per million input tokens, the model occupied the mid-tier price point where scientific reasoning and multimodal capability converge, making it the default choice for life sciences, clinical research, and complex document analysis workloads. Gemini 3.1 Pro's ARC-AGI-2 score in particular attracted significant attention from the AI safety and capabilities research community as a leading indicator of advanced general reasoning ability.",
+    "source": "Google",
+    "email": "press@google.com",
+    "date": "2026-02-15"
+  },
+  {
+    "id": 16,
+    "title": "India AI Impact Summit 2026 Opens in New Delhi with 300,000 Participants from Over 100 Countries",
+    "body": "India's Prime Minister Narendra Modi opened the AI Impact Summit on February 19, 2026 in New Delhi, welcoming delegations from over 100 countries and approximately 300,000 participants—making it the largest AI governance summit in history and the first in the series hosted by a Global South nation. The summit showcased India's IndiaAI Mission and Digital Public Infrastructure strategy as a replicable model for developing nations seeking AI sovereignty without full-stack independence from global AI providers. Unlike its predecessor summits in Bletchley Park (2023), Seoul (2024), and Paris (2025), the India event deliberately shifted the global AI governance narrative from safety risk toward inclusive AI diffusion and economic impact.",
+    "source": "IndiaAI Mission, Government of India",
+    "email": "contact@indiaai.gov.in",
+    "date": "2026-02-19"
+  },
+  {
+    "id": 17,
+    "title": "Delhi Leaders Declaration Adopted at AI Impact Summit; European Union Formally Endorses",
+    "body": "The Delhi Declaration on AI was adopted on February 20, 2026 at the conclusion of the India AI Impact Summit, establishing a multilateral framework anchored in the principles of People, Planet, and Progress—with commitments covering AI literacy, inclusive AI diffusion, and multilateral safety evaluation infrastructure. The European Union formally endorsed the declaration, with US representatives offering support for voluntary and non-binding international cooperation mechanisms despite ongoing domestic opposition to formal global AI governance bodies. The declaration also included a commitment from Switzerland to host a follow-on summit in Geneva in 2027, ensuring continuity in the global AI governance dialogue.",
+    "source": "India AI Impact Summit Organizing Committee",
+    "email": "contact@indiaai.gov.in",
+    "date": "2026-02-20"
+  },
+  {
+    "id": 18,
+    "title": "Anthropic Releases Claude Sonnet 4.6 and Claude Opus 4.6 with Agent Teams Orchestration",
+    "body": "Anthropic released Claude Sonnet 4.6 and Claude Opus 4.6 in February 2026, introducing the Agent Teams orchestration feature that enables multiple Claude agents to collaborate on long-horizon tasks autonomously. Claude Sonnet 4.6 achieved near-Opus performance at standard Sonnet pricing, topping the GDPval-AA Elo benchmark with 1,633 points, while Opus 4.6 reached 80.8% on SWE-bench Verified—the highest score of any commercially available model at its release. The introduction of agent orchestration at the model level marked a structural shift from Claude as a conversational assistant toward Claude as a deployable software engineering teammate.",
+    "source": "Anthropic",
+    "email": "media@anthropic.com",
+    "date": "2026-02-20"
+  },
+  {
+    "id": 19,
+    "title": "OpenAI Announces $110 Billion Funding Round Anchored by Amazon ($50B), NVIDIA ($30B), and SoftBank ($30B)",
+    "body": "OpenAI announced a $110 billion funding round on February 27, 2026, at a $730 billion pre-money valuation—the largest private technology funding event in history at that point—with anchor investments from Amazon ($50B), NVIDIA ($30B), and SoftBank ($30B), plus continued participation from Microsoft. Amazon's $50 billion commitment included $35 billion contingent on OpenAI completing an IPO by end of 2028 or achieving AGI, while NVIDIA's $30 billion was structured largely as dedicated GPU compute capacity on Vera Rubin next-generation systems. The round valued OpenAI at an $840 billion post-money figure, cementing its position as the most valuable private company in Silicon Valley history at the time.",
+    "source": "OpenAI",
+    "email": "press@openai.com",
+    "date": "2026-02-27"
+  },
+  {
+    "id": 20,
+    "title": "Amazon Named Exclusive Third-Party Cloud Provider for OpenAI Frontier Enterprise Platform in $100B AWS Expansion",
+    "body": "Concurrent with the February 27, 2026 funding announcement, OpenAI and Amazon formalized a strategic partnership designating AWS as the exclusive third-party cloud distribution provider for OpenAI Frontier—the enterprise platform for developing and managing AI agents—while also extending their existing AWS agreement by $100 billion over eight years. As part of the arrangement, Amazon committed to deploying 2 gigawatts of AWS Trainium compute capacity for OpenAI inference workloads, representing the largest single cloud AI infrastructure deal ever signed at the time. The deal did not displace Microsoft's role as the exclusive Azure cloud provider for OpenAI's APIs and first-party products, creating a dual-cloud architecture that insulated OpenAI against single-vendor concentration risk.",
+    "source": "Amazon Web Services",
+    "email": "aws-pr@amazon.com",
+    "date": "2026-02-27"
+  },
+  {
+    "id": 21,
+    "title": "xAI Closes $20 Billion Series E; SpaceX and xAI Announce Strategic Merger of Interests",
+    "body": "Elon Musk's xAI closed a $20 billion Series E funding round in Q1 2026, backed by a consortium of Middle Eastern sovereign wealth funds, Asia-Pacific institutions, and Silicon Valley venture firms, bringing xAI's total reported funding to over $42.7 billion. Coinciding with the round, xAI and SpaceX announced a strategic merger of their commercial interests, positioning xAI's Grok model family as the primary AI vehicle within a combined entity and paving the way for the Grok infrastructure to benefit from SpaceX's anticipated public offering. The xAI-SpaceX tie-up created an AI-plus-space conglomerate with a combined implied valuation that rivals the largest technology companies globally.",
+    "source": "xAI",
+    "email": "press@x.ai",
+    "date": "2026-02-27"
+  },
+  {
+    "id": 22,
+    "title": "Databricks Closes $7 Billion Funding Round to Expand AI Data Platform and Model Training Infrastructure",
+    "body": "Databricks closed a $7 billion funding round in Q1 2026, further capitalizing its data+AI lakehouse platform as enterprises accelerated spending on the infrastructure layer required to build and fine-tune proprietary AI models. The round reflected growing investor conviction that the data management and model training layer would capture disproportionate enterprise AI spending as companies moved from evaluating models to deploying them at scale inside regulated industries. Databricks' continued growth at scale positioned it as one of the most likely AI-sector IPO candidates of 2026 or early 2027.",
+    "source": "Databricks",
+    "email": "press@databricks.com",
+    "date": "2026-03-01"
+  },
+  {
+    "id": 23,
+    "title": "xAI Releases Grok 4.20 Beta 2 with Multi-Agent Architecture and Real-Time X/Web Data Access",
+    "body": "xAI released Grok 4.20 Beta 2 on March 3, 2026, introducing an internal four-agent system (Grok, Harper, Benjamin, and Lucas) that enables parallel task decomposition and collaborative multi-step reasoning, alongside persistent real-time access to X's 600 million-user data stream and the open web. The four-agent architecture represented xAI's first production deployment of multi-agent collaboration within a consumer-facing frontier model, establishing Grok as a direct competitor to OpenAI's Codex and Anthropic's Claude Code for agentic productivity workloads. The model's live integration with X's platform also created a unique real-time data advantage unavailable to competing frontier models.",
+    "source": "xAI",
+    "email": "press@x.ai",
+    "date": "2026-03-03"
+  },
+  {
+    "id": 24,
+    "title": "Mistral AI Releases Mistral Small 4, Extending European Open-Source AI Frontier",
+    "body": "Mistral AI released Mistral Small 4 on March 3, 2026, continuing the French lab's strategy of releasing high-performance, open-weight models that close the gap with proprietary frontier systems at substantially lower inference cost. The release maintained Mistral's position as Europe's leading open-source AI lab and reinforced the trend of non-US providers delivering competitive open-weight models on near-simultaneous release cycles with their closed counterparts. Mistral Small 4's strong cost-performance profile made it a preferred choice for European enterprise customers subject to GDPR and EU AI Act data-sovereignty requirements who prefer to self-host their inference workloads.",
+    "source": "Mistral AI",
+    "email": "press@mistral.ai",
+    "date": "2026-03-03"
+  },
+  {
+    "id": 25,
+    "title": "EU Commits €75 Million to EURO-3C Project for Federated Telco-Edge-Cloud AI Infrastructure",
+    "body": "The European Commission announced the €75 million EURO-3C Project on March 3, 2026, to build a federated, distributed Telco-Edge-Cloud infrastructure aimed at ensuring digital sovereignty and reducing European dependency on hyperscale US cloud providers for AI workloads. The project integrates telecommunications networks, edge computing nodes, and cloud resources into a unified, interoperable computing fabric designed to support latency-sensitive AI applications across healthcare, critical infrastructure, and public administration. EURO-3C represents the infrastructure layer underpinning the EU's broader AI Continent Action Plan, ensuring that European AI investments are matched by sovereign compute capability.",
+    "source": "European Commission",
+    "email": "press-secretariat@ec.europa.eu",
+    "date": "2026-03-03"
+  },
+  {
+    "id": 26,
+    "title": "OpenAI Releases GPT-5.4 with Native Computer Use, 1M Token Context, and Record Agentic Benchmarks",
+    "body": "OpenAI released GPT-5.4 on March 5, 2026, featuring native computer use capabilities that allow the model to operate desktop and web applications directly without wrapper code, a 1 million token context window, and record-setting scores on OSWorld-Verified, WebArena Verified, and the GDPval knowledge-work benchmark at 83%. Priced at $2.50 per million input tokens, GPT-5.4 achieved 80% on SWE-bench Verified—establishing a new baseline for agentic software engineering models—while also reducing errors by approximately 33% compared to its predecessor. The release shifted the competitive center of gravity in the frontier model race from benchmark scores on static datasets to real-world task completion in live computer environments.",
+    "source": "OpenAI",
+    "email": "press@openai.com",
+    "date": "2026-03-05"
+  },
+  {
+    "id": 27,
+    "title": "EU AI Office Publishes Second Draft Code of Practice on Marking and Labeling of AI-Generated Content",
+    "body": "The EU AI Office released the second draft of its Code of Practice on Marking and Labelling of AI-generated content on March 5, 2026, detailing technical and procedural requirements for watermarking and metadata-embedding of synthetic audio, images, video, and text under the EU AI Act's transparency obligations. The draft outlines obligations for general-purpose AI model providers and deployers to ensure AI-generated content is identifiable by automated tools even when visible labels are removed, with a target enforcement date aligned with the November 2026 watermarking deadline proposed by the EU Parliament. This regulatory instrument is expected to establish the global technical standard for AI content provenance, given the EU's track record with the GDPR as a de facto extraterritorial compliance framework.",
+    "source": "EU AI Office, European Commission",
+    "email": "AIoffice@ec.europa.eu",
+    "date": "2026-03-05"
+  },
+  {
+    "id": 28,
+    "title": "Atlassian Announces ~10% Workforce Reduction (1,600 Employees) to Redirect Capital Toward AI Development",
+    "body": "Atlassian announced a workforce reduction of approximately 10% of its global headcount—around 1,600 employees—in Q1 2026, with restructuring costs estimated at up to $236 million and simultaneous replacement of its CTO with two AI-focused Chief Technology Officers to co-lead a reorganized engineering structure. The company cited AI-driven productivity gains as both the driver of the restructuring (fewer engineers needed for the same output) and the strategic justification for the reallocation of savings into AI tooling, platform capabilities, and enterprise sales. Atlassian's announcement was emblematic of a broader enterprise software sector phenomenon in which AI was simultaneously displacing roles and demanding reinvestment at the platform infrastructure layer.",
+    "source": "Atlassian",
+    "email": "press@atlassian.com",
+    "date": "2026-03-10"
+  },
+  {
+    "id": 29,
+    "title": "MiniMax Releases M2.5: 230B-Parameter Mixture-of-Experts Model with 10B Active Parameters",
+    "body": "MiniMax released M2.5 on March 18, 2026, a 230-billion-parameter mixture-of-experts architecture with only 10 billion active parameters per token—enabling frontier-class performance with inference compute budgets comparable to much smaller dense models, and a 205K context window. M2.5 scored 80.2% on SWE-bench Verified—essentially matching the performance of proprietary frontier models from OpenAI and Anthropic—while remaining available at substantially lower cost. The model demonstrated that Chinese AI labs had achieved price-performance parity with the best US closed-source systems, compressing what had been a 15+ point benchmark gap to fewer than 3 points within 12 months.",
+    "source": "MiniMax",
+    "email": "press@minimax.io",
+    "date": "2026-03-18"
+  },
+  {
+    "id": 30,
+    "title": "Cursor Releases Composer 2 Built on Kimi K2.5, Surpassing Claude Opus 4.6 on Coding Benchmarks at 1/5 Cost",
+    "body": "Cursor, the AI-powered code editor, launched Composer 2 on March 19, 2026, a next-generation code agent powered by Moonshot AI's Kimi K2.5 that surpassed Claude Opus 4.6 across coding benchmarks while charging approximately $0.50 per million tokens—roughly one-tenth of Opus 4.6's pricing. The release triggered an immediate licensing dispute, with Moonshot AI accusing Cursor of license violations in its use of the Kimi K2.5 model weights for commercial deployment, setting up one of the first high-profile open-source AI licensing disputes of 2026. Composer 2 demonstrated that best-in-class coding agents could increasingly be built by routing to the most capable open-weight models, disrupting the assumption that coding productivity tools required exclusive partnerships with large frontier labs.",
+    "source": "Cursor",
+    "email": "press@cursor.com",
+    "date": "2026-03-19"
+  },
+  {
+    "id": 31,
+    "title": "EU Parliament Formally Adopts Position on AI Act Amendments via Digital Omnibus Package",
+    "body": "The European Parliament's committees adopted their negotiating position on March 18, 2026, and the plenary confirmed it on March 26, 2026, formally advancing amendments to the EU AI Act through the Digital Omnibus Package—including proposed timeline adjustments that extend high-risk AI system compliance from August 2026 to December 2027 for most categories, and to August 2028 for AI embedded in regulated products. The Parliament's position also introduces a November 2026 deadline for AI watermarking obligations on generated audio, image, video, and text content—a new near-term milestone not present in the original Act. With the Parliament's position confirmed, trilogue negotiations between the Commission, Council, and Parliament began immediately, moving the most significant AI governance revision since the Act's 2024 entry into force toward finalization.",
+    "source": "European Parliament",
+    "email": "press@europarl.europa.eu",
+    "date": "2026-03-26"
+  },
+  {
+    "id": 32,
+    "title": "OpenAI Closes Record $122 Billion Funding Round at $852 Billion Post-Money Valuation",
+    "body": "OpenAI announced the close of its $122 billion funding round on March 31, 2026, at a post-money valuation of $852 billion—the largest private financing deal in Silicon Valley history by a wide margin, exceeding the prior all-time record for a single company by more than a factor of three. The round expanded on the February anchor commitments from Amazon ($50B), NVIDIA ($30B), and SoftBank ($30B) with an additional $12 billion from a broader investor pool, including Andreessen Horowitz, D.E. Shaw Ventures, MGX, TPG, and T. Rowe Price—as well as $3 billion raised from individual investors via bank channels, the first time a major AI lab had extended private-round access to retail participants. The close positioned OpenAI as more valuable than many G20 sovereign wealth funds and set the stage for an anticipated IPO expected to target a $1 trillion+ valuation.",
+    "source": "OpenAI",
+    "email": "press@openai.com",
+    "date": "2026-03-31"
+  },
+  {
+    "id": 33,
+    "title": "Anthropic's Model Context Protocol Surpasses 97 Million Installs; Linux Foundation Assumes Open Governance",
+    "body": "In March 2026, Anthropic's Model Context Protocol (MCP) crossed 97 million installs—a milestone that cemented its transition from an Anthropic-originated experimental standard to the de facto infrastructure layer for connecting AI agents to external tools, APIs, and data sources across the entire industry. Every major AI provider had shipped MCP-compatible tooling by this point, and the Linux Foundation announced it would assume open governance of the specification, ensuring vendor-neutral stewardship of what had become the TCP/IP equivalent for the agentic AI ecosystem. The Linux Foundation governance transfer eliminated the competitive risk of a single-vendor standard and accelerated enterprise adoption by organizations that require open governance for infrastructure dependencies.",
+    "source": "Anthropic / Linux Foundation",
+    "email": "media@anthropic.com",
+    "date": "2026-03-31"
+  },
+  {
+    "id": 34,
+    "title": "OpenAI Launches Advertising Platform at $50 CPM, Marking Entry into Commercial Media Business",
+    "body": "OpenAI launched its advertising platform in April 2026 at a $50 cost-per-thousand-impressions (CPM) rate, marking the company's first formal entry into the digital advertising market and opening a new revenue stream that did not depend on subscription or API token pricing. The launch was strategically timed alongside anticipated GPT-6 product announcements to provide OpenAI with a compounding commercial narrative—growing ad revenue paired with a flagship model upgrade—intended to support both its enterprise contract renewals and public market positioning ahead of a 2026 IPO. The move positioned OpenAI as an AI superapp with diversified monetization, signaling a long-term intent to own the primary consumer AI interface in the same way that Google owns search advertising.",
+    "source": "OpenAI",
+    "email": "press@openai.com",
+    "date": "2026-04-01"
+  },
+  {
+    "id": 35,
+    "title": "SpaceX Files Confidentially for IPO Targeting $1.75 Trillion Valuation",
+    "body": "SpaceX filed confidentially for an initial public offering targeting a $1.75 trillion valuation on April 1, 2026, a filing that carries significant implications for the AI sector given the recent strategic merger of interests between SpaceX and xAI, which would embed xAI's Grok AI infrastructure into the combined entity. If completed, the SpaceX-xAI IPO would be the largest public offering in history, recycling hundreds of billions of dollars back into venture markets and creating unprecedented public-market exposure to AI-at-scale infrastructure. The filing intensified pressure on OpenAI and Anthropic to accelerate their own IPO timelines, creating a competitive dynamic in the public capital markets not previously seen in frontier AI.",
+    "source": "SpaceX",
+    "email": "media@spacex.com",
+    "date": "2026-04-01"
+  },
+  {
+    "id": 36,
+    "title": "OpenAI Reports 900 Million Weekly Active Users and ChatGPT Inclusion in ARK Invest ETFs",
+    "body": "As part of its March 31 funding announcement, OpenAI disclosed that ChatGPT had reached 900 million weekly active users—up from approximately 400 million one year earlier—and that it had secured inclusion in several ARK Invest ETFs, becoming the first private AI company to gain ETF-accessible retail investor exposure ahead of its IPO. OpenAI also reported that its APIs now processed more than 15 billion tokens per minute, and that its Codex AI coding tool had surpassed 2 million weekly users—a 5x increase in three months—with usage growing over 70% month over month. These metrics reinforced OpenAI's 'AI superapp' positioning narrative and provided the public market with the product growth data needed to underwrite the $852 billion private valuation.",
+    "source": "OpenAI",
+    "email": "press@openai.com",
+    "date": "2026-04-01"
+  },
+  {
+    "id": 37,
+    "title": "Z.ai Releases GLM-5.1: Trained on 100,000 Huawei Ascend 910B Chips, Tops SWE-Bench Pro",
+    "body": "Z.ai released GLM-5.1 on April 7, 2026—a 700-800 billion parameter mixture-of-experts model trained entirely on 100,000 Huawei Ascend 910B chips with no known NVIDIA hardware in the training pipeline—and it posted a 58.4 score on SWE-Bench Pro, surpassing GPT-5.4 (57.7) and Claude Opus 4.6 (57.3) on the benchmark that had become the industry-standard measure of agentic software engineering capability. The model's MIT license allowed unrestricted commercial use, fine-tuning, and distribution with no royalty obligations, making it the most permissively licensed state-of-the-art coding model ever released. GLM-5.1's Huawei-trained architecture demolished the assumption that frontier AI training required NVIDIA GPUs, demonstrating that China had achieved viable domestic alternatives to the NVIDIA-dominated compute stack at scale.",
+    "source": "Z.ai (Zhipu AI)",
+    "email": "press@zhipuai.cn",
+    "date": "2026-04-07"
+  },
+  {
+    "id": 38,
+    "title": "Eclipse VC Raises $1.3 Billion Fund Targeting Physical AI, Manufacturing, and Defense",
+    "body": "Eclipse Venture Capital closed a $1.3 billion fund on April 7, 2026, dedicated to physical AI—investments at the intersection of artificial intelligence, robotics, autonomous systems, and advanced manufacturing—signaling that institutional capital had matured beyond software AI into the hardware, sensor, and actuation layer where AI capabilities produce physical-world outcomes. The fund reflects the convergence of defense technology investment, industrial automation demand, and humanoid robotics adoption that characterized the 2026 venture landscape beyond frontier model funding. Eclipse's raise was part of a broader pattern of physical AI funds including NVIDIA's investment in Alpamayo and robotics-focused capital deployed alongside Boston Dynamics' commercial expansion.",
+    "source": "Eclipse Venture Capital",
+    "email": "info@eclipsefund.com",
+    "date": "2026-04-07"
+  },
+  {
+    "id": 39,
+    "title": "Stanford HAI Releases AI Index 2026: US-China Frontier Gap Narrows to 2.7%; Generative AI Reaches 53% Global Adoption",
+    "body": "Stanford University's Human-Centered AI Institute released the 2026 AI Index report in April 2026, revealing that the performance gap between the top US and Chinese frontier models had narrowed to just 2.7% as of March 2026—down from a substantial US lead in early 2025 when DeepSeek-R1 briefly matched top US models—and that generative AI had achieved 53% population adoption globally within three years of ChatGPT's launch, faster than any previous consumer technology platform. The report also found that the flow of top AI researchers immigrating to the United States had dropped 89% since 2017, raising structural concerns about long-term US talent competitiveness. Economically, the report estimated the consumer value of generative AI tools to US users had reached $172 billion annually by early 2026, with the median value per user tripling between 2025 and 2026.",
+    "source": "Stanford Institute for Human-Centered AI",
+    "email": "hai@stanford.edu",
+    "date": "2026-04-08"
+  },
+  {
+    "id": 40,
+    "title": "EU AI Continent Action Plan Delivers Major Milestones, Advancing European AI Industrial Strategy",
+    "body": "The European Commission announced on April 9, 2026 that the EU AI Continent Action Plan had delivered major milestones, including progress on AI Factories (high-performance compute hubs for European AI training), the expansion of AI testing and experimentation facilities across member states, and advancement of the European AI Office's capacity-building programs for SMEs and public sector deployers. The AI Continent Action Plan represents the industrial and investment counterpart to the EU AI Act's regulatory framework, channeling €20+ billion in public funding toward closing Europe's compute and talent gap with the United States and China by 2030. These milestones were announced alongside the EURO-3C federated infrastructure project to demonstrate that Europe's AI strategy encompassed both regulatory governance and industrial-scale investment.",
+    "source": "European Commission",
+    "email": "press-secretariat@ec.europa.eu",
+    "date": "2026-04-09"
+  },
+  {
+    "id": 41,
+    "title": "Anthropic Releases Claude Opus 4.7: Wins 12 of 14 Benchmarks Against Predecessor at Same Price",
+    "body": "Anthropic released Claude Opus 4.7 on April 16, 2026, a full architecture upgrade over Opus 4.6 that won 12 of 14 reported benchmark comparisons—including significant improvements on SWE-bench Verified, complex reasoning tasks, and long-running multi-step agent workflows—while maintaining the same $5 per million input / $25 per million output pricing. The model was specifically optimized for the agentic deployment paradigm, with improved tool-call reliability, enhanced long-context state management, and reduced error accumulation in multi-step pipelines, reflecting Anthropic's stated strategic priority of building AI that 'gets things done' rather than simply answering questions. Opus 4.7's launch in the same week as GPT-5.5 and several other frontier releases made April 2026 the most competitive simultaneous frontier model release window in AI history.",
+    "source": "Anthropic",
+    "email": "media@anthropic.com",
+    "date": "2026-04-16"
+  },
+  {
+    "id": 42,
+    "title": "Google Releases Gemma 4 Open-Source Models Under Apache 2.0 for Advanced Agentic Reasoning",
+    "body": "Google released the Gemma 4 family of open-source models on April 16, 2026 under the Apache 2.0 license, described by Google as delivering an unprecedented level of intelligence-per-parameter and specifically optimized for advanced reasoning and agentic workflows including multi-step planning, tool use, and extended task execution. The Gemma 4 release represented Google's most aggressive play in the open-weight AI ecosystem, challenging Meta's Llama franchise for developer mindshare in the open-source community and giving enterprises a permissive-license alternative for self-hosted agentic AI deployments. Apache 2.0 licensing removed all commercial use restrictions, signaling that Google viewed open-source model leadership as a strategic distribution mechanism for expanding Gemini API and Google Cloud adoption.",
+    "source": "Google",
+    "email": "press@google.com",
+    "date": "2026-04-16"
+  },
+  {
+    "id": 43,
+    "title": "Moonshot AI Releases Kimi K2.6, Surpassing GLM-5.1 to Lead SWE-Bench Pro with 58.6%",
+    "body": "Moonshot AI released Kimi K2.6 on approximately April 21, 2026, just two weeks after Z.ai's GLM-5.1 had topped the SWE-bench Pro leaderboard, achieving a 58.6% pass rate that surpassed GLM-5.1's 58.4%—and both sitting above any closed-source model from OpenAI, Google, or Anthropic on this benchmark. Like GLM-5.1, Kimi K2.6 ships under a modified MIT license allowing unrestricted commercial use and fine-tuning, maintaining the Chinese open-source labs' strategic advantage in permissive licensing. The back-to-back GLM-5.1 and Kimi K2.6 releases within 14 days established Chinese open-weight labs as the undisputed leaders in agentic coding benchmarks, compressing what had been a multi-year gap with US frontier labs to zero in the span of two weeks.",
+    "source": "Moonshot AI",
+    "email": "press@moonshot.cn",
+    "date": "2026-04-21"
+  },
+  {
+    "id": 44,
+    "title": "EU Commission Allocates €63.2 Million to Support AI Innovation in Health and Online Safety",
+    "body": "The European Commission announced on April 21, 2026 that it was making €63.2 million available under the Digital Europe Programme to accelerate AI innovation in healthcare applications and online safety tooling, covering areas including medical imaging analysis, clinical decision support, AI-assisted diagnostic systems, and automated detection of illegal online content. The funding complements the March 2026 study on AI in healthcare published by the EU Commission and reflects regulatory recognition that high-risk AI in medical contexts requires dedicated public investment in safety evaluation infrastructure alongside compliance obligations. This targeted allocation operationalizes the EU AI Act's Article 9 risk-management requirements for high-risk AI by funding the testing and validation tools needed to make compliance achievable.",
+    "source": "European Commission",
+    "email": "press-secretariat@ec.europa.eu",
+    "date": "2026-04-21"
+  },
+  {
+    "id": 45,
+    "title": "OpenAI Releases GPT-5.5: Doubles Per-Token Price of GPT-5.4, Improves on 9 of 10 Shared Benchmarks",
+    "body": "OpenAI released GPT-5.5 on April 23, 2026, at twice the per-token price of GPT-5.4 while matching its 1 million token context window and improving on 9 of the 10 benchmarks the two models shared—representing one of the strongest cross-benchmark upgrade deltas in OpenAI's modern release history. The model launched in the same week as DeepSeek V4 Preview, Claude Opus 4.7, Gemma 4, and other frontier systems, contributing to what industry observers characterized as the most consequential single week in AI model release history. GPT-5.5 targeted enterprise and research users with complex reasoning needs who could absorb its premium pricing, while OpenAI maintained GPT-5.4 as the default cost-performance option for the majority of API workloads.",
+    "source": "OpenAI",
+    "email": "press@openai.com",
+    "date": "2026-04-23"
+  },
+  {
+    "id": 46,
+    "title": "DeepSeek Releases V4 Preview: 1 Trillion Parameters, Built on Huawei Ascend, Priced at $0.14/M Tokens Flash",
+    "body": "DeepSeek released the V4 Preview on April 24, 2026—a 1 trillion-parameter model built entirely on Huawei Ascend chips without any NVIDIA hardware—pricing the Flash inference variant at $0.14 per million input tokens, one of the lowest rates ever offered for a model of its capability tier. Independent benchmarks placed V4-Pro within 7 to 8 points of Claude Opus 4.7 and GPT-5.5 on SWE-bench, a gap that had narrowed from 15+ points just 12 months earlier, demonstrating that the US-China frontier performance differential had effectively collapsed. The combination of near-frontier capability, non-NVIDIA training infrastructure, and sub-$0.20 pricing fundamentally altered the economics of AI deployment and raised immediate questions about the enforceability of US export controls on advanced AI training clusters.",
+    "source": "DeepSeek",
+    "email": "press@deepseek.com",
+    "date": "2026-04-24"
+  },
+  {
+    "id": 47,
+    "title": "Meta Hosts Inaugural LlamaCon Developer Summit and Launches Llama API in Limited Preview",
+    "body": "Meta hosted the first-ever LlamaCon on April 29, 2026, gathering thousands of developers from around the world who had collectively driven over 1 billion downloads of the Llama model family and its derivatives since February 2023. At the event, Meta launched the Llama API in limited preview—combining the open-source flexibility of Llama with closed-model conveniences including one-click API key creation, interactive playgrounds, fine-tuning tools, and an evaluations suite—alongside new Llama Protection Tools and the Llama Defenders Program for trusted security partners. LlamaCon also served as the platform for Meta to share its vision for the Llama 4 Behemoth model (still in training) and articulate its long-term strategy for Llama as the industry standard for open-source AI development, with Llama 4 Scout's 10-million-token context window currently the largest of any open-weight model globally.",
+    "source": "Meta",
+    "email": "press@meta.com",
+    "date": "2026-04-29"
+  },
+  {
+    "id": 48,
+    "title": "Meta Superintelligence Labs Releases Muse Spark as Closed-Weight Flagship, Signaling Strategic Shift from Open Weights",
+    "body": "Meta Superintelligence Labs released Muse Spark in April 2026 as a closed-weight frontier model, representing a strategic departure from the fully open Llama series and signaling that Meta had created a two-track AI strategy: open-weight Llama models for ecosystem and developer adoption, and a proprietary closed-weight frontier system for applications requiring capabilities that Meta was not yet prepared to release publicly. The release of a closed-weight model under the Meta Superintelligence Labs brand—rather than Meta AI—indicates the creation of a dedicated frontier research unit within Meta analogous to OpenAI or Google DeepMind. Industry analysts interpreted Muse Spark as Meta's acknowledgment that maintaining open-weight leadership at the absolute frontier had become strategically untenable given the pace of capability advancement.",
+    "source": "Meta",
+    "email": "press@meta.com",
+    "date": "2026-04-10"
+  },
+  {
+    "id": 49,
+    "title": "Google Presents TurboQuant KV-Cache Compression Algorithm at ICLR 2026",
+    "body": "Google's research team presented TurboQuant at the International Conference on Learning Representations (ICLR) 2026, a two-step KV cache compression algorithm combining PolarQuant vector rotation and Quantized Johnson-Lindenstrauss compression to dramatically reduce the memory overhead of the key-value attention cache—one of the principal bottlenecks limiting the scalability of large context window models in production. By enabling models with multi-million-token context windows to run at far lower memory cost, TurboQuant accelerates the economic viability of on-device AI and reduces data center serving costs for long-context workloads—directly benefiting the deployment of models like Gemini 3.1 Pro and Llama 4 Scout that require extensive context to function. The paper's publication at ICLR confirmed that efficiency-focused algorithmic innovation had overtaken raw parameter scaling as the dominant driver of practical AI performance improvements.",
+    "source": "Google Research",
+    "email": "press@google.com",
+    "date": "2026-04-27"
+  },
+  {
+    "id": 50,
+    "title": "Polymarket Closes $2.6 Billion Funding Round as AI-Integrated Prediction Markets Reach Mainstream Finance",
+    "body": "Polymarket, the decentralized prediction markets platform, closed a $2.6 billion funding round in Q1 2026—backed by institutional investors including participants in the broader AI-and-data infrastructure cycle—having become the world's most prominent real-money prediction market by trading volume after its AI-integrated forecasting tools attracted institutional traders, quant funds, and enterprise risk managers as core users. Polymarket's explosive growth was partly attributed to integrations with large language model APIs that enabled users to query market odds, generate probabilistic scenarios, and execute hedging strategies through natural language interfaces, making quantitative forecasting accessible to non-technical decision-makers. The $2.6 billion raise signaled that AI-native financial information platforms had achieved mainstream institutional legitimacy, positioning prediction markets as a structural complement to traditional financial data services.",
+    "source": "Polymarket",
+    "email": "press@polymarket.com",
+    "date": "2026-02-15"
+  }
+]
