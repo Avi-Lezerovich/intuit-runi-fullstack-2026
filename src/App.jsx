@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { Navigate, Route, Routes } from "react-router-dom";
 import TopBar from "./components/TopBar";
 import Feed from "./components/Feed";
-import UsersPage from "./pages/Users.tsx";
+import UsersPage from "./pages/UsersPage.tsx";
 
 import SignIn from "./pages/SignIn.tsx";
 import SignUp from "./pages/SignUp.tsx";

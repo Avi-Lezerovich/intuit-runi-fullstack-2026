@@ -1,16 +1,24 @@
-import { Box, Button } from "@mui/material";
+import { Button } from "@mui/material";
 
-const SeePostsButton = ({ onClick, label = "See Posts" }) => {
-  return (
-    <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-      <Button
-        variant="contained"
-        onClick={onClick}
-        sx={{ textTransform: "none", px: 3, py: 1, borderRadius: 2, minWidth: 0 }}
-      >
-        {label}
-      </Button>
-    </Box>
-  );
-}
+const SeePostsButton = ({ onClick, label = "See Posts" }) => (
+  <Button
+    variant="contained"
+    size="small"
+    disableElevation
+    onClick={onClick}
+    sx={{
+      textTransform: "none",
+      borderRadius: 1.5,
+      fontSize: 13,
+      fontWeight: 500,
+      px: 1.75,
+      py: 0.75,
+      bgcolor: "primary.main",
+      "&:hover": { bgcolor: "primary.dark", opacity: 0.9 },
+    }}
+  >
+    {label}
+  </Button>
+);
+
 export default SeePostsButton;
