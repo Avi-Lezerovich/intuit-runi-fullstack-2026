@@ -2,6 +2,7 @@
 
 import { apiFetch, apiFetchText } from "./client";
 import { PAGE_SIZE, PROFILE_BASE_URL } from "../constants/config";
+import { mergeUniqueUsers } from "../features/users/utils/mergeUniqueUsers";
 
 // dev.to does not expose a post-count endpoint, so we scrape the profile page.
 export const fetchUserPostCount = async (username) => {
@@ -37,4 +38,37 @@ export const fetchUsers = async (page = 1, limit = PAGE_SIZE) => {
   );
 
   return { users, hasMore: articles.length === limit };
+};
+
+// DEV.to does not expose a user search endpoint, so search by scanning a
+// bounded number of article pages and deriving matching authors.
+export const searchUsers = async (
+  query,
+  { limit = PAGE_SIZE, maxPages = 5 } = {}
+) => {
+  const normalizedQuery = query.trim().toLowerCase();
+
+  if (!normalizedQuery) {
+    return { users: [] };
+  }
+
+  let page = 1;
+  let hasMore = true;
+  let matchedUsers = [];
+
+  while (hasMore && page <= maxPages) {
+    const result = await fetchUsers(page, limit);
+
+    const pageMatches = result.users.filter((user) => {
+      const name = user.name?.toLowerCase() ?? "";
+      const username = user.username?.toLowerCase() ?? "";
+      return name.includes(normalizedQuery) || username.includes(normalizedQuery);
+    });
+
+    matchedUsers = mergeUniqueUsers(matchedUsers, pageMatches);
+    hasMore = result.hasMore;
+    page += 1;
+  }
+
+  return { users: matchedUsers };
 };
