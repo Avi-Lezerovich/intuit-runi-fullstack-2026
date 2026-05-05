@@ -11,7 +11,6 @@ import MuiCard from "@mui/material/Card";
 import Alert from "@mui/material/Alert";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import { SitemarkIcon } from "../../components/layout/CustomIcons";
 import { AUTH_API_URL } from "../../constants/config";
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -107,7 +106,6 @@ export default function SignUpForm() {
 
   return (
     <Card variant="outlined">
-      <SitemarkIcon />
       <Typography
         component="h1"
         variant="h4"
