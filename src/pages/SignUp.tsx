@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import Link from '@mui/material/Link';
@@ -12,7 +10,9 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
+import Alert from '@mui/material/Alert';
 import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 import AppTheme from '../shared-theme/AppTheme.tsx';
 import ColorModeSelect from '../shared-theme/ColorModeSelect.tsx';
 import { SitemarkIcon } from '../components/CustomIcons.tsx';
@@ -59,63 +59,76 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
+const initialValues = { name: '', email: '', password: '', repeatPassword: '' };
+
 export default function SignUp(props: { disableCustomTheme?: boolean }) {
-  const [emailError, setEmailError] = React.useState(false);
-  const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
-  const [passwordError, setPasswordError] = React.useState(false);
-  const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
-  const [nameError, setNameError] = React.useState(false);
-  const [nameErrorMessage, setNameErrorMessage] = React.useState('');
+  const navigate = useNavigate();
+  const [values, setValues] = React.useState(initialValues);
+  const [errors, setErrors] = React.useState<Record<string, string>>({});
+  const [loading, setLoading] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState<string | null>(null);
 
-  const validateInputs = () => {
-    const email = document.getElementById('email') as HTMLInputElement;
-    const password = document.getElementById('password') as HTMLInputElement;
-    const name = document.getElementById('name') as HTMLInputElement;
-
-    let isValid = true;
-
-    if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-      setEmailError(true);
-      setEmailErrorMessage('Please enter a valid email address.');
-      isValid = false;
-    } else {
-      setEmailError(false);
-      setEmailErrorMessage('');
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setValues((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
+  };
 
-    if (!password.value || password.value.length < 6) {
-      setPasswordError(true);
-      setPasswordErrorMessage('Password must be at least 6 characters long.');
-      isValid = false;
-    } else {
-      setPasswordError(false);
-      setPasswordErrorMessage('');
+  const validate = () => {
+    const result: Record<string, string> = {};
+    if (!values.name.trim()) {
+      result.name = 'Full name is required';
     }
-
-    if (!name.value || name.value.length < 1) {
-      setNameError(true);
-      setNameErrorMessage('Name is required.');
-      isValid = false;
-    } else {
-      setNameError(false);
-      setNameErrorMessage('');
+    if (!values.email.trim()) {
+      result.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(values.email.trim())) {
+      result.email = 'Please enter a valid email address';
     }
-
-    return isValid;
+    if (!values.password) {
+      result.password = 'Password is required';
+    } else if (values.password.length < 6) {
+      result.password = 'Password must be at least 6 characters';
+    }
+    if (!values.repeatPassword) {
+      result.repeatPassword = 'Please confirm your password';
+    } else if (values.repeatPassword !== values.password) {
+      result.repeatPassword = 'Passwords do not match';
+    }
+    setErrors(result);
+    return Object.keys(result).length === 0;
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (nameError || emailError || passwordError) {
-      event.preventDefault();
-      return;
-    }
-    const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get('name'),
-      lastName: data.get('lastName'),
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    event.preventDefault();
+    if (!validate()) return;
+
+    const name = values.name.trim();
+    const email = values.email.trim();
+    const password = values.password;
+
+    setLoading(true);
+    setSubmitError(null);
+
+    fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Sign up failed');
+        return res.json();
+      })
+      .then(() => {
+        navigate('/login', { replace: true });
+      })
+      .catch((err) => {
+        setSubmitError(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -135,80 +148,100 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
           <Box
             component="form"
             onSubmit={handleSubmit}
+            noValidate
             sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
           >
             <FormControl>
               <FormLabel htmlFor="name">Full name</FormLabel>
               <TextField
-                autoComplete="name"
+                id="name"
                 name="name"
+                placeholder="Jon Snow"
+                autoComplete="name"
                 required
                 fullWidth
-                id="name"
-                placeholder="Jon Snow"
-                error={nameError}
-                helperText={nameErrorMessage}
-                color={nameError ? 'error' : 'primary'}
+                value={values.name}
+                onChange={handleChange}
+                error={Boolean(errors.name)}
+                helperText={errors.name}
+                disabled={loading}
               />
             </FormControl>
             <FormControl>
               <FormLabel htmlFor="email">Email</FormLabel>
               <TextField
+                id="email"
+                name="email"
+                type="email"
+                placeholder="your@email.com"
+                autoComplete="email"
                 required
                 fullWidth
-                id="email"
-                placeholder="your@email.com"
-                name="email"
-                autoComplete="email"
                 variant="outlined"
-                error={emailError}
-                helperText={emailErrorMessage}
-                color={passwordError ? 'error' : 'primary'}
+                value={values.email}
+                onChange={handleChange}
+                error={Boolean(errors.email)}
+                helperText={errors.email}
+                disabled={loading}
               />
             </FormControl>
             <FormControl>
               <FormLabel htmlFor="password">Password</FormLabel>
               <TextField
+                id="password"
+                name="password"
+                type="password"
+                placeholder="••••••"
+                autoComplete="new-password"
                 required
                 fullWidth
-                name="password"
-                placeholder="••••••"
-                type="password"
-                id="password"
-                autoComplete="new-password"
                 variant="outlined"
-                error={passwordError}
-                helperText={passwordErrorMessage}
-                color={passwordError ? 'error' : 'primary'}
+                value={values.password}
+                onChange={handleChange}
+                error={Boolean(errors.password)}
+                helperText={errors.password}
+                disabled={loading}
               />
             </FormControl>
-        
+            <FormControl>
+              <FormLabel htmlFor="repeatPassword">Repeat Password</FormLabel>
+              <TextField
+                id="repeatPassword"
+                name="repeatPassword"
+                type="password"
+                placeholder="••••••"
+                autoComplete="new-password"
+                required
+                fullWidth
+                variant="outlined"
+                value={values.repeatPassword}
+                onChange={handleChange}
+                error={Boolean(errors.repeatPassword)}
+                helperText={errors.repeatPassword}
+                disabled={loading}
+              />
+            </FormControl>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              onClick={validateInputs}
+              disabled={loading}
             >
               Sign up
             </Button>
+            {submitError && (
+              <Alert severity="error">{submitError}</Alert>
+            )}
           </Box>
           <Divider>
             <Typography sx={{ color: 'text.secondary' }}>or</Typography>
           </Divider>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        
-    
-            <Typography sx={{ textAlign: 'center' }}>
-              Already have an account?{' '}
-              <Link
-                href="/sign-in"
-                variant="body2"
-                sx={{ alignSelf: 'center' }}
-              >
-                Sign in
-              </Link>
-            </Typography>
-          </Box>
+          <Typography sx={{ textAlign: 'center' }}>
+            Already have an account?{' '}
+            <Link href="/login" variant="body2" sx={{ alignSelf: 'center' }}>
+              Sign in
+            </Link>
+          </Typography>
         </Card>
       </SignUpContainer>
     </AppTheme>

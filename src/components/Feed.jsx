@@ -3,6 +3,7 @@ import { Grid, CircularProgress, Box, Button, Typography } from "@mui/material";
 import SinglePost from "./SinglePost";
 import { fetchPosts } from "../api";
 
+import LoadMoreButton from "./LoadMoreButton";
 // Merge new posts into the current list while skipping duplicate ids.
 // This keeps the feed stable if the same page is fetched twice in development StrictMode.
 const mergeUniquePosts = (previousPosts, incomingPosts) => {
@@ -90,15 +91,7 @@ const Feed = () => {
 
       {/* Show the Load More button only while more pages exist. */}
       {!loading && hasMore && (
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-          <Button
-            variant="contained"
-            onClick={handleLoadMore}
-            sx={{ textTransform: "none", px: 4, py: 1, borderRadius: 2 }}
-          >
-            Load More
-          </Button>
-        </Box>
+        <LoadMoreButton onClick={handleLoadMore} label="Load More" />
       )}
 
       {/* Show a small end-of-feed message after the last page is loaded. */}

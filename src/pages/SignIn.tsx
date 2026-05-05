@@ -1,9 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import Link from '@mui/material/Link';
@@ -11,7 +9,9 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
+import Alert from '@mui/material/Alert';
 import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 import AppTheme from '../shared-theme/AppTheme.tsx';
 import ColorModeSelect from '../shared-theme/ColorModeSelect.tsx';
 import { SitemarkIcon } from '../components/CustomIcons.tsx';
@@ -58,49 +58,67 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export default function SignIn(props: { disableCustomTheme?: boolean }) {
-  const [emailError, setEmailError] = React.useState(false);
-  const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
-  const [passwordError, setPasswordError] = React.useState(false);
-  const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
+const initialValues = { email: '', password: '' };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (emailError || passwordError) {
-      event.preventDefault();
-      return;
+export default function SignIn(props: { disableCustomTheme?: boolean }) {
+  const navigate = useNavigate();
+  const [values, setValues] = React.useState(initialValues);
+  const [errors, setErrors] = React.useState<Record<string, string>>({});
+  const [loading, setLoading] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState<string | null>(null);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setValues((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
   };
 
-  const validateInputs = () => {
-    const email = document.getElementById('email') as HTMLInputElement;
-    const password = document.getElementById('password') as HTMLInputElement;
-
-    let isValid = true;
-
-    if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-      setEmailError(true);
-      setEmailErrorMessage('Please enter a valid email address.');
-      isValid = false;
-    } else {
-      setEmailError(false);
-      setEmailErrorMessage('');
+  const validate = () => {
+    const result: Record<string, string> = {};
+    if (!values.email.trim()) {
+      result.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(values.email.trim())) {
+      result.email = 'Please enter a valid email address';
     }
-
-    if (!password.value || password.value.length < 6) {
-      setPasswordError(true);
-      setPasswordErrorMessage('Password must be at least 6 characters long.');
-      isValid = false;
-    } else {
-      setPasswordError(false);
-      setPasswordErrorMessage('');
+    if (!values.password) {
+      result.password = 'Password is required';
+    } else if (values.password.length < 6) {
+      result.password = 'Password must be at least 6 characters';
     }
+    setErrors(result);
+    return Object.keys(result).length === 0;
+  };
 
-    return isValid;
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!validate()) return;
+
+    const email = values.email.trim();
+    const password = values.password;
+
+    setLoading(true);
+    setSubmitError(null);
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Login failed');
+        return res.json();
+      })
+      .then(() => {
+        navigate('/', { replace: true });
+      })
+      .catch((err) => {
+        setSubmitError(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -121,65 +139,60 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
             component="form"
             onSubmit={handleSubmit}
             noValidate
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: '100%',
-              gap: 2,
-            }}
+            sx={{ display: 'flex', flexDirection: 'column', width: '100%', gap: 2 }}
           >
             <FormControl>
               <FormLabel htmlFor="email">Email</FormLabel>
               <TextField
-                error={emailError}
-                helperText={emailErrorMessage}
                 id="email"
-                type="email"
                 name="email"
+                type="email"
                 placeholder="your@email.com"
                 autoComplete="email"
                 autoFocus
                 required
                 fullWidth
                 variant="outlined"
-                color={emailError ? 'error' : 'primary'}
+                value={values.email}
+                onChange={handleChange}
+                error={Boolean(errors.email)}
+                helperText={errors.email}
+                disabled={loading}
               />
             </FormControl>
             <FormControl>
               <FormLabel htmlFor="password">Password</FormLabel>
               <TextField
-                error={passwordError}
-                helperText={passwordErrorMessage}
-                name="password"
-                placeholder="••••••"
-                type="password"
                 id="password"
+                name="password"
+                type="password"
+                placeholder="••••••"
                 autoComplete="current-password"
-                autoFocus
                 required
                 fullWidth
                 variant="outlined"
-                color={passwordError ? 'error' : 'primary'}
+                value={values.password}
+                onChange={handleChange}
+                error={Boolean(errors.password)}
+                helperText={errors.password}
+                disabled={loading}
               />
             </FormControl>
-
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              onClick={validateInputs}
+              disabled={loading}
             >
               Sign in
             </Button>
+            {submitError && (
+              <Alert severity="error">{submitError}</Alert>
+            )}
           </Box>
           <Typography sx={{ textAlign: 'center' }}>
             Don&apos;t have an account?{' '}
-            <Link
-              /* For demo purposes, this is a regular link. In a real app, you would use a router Link component. */
-              href="/sign-up"
-              variant="body2"
-              sx={{ alignSelf: 'center' }}
-            >
+            <Link href="/signup" variant="body2" sx={{ alignSelf: 'center' }}>
               Sign up
             </Link>
           </Typography>

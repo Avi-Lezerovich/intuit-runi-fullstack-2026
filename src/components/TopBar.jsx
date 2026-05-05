@@ -7,7 +7,7 @@ const TopBar = () => {
     { label: "Home", to: "/" },
     { label: "Users", to: "/users" },
     { label: "About", to: "/about" },
-    { label: "Login", to: "/sign-in" },
+    { label: "Login", to: "/login" },
   ];
 
   return (
