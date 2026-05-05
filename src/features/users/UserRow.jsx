@@ -1,64 +1,9 @@
-// import Avatar from "@mui/material/Avatar";
-// import Box from "@mui/material/Box";
-// import Chip from "@mui/material/Chip";
-// import Typography from "@mui/material/Typography";
-// import Divider from "@mui/material/Divider";
-// import SeePostsButton from "./SeePostsButton";
-
-// const UserRow = ({ user, onSeePostsClick }) => {
-//   return (
-//     <>
-//       <Box
-//         sx={{
-//           display: "flex",
-//           alignItems: "center",
-//           justifyContent: "space-between",
-//           px: 3,
-//           py: 2,
-//         }}
-//       >
-//         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-//           <Avatar
-//             src={user.profile_image_90}
-//             alt={user.name}
-//             sx={{ width: 48, height: 48 }}
-//           />
-//           <Box>
-//             <Typography fontWeight={600} fontSize={15}>
-//               {user.name}
-//             </Typography>
-//             <Typography variant="body2" color="text.secondary">
-//               @{user.username}
-//             </Typography>
-//           </Box>
-//         </Box>
-
-//         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-//           <Chip
-//             label={`${user.post_count} posts`}
-//             size="small"
-//             sx={{
-//               backgroundColor: "action.hover",
-//               fontWeight: 500,
-//             }}
-//           />
-//           <SeePostsButton onClick={() => onSeePostsClick(user.username)} />
-//         </Box>
-//       </Box>
-//       <Divider />
-//     </>
-//   );
-// };
-
-// export default UserRow;
-
-
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import SeePostsButton from "./SeePostsButton";
+import SeePostsButton from "../../components/ui/SeePostsButton";
 
 const UserRow = ({ user, onSeePostsClick }) => {
   return (

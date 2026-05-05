@@ -4,7 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import AppTheme from './shared-theme/AppTheme.tsx'
+import AppTheme from './theme/AppTheme.tsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

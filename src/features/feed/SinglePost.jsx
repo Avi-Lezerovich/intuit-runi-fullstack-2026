@@ -4,12 +4,11 @@ import {
   Card, CardHeader, CardMedia, CardContent, CardActions,
   Collapse, Avatar, IconButton, Typography, Chip, Box
 } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import CommentIcon from "@mui/icons-material/Comment";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { POST_PREVIEW_LENGTH } from "../../constants/config";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -49,9 +48,8 @@ const SinglePost = ({ post }) => {
   const avatarLetter = displayName?.charAt(0).toUpperCase();
 
   // Shorten the description so the card has a compact default state.
-  const PREVIEW_LENGTH = 50;
-  const isLong = description && description.length > PREVIEW_LENGTH;
-  const cutIndex = isLong ? description.lastIndexOf(" ", PREVIEW_LENGTH) : PREVIEW_LENGTH;
+  const isLong = description && description.length > POST_PREVIEW_LENGTH;
+  const cutIndex = isLong ? description.lastIndexOf(" ", POST_PREVIEW_LENGTH) : POST_PREVIEW_LENGTH;
   const shortText = isLong ? description.slice(0, cutIndex).trimEnd() : description;
 
   return (
