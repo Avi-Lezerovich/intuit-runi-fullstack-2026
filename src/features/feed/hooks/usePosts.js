@@ -29,7 +29,33 @@ export const usePosts = (limit = PAGE_SIZE) => {
 
   // Initial fetch on mount.
   useEffect(() => {
-    loadPage(1);
+    let isActive = true;
+
+    const loadInitialPage = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const newPosts = await fetchPosts(1, limit);
+
+        if (!isActive) return;
+
+        if (newPosts.length < limit) setHasMore(false);
+        setPosts(newPosts);
+      } catch (err) {
+        if (!isActive) return;
+        setError(err.message);
+      } finally {
+        if (isActive) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadInitialPage();
+
+    return () => {
+      isActive = false;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

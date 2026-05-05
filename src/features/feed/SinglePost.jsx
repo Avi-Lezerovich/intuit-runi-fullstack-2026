@@ -10,10 +10,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { POST_PREVIEW_LENGTH } from "../../constants/config";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme }) => ({
+const ExpandMore = styled((props) => <IconButton {...props} />)(({ theme }) => ({
   marginLeft: "auto",
   transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
@@ -35,8 +32,6 @@ const SinglePost = ({ post }) => {
     readable_publish_date,
     tag_list,
     reading_time_minutes,
-    public_reactions_count,
-    comments_count,
     url,
     user,
     organization,
