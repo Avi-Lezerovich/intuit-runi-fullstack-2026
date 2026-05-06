@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
+import Divider from "@mui/material/Divider";
 import { AUTH_API_URL } from "../../constants/config";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import { useAuthSubmit } from "../../hooks/useAuthSubmit";
@@ -95,6 +96,9 @@ const SignInForm = () => {
         </Button>
         {form.submitError && <Alert severity="error">{form.submitError}</Alert>}
       </Box>
+      <Divider>
+        <Typography sx={{ color: "text.secondary" }}>or</Typography>
+      </Divider>
       <Typography sx={{ textAlign: "center" }}>
         Don&apos;t have an account?{" "}
         <Link href="/signup" variant="body2" sx={{ alignSelf: "center" }}>
