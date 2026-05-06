@@ -2,10 +2,11 @@
 
 import { apiFetch, apiFetchText } from "./client";
 import { PAGE_SIZE, PROFILE_BASE_URL } from "../constants/config";
-import { mergeUniqueUsers } from "../features/users/utils/mergeUniqueUsers";
+import { mergeUniqueItems } from "../utils/mergeUtils";
+import type { Article, User, FetchUsersResult } from "../types";
 
 // dev.to does not expose a post-count endpoint, so we scrape the profile page.
-export const fetchUserPostCount = async (username) => {
+export const fetchUserPostCount = async (username: string): Promise<number> => {
   const html = await apiFetchText(`${PROFILE_BASE_URL}/${username}`);
   const match = html.match(/(\d+)\s+posts?\s+published/i);
   return match ? Number(match[1]) : 0;
@@ -13,11 +14,14 @@ export const fetchUserPostCount = async (username) => {
 
 // Fetches a page of articles, derives the unique authors, then enriches each
 // with a post count. Returned shape: { users, hasMore }.
-export const fetchUsers = async (page = 1, limit = PAGE_SIZE) => {
-  const articles = await apiFetch(`/articles?page=${page}&per_page=${limit}`);
+export const fetchUsers = async (
+  page = 1,
+  limit = PAGE_SIZE
+): Promise<FetchUsersResult> => {
+  const articles = await apiFetch<Article[]>(`/articles?page=${page}&per_page=${limit}`);
 
   const uniqueUsers = Object.values(
-    articles.reduce((acc, article) => {
+    articles.reduce<Record<number, Article["user"]>>((acc, article) => {
       const user = article.user;
       if (user && !acc[user.user_id]) {
         acc[user.user_id] = user;
@@ -26,7 +30,7 @@ export const fetchUsers = async (page = 1, limit = PAGE_SIZE) => {
     }, {})
   );
 
-  const users = await Promise.all(
+  const users: User[] = await Promise.all(
     uniqueUsers.map(async (user) => ({
       id: user.user_id,
       name: user.name,
@@ -43,9 +47,9 @@ export const fetchUsers = async (page = 1, limit = PAGE_SIZE) => {
 // DEV.to does not expose a user search endpoint, so search by scanning a
 // bounded number of article pages and deriving matching authors.
 export const searchUsers = async (
-  query,
+  query: string,
   { limit = PAGE_SIZE, maxPages = 5 } = {}
-) => {
+): Promise<{ users: User[] }> => {
   const normalizedQuery = query.trim().toLowerCase();
 
   if (!normalizedQuery) {
@@ -54,7 +58,7 @@ export const searchUsers = async (
 
   let page = 1;
   let hasMore = true;
-  let matchedUsers = [];
+  let matchedUsers: User[] = [];
 
   while (hasMore && page <= maxPages) {
     const result = await fetchUsers(page, limit);
@@ -65,7 +69,7 @@ export const searchUsers = async (
       return name.includes(normalizedQuery) || username.includes(normalizedQuery);
     });
 
-    matchedUsers = mergeUniqueUsers(matchedUsers, pageMatches);
+    matchedUsers = mergeUniqueItems(matchedUsers, pageMatches, "id");
     hasMore = result.hasMore;
     page += 1;
   }

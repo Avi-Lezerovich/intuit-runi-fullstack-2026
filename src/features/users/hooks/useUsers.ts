@@ -2,17 +2,21 @@ import * as React from "react";
 import { fetchUsers } from "../../../api/users";
 import { PAGE_SIZE } from "../../../constants/config";
 import { mergeUniqueUsers } from "../utils/mergeUniqueUsers";
+import type { User } from "../../../types";
 
-export interface User {
-  id: number;
-  name: string;
-  username: string;
-  profile_image_90: string;
-  post_count: number;
+// Re-export User type so consumers can import from here
+export type { User };
+
+interface UseUsersReturn {
+  users: User[];
+  loading: boolean;
+  error: string | null;
+  hasMore: boolean;
+  loadMore: () => void;
 }
 
 // Encapsulates the users data lifecycle for UsersPage.
-export const useUsers = (limit: number = PAGE_SIZE) => {
+export const useUsers = (limit: number = PAGE_SIZE): UseUsersReturn => {
   const [users, setUsers] = React.useState<User[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);

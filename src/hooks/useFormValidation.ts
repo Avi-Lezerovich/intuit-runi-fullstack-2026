@@ -11,7 +11,7 @@ interface UseFormValidationReturn {
   errors: Record<string, string>;
   loading: boolean;
   submitError: string | null;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   validate: () => boolean;
   resetForm: () => void;
   setLoading: (loading: boolean) => void;
@@ -32,7 +32,7 @@ export const useFormValidation = ({
   const [loading, setLoading] = React.useState(false);
   const [submitError, setSubmitError] = React.useState<string | null>(null);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setValues((prev) => ({ ...prev, [name]: value }));
     // Clear error for this field when user starts typing

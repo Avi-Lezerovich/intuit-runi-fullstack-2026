@@ -1,11 +1,20 @@
 import * as React from "react";
 import { searchUsers } from "../../../api/users";
 import { PAGE_SIZE } from "../../../constants/config";
-import type { User } from "./useUsers";
+import type { User } from "../../../types";
 
 const SEARCH_SCAN_MAX_PAGES = 5;
 
-export const useUserSearch = (query: string, limit: number = PAGE_SIZE) => {
+interface UseUserSearchReturn {
+  users: User[];
+  loading: boolean;
+  error: string | null;
+}
+
+export const useUserSearch = (
+  query: string,
+  limit: number = PAGE_SIZE
+): UseUserSearchReturn => {
   const [users, setUsers] = React.useState<User[]>([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);

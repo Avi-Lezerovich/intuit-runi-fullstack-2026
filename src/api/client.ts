@@ -3,7 +3,7 @@
 
 import { API_BASE_URL } from "../constants/config";
 
-export const apiFetch = async (path, options = {}) => {
+export const apiFetch = async <T = unknown>(path: string, options: RequestInit = {}): Promise<T> => {
   const url = path.startsWith("http") ? path : `${API_BASE_URL}${path}`;
   const response = await fetch(url, options);
 
@@ -11,11 +11,11 @@ export const apiFetch = async (path, options = {}) => {
     throw new Error(`Request failed: ${response.status} ${response.statusText}`);
   }
 
-  return response.json();
+  return response.json() as Promise<T>;
 };
 
 // Some calls (e.g. scraping a public profile page) need raw HTML, not JSON.
-export const apiFetchText = async (url) => {
+export const apiFetchText = async (url: string): Promise<string> => {
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Request failed: ${response.status} ${response.statusText}`);
