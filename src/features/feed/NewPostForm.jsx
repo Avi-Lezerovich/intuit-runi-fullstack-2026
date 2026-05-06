@@ -5,11 +5,20 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
-import TextField from "@mui/material/TextField";
+import Snackbar from "@mui/material/Snackbar";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { createPost } from "../../api/posts";
+import FormTextField from "../../components/ui/FormTextField";
 
 const initialValues = { title: "", body: "" };
+
+// Validation limits for the post fields. Centralised so the helper text and
+// the maxLength on the input stay in sync.
+const TITLE_MAX = 80;
+const BODY_MAX = 2000;
+const TITLE_MIN = 3;
+const BODY_MIN = 10;
 
 const NewPostForm = () => {
   const navigate = useNavigate();
@@ -17,11 +26,12 @@ const NewPostForm = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setValues((prev) => ({ ...prev, [name]: value }));
-
+    // Clear the field error as soon as the user starts editing.
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -29,11 +39,19 @@ const NewPostForm = () => {
 
   const validate = () => {
     const result = {};
-    if (!values.title.trim()) {
+    const title = values.title.trim();
+    const body = values.body.trim();
+
+    if (!title) {
       result.title = "Title cannot be empty";
+    } else if (title.length < TITLE_MIN) {
+      result.title = `Title must be at least ${TITLE_MIN} characters`;
     }
-    if (!values.body.trim()) {
+
+    if (!body) {
       result.body = "Body cannot be empty";
+    } else if (body.length < BODY_MIN) {
+      result.body = `Body must be at least ${BODY_MIN} characters`;
     }
 
     setErrors(result);
@@ -53,98 +71,117 @@ const NewPostForm = () => {
         body: values.body.trim(),
       });
 
-      navigate("/", { replace: true });
+      // Show a brief success snackbar, then redirect home.
+      setSuccess(true);
+      setTimeout(() => navigate("/", { replace: true }), 900);
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : "Failed to publish post");
+      setSubmitError(
+        err instanceof Error ? err.message : "Failed to publish post"
+      );
       setLoading(false);
     }
-  }; 
+  };
+
+  // Live counters shown in the helperText slot — gives the user a sense of room.
+  const titleCounter = `${values.title.length} / ${TITLE_MAX}`;
+  const bodyCounter = `${values.body.length} / ${BODY_MAX}`;
 
   return (
-    <Box sx={{ p: 3, maxWidth: 760, mx: "auto" }}>
-      <Paper 
-        elevation={0} 
-        sx={{ 
-          p: 4, 
-          borderRadius: 3, 
-          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" // Matches the soft shadow in the mockup
+    <Box sx={{ p: { xs: 2, sm: 3 }, maxWidth: 760, mx: "auto" }}>
+      <Paper
+        variant="outlined"
+        sx={{
+          p: { xs: 3, sm: 4 },
+          borderRadius: 3,
+          bgcolor: "background.paper",
         }}
       >
-        <Typography variant="h5" component="h1" sx={{ mb: 3, fontWeight: 600, color: '#111827' }}>
-          Create New Post
-        </Typography>
+        <Stack spacing={1} sx={{ mb: 3 }}>
+          <Typography variant="h5" component="h1" fontWeight={600}>
+            Create New Post
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Share an article with the community. Markdown is supported in the body.
+          </Typography>
+        </Stack>
 
         {submitError && (
-          <Alert severity="error" sx={{ mb: 3 }}>
+          <Alert severity="error" sx={{ mb: 3 }} onClose={() => setSubmitError("")}>
             {submitError}
           </Alert>
         )}
 
         <Box component="form" onSubmit={handleSubmit} noValidate>
-          <TextField
-            fullWidth
-            name="title"
-            label="Title"
-            placeholder="Enter your post title..."
-            value={values.title}
-            onChange={handleChange}
-            error={Boolean(errors.title)}
-            helperText={errors.title}
-            disabled={loading}
-            InputLabelProps={{ shrink: true }}
-            sx={{ mb: 3 }}
-          />
-
-          <TextField
-            fullWidth
-            name="body"
-            label="Body"
-            placeholder="Write your post content here..."
-            value={values.body}
-            onChange={handleChange}
-            multiline
-            minRows={4}
-            error={Boolean(errors.body)}
-            helperText={errors.body}
-            disabled={loading}
-            InputLabelProps={{ shrink: true }}
-            sx={{ mb: 4 }}
-          />
-
-          <Box sx={{ display: "flex", gap: 2 }}>
-            <Button 
-              type="submit" 
-              variant="contained" 
-              disabled={loading} 
-              sx={{ 
-                minWidth: 120,
-                textTransform: 'none', // Removes uppercase
-                fontWeight: 500,
-                bgcolor: '#1e293b', // Dark navy/black from the image
-                '&:hover': { bgcolor: '#0f172a' }
-              }}
-            >
-              {loading ? <CircularProgress size={24} color="inherit" /> : "Publish"}
-            </Button>
-
-            <Button 
-              variant="outlined" 
-              onClick={() => navigate("/")} 
+          <Stack spacing={3}>
+            <FormTextField
+              label="Title"
+              name="title"
+              placeholder="Give your post a clear, specific title"
+              value={values.title}
+              onChange={handleChange}
+              error={errors.title}
+              helperText={titleCounter}
               disabled={loading}
-              sx={{
-                textTransform: 'none',
-                fontWeight: 500,
-                color: '#475569',
-                borderColor: '#cbd5e1',
-                '&:hover': { bgcolor: '#f8fafc', borderColor: '#94a3b8' }
-              }}
+              autoFocus
+              maxLength={TITLE_MAX}
+            />
+
+            <FormTextField
+              label="Body"
+              name="body"
+              placeholder="Write your post content here…"
+              value={values.body}
+              onChange={handleChange}
+              error={errors.body}
+              helperText={bodyCounter}
+              disabled={loading}
+              multiline
+              minRows={8}
+              maxRows={20}
+              maxLength={BODY_MAX}
+            />
+
+            <Stack
+              direction={{ xs: "column-reverse", sm: "row" }}
+              spacing={1.5}
+              justifyContent="flex-end"
             >
-              Cancel
-            </Button>
-          </Box>
+              <Button
+                variant="outlined"
+                onClick={() => navigate(-1)}
+                disabled={loading}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                disabled={loading}
+                startIcon={
+                  loading ? (
+                    <CircularProgress size={16} color="inherit" />
+                  ) : null
+                }
+                sx={{ minWidth: 140 }}
+              >
+                {loading ? "Publishing…" : "Publish"}
+              </Button>
+            </Stack>
+          </Stack>
         </Box>
       </Paper>
+
+      <Snackbar
+        open={success}
+        autoHideDuration={1200}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert severity="success" variant="filled" sx={{ width: "100%" }}>
+          Post published successfully
+        </Alert>
+      </Snackbar>
     </Box>
   );
-}
+};
+
 export default NewPostForm;

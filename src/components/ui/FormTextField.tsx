@@ -8,17 +8,28 @@ interface FormTextFieldProps {
   name: string;
   value: string;
   error?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  helperText?: string;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   disabled?: boolean;
   type?: string;
   placeholder?: string;
   autoComplete?: string;
   autoFocus?: boolean;
+  required?: boolean;
+  multiline?: boolean;
+  minRows?: number;
+  maxRows?: number;
+  maxLength?: number;
 }
 
 /**
  * Reusable form text field component.
  * Wraps FormControl + FormLabel + TextField to reduce duplication.
+ *
+ * Now supports multiline + min/maxRows so it can be used for textareas (e.g. the
+ * post body field) without re-implementing the FormLabel/TextField pairing.
  */
 const FormTextField = React.forwardRef<HTMLDivElement, FormTextFieldProps>(
   (
@@ -27,17 +38,26 @@ const FormTextField = React.forwardRef<HTMLDivElement, FormTextFieldProps>(
       name,
       value,
       error = "",
+      helperText,
       onChange,
       disabled = false,
       type = "text",
       placeholder,
       autoComplete,
       autoFocus = false,
+      required = true,
+      multiline = false,
+      minRows,
+      maxRows,
+      maxLength,
     },
     ref
   ) => {
+    // When `error` is set it takes precedence over the neutral helperText.
+    const displayHelperText = error || helperText;
+
     return (
-      <FormControl ref={ref}>
+      <FormControl ref={ref} fullWidth>
         <FormLabel htmlFor={name}>{label}</FormLabel>
         <TextField
           id={name}
@@ -46,14 +66,31 @@ const FormTextField = React.forwardRef<HTMLDivElement, FormTextFieldProps>(
           placeholder={placeholder}
           autoComplete={autoComplete}
           autoFocus={autoFocus}
-          required
+          required={required}
           fullWidth
           variant="outlined"
           value={value}
           onChange={onChange}
           error={Boolean(error)}
-          helperText={error}
+          helperText={displayHelperText}
           disabled={disabled}
+          multiline={multiline}
+          minRows={minRows}
+          maxRows={maxRows}
+          slotProps={maxLength ? { htmlInput: { maxLength } } : undefined}
+          // The theme pins OutlinedInput height to 2.5rem; that clips multiline
+          // textareas to a single line. Allow auto-grow when multiline.
+          sx={
+            multiline
+              ? {
+                  "& .MuiOutlinedInput-root": {
+                    height: "auto",
+                    alignItems: "flex-start",
+                    paddingY: 1.25,
+                  },
+                }
+              : undefined
+          }
         />
       </FormControl>
     );
