@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
@@ -27,6 +27,15 @@ const NewPostForm = () => {
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [success, setSuccess] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
@@ -73,7 +82,7 @@ const NewPostForm = () => {
 
       // Show a brief success snackbar, then redirect home.
       setSuccess(true);
-      setTimeout(() => navigate("/", { replace: true }), 900);
+      timeoutRef.current = setTimeout(() => navigate("/", { replace: true }), 900);
     } catch (err) {
       setSubmitError(
         err instanceof Error ? err.message : "Failed to publish post"

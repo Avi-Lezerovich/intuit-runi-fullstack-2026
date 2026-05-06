@@ -1,28 +1,6 @@
-import { styled } from "@mui/material/styles";
-import { CardActions, IconButton, Typography, Box } from "@mui/material";
+import { CardActions, IconButton, Typography, Box, Button } from "@mui/material";
 import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-
-import { IconButtonProps } from "@mui/material";
-
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme }) => ({
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-  variants: [
-    { props: ({ expand }: ExpandMoreProps) => !expand, style: { transform: "rotate(0deg)" } },
-    { props: ({ expand }: ExpandMoreProps) => !!expand, style: { transform: "rotate(180deg)" } },
-  ],
-}));
 
 interface PostCardFooterProps {
   readingTime: number;
@@ -36,7 +14,7 @@ interface PostCardFooterProps {
  */
 const PostCardFooter = ({ readingTime, isLong, expanded, onExpandToggle }: PostCardFooterProps) => {
   return (
-    <CardActions disableSpacing sx={{ px: 2, mt: "auto" }}>
+    <CardActions disableSpacing sx={{ px: 2, mt: "auto", pb: 1.5 }}>
       <Box sx={{ display: "flex", alignItems: "center", ml: 1, gap: 0.5 }}>
         <AccessTimeIcon fontSize="small" sx={{ color: "text.secondary" }} />
         <Typography variant="caption" color="text.secondary">
@@ -49,14 +27,9 @@ const PostCardFooter = ({ readingTime, isLong, expanded, onExpandToggle }: PostC
       </IconButton>
 
       {isLong && (
-        <ExpandMore
-          expand={expanded}
-          onClick={onExpandToggle}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
+        <Button onClick={onExpandToggle} size="small" sx={{ ml: "auto" }}>
+          {expanded ? "Show less" : "Read More"}
+        </Button>
       )}
     </CardActions>
   );

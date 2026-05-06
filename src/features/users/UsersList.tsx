@@ -1,7 +1,7 @@
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import UserRow from "./UserRow";
-import type { User } from "./hooks/useUsers";
+import type { User } from "../../types";
 
 interface UsersListProps {
   users: User[];

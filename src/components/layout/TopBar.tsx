@@ -1,6 +1,6 @@
 
 import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, NavLink } from "react-router-dom";
 import CreateIcon from "@mui/icons-material/Create";
 
 const MENU_ITEMS = [
@@ -19,7 +19,7 @@ const TopBar = () => {
           variant="h6"
           component={RouterLink}
           to="/"
-          sx={{ marginRight: 'auto', fontWeight: "bold", color: "black", textDecoration: "none" }}
+          sx={{ marginRight: 'auto', fontWeight: "bold", color: "text.primary", textDecoration: "none" }}
         >
           AgentHub
         </Typography>
@@ -37,7 +37,14 @@ const TopBar = () => {
           </Button>
 
           {MENU_ITEMS.map((item) => (
-            <Button key={item.label} color="inherit" component={RouterLink} to={item.to}>
+            <Button 
+              key={item.label} 
+              color="inherit" 
+              component={NavLink} 
+              to={item.to}
+              end
+              sx={{ "&.active": { fontWeight: 700, textDecoration: "underline" } }}
+            >
               {item.label}
             </Button>
           ))}

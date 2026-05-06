@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Card, CardMedia } from "@mui/material";
 import { POST_PREVIEW_LENGTH } from "../../constants/config";
 import { truncateText } from "../../utils/textUtils";
@@ -71,9 +71,7 @@ const SinglePost = ({ post }: SinglePostProps) => {
       {/* Render the post content (short preview or full text with tags). */}
       <PostContent
         description={description}
-        shortText={shortText}
         expanded={expanded}
-        isLong={isLong}
         tagList={tag_list}
       />
 
@@ -88,4 +86,4 @@ const SinglePost = ({ post }: SinglePostProps) => {
   );
 };
 
-export default SinglePost;
+export default React.memo(SinglePost);

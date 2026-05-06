@@ -1,3 +1,4 @@
+import React from "react";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
@@ -61,4 +62,4 @@ const UserRow = ({ user, onSeePostsClick }: UserRowProps) => {
   );
 };
 
-export default UserRow;
+export default React.memo(UserRow);
