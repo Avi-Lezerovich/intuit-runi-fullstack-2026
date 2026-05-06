@@ -30,7 +30,7 @@ const SinglePost = ({ post }: SinglePostProps) => {
   } = post;
 
   // Extract author information, preferring organization over user
-  const { displayName, avatarImage, avatarLetter } = getAuthorInfo(user, organization);
+  const { displayName, avatarImage } = getAuthorInfo(user, organization);
 
   // Truncate description for preview
   const { isLong } = truncateText(description, POST_PREVIEW_LENGTH);
@@ -53,7 +53,6 @@ const SinglePost = ({ post }: SinglePostProps) => {
         url={url}
         displayName={displayName}
         avatarImage={avatarImage}
-        avatarLetter={avatarLetter}
         publishDate={readable_publish_date}
       />
 

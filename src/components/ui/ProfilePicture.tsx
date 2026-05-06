@@ -1,9 +1,10 @@
 import { Avatar } from "@mui/material";
+import type { SxProps, Theme } from "@mui/material/styles";
 
 interface ProfilePictureProps {
   src?: string;
   alt?: string;
-  sx?: any;
+  sx?: SxProps<Theme>;
 }
 
 const ProfilePicture = ({ src, alt, sx }: ProfilePictureProps) => (

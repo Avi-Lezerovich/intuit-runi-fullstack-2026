@@ -6,14 +6,13 @@ interface AuthorSource {
 interface AuthorInfo {
   displayName: string;
   avatarImage: string;
-  avatarLetter: string;
 }
 
 /**
  * Extracts author information, preferring organization over user.
  * @param user - The user object from API
  * @param organization - The organization object from API
- * @returns { displayName, avatarImage, avatarLetter }
+ * @returns { displayName, avatarImage }
  */
 export const getAuthorInfo = (
   user: AuthorSource | undefined,
@@ -22,7 +21,6 @@ export const getAuthorInfo = (
   // Prefer organization name/avatar when available; otherwise fall back to user
   const displayName = organization?.name || user?.name || "";
   const avatarImage = organization?.profile_image_90 || user?.profile_image_90 || "";
-  const avatarLetter = displayName?.charAt(0).toUpperCase();
 
-  return { displayName, avatarImage, avatarLetter };
+  return { displayName, avatarImage };
 };

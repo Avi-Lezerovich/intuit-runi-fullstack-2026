@@ -1,17 +1,21 @@
 // Shared type definitions used across the application.
 
-export interface ArticleUser {
-  user_id: number;
+export interface UserProfile {
   name: string;
   username: string;
   profile_image: string;
   profile_image_90: string;
+  github_username?: string;
+  twitter_username?: string;
+  linkedin_username?: string;
+  website_url?: string;
 }
 
-export interface ArticleOrganization {
-  name: string;
-  username: string;
-  profile_image_90: string;
+export interface ArticleUser extends UserProfile {
+  user_id: number;
+}
+
+export interface ArticleOrganization extends Pick<UserProfile, "name" | "username" | "profile_image_90"> {
 }
 
 export interface Article {
@@ -27,12 +31,8 @@ export interface Article {
   organization?: ArticleOrganization;
 }
 
-export interface User {
+export interface User extends UserProfile {
   id: number;
-  name: string;
-  username: string;
-  profile_image: string;
-  profile_image_90: string;
   post_count: number;
 }
 

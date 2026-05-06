@@ -7,14 +7,13 @@ interface PostCardHeaderProps {
   url: string;
   displayName: string;
   avatarImage?: string;
-  avatarLetter?: string;
   publishDate: string;
 }
 
 /**
  * PostCardHeader - Renders the card header with author avatar, title, and publish date.
  */
-const PostCardHeader = ({ title, url, displayName, avatarImage, avatarLetter, publishDate }: PostCardHeaderProps) => {
+const PostCardHeader = ({ title, url, displayName, avatarImage, publishDate }: PostCardHeaderProps) => {
   return (
     <CardHeader
       avatar={<ProfilePicture src={avatarImage} alt={displayName} sx={{ width: 72, height: 72, mb: 1.5 }} />}
