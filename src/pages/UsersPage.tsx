@@ -12,7 +12,7 @@ import { useUsers, type User } from "../features/users/hooks/useUsers";
 import { useUserSearch } from "../features/users/hooks/useUserSearch";
 import { mergeUniqueUsers } from "../features/users/utils/mergeUniqueUsers";
 
-export default function UsersPage() {
+const UsersPage = () => {
   const { users, loading, error, hasMore, loadMore } = useUsers();
   const [query, setQuery] = useState("");
   const { users: searchedUsers, loading: searchLoading, error: searchError } =
@@ -85,3 +85,4 @@ export default function UsersPage() {
     </Box>
   );
 }
+export default UsersPage;

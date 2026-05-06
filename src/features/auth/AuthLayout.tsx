@@ -36,7 +36,7 @@ interface AuthLayoutProps {
 // Shared chrome for the auth pages: theme provider, baseline, color mode toggle,
 // and the gradient-backed full-height container. The forms themselves don't
 // know anything about this wrapping.
-export default function AuthLayout({ children, disableCustomTheme }: AuthLayoutProps) {
+const AuthLayout = ({ children, disableCustomTheme }: AuthLayoutProps) => {
   return (
     <AppTheme disableCustomTheme={disableCustomTheme}>
       <CssBaseline enableColorScheme />
@@ -47,3 +47,4 @@ export default function AuthLayout({ children, disableCustomTheme }: AuthLayoutP
     </AppTheme>
   );
 }
+export default AuthLayout;

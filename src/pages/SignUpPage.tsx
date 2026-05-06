@@ -5,10 +5,11 @@ interface SignUpPageProps {
   disableCustomTheme?: boolean;
 }
 
-export default function SignUpPage({ disableCustomTheme }: SignUpPageProps) {
+const SignUpPage = ({ disableCustomTheme }: SignUpPageProps) => {
   return (
     <AuthLayout disableCustomTheme={disableCustomTheme}>
       <SignUpForm />
     </AuthLayout>
   );
 }
+export default SignUpPage;

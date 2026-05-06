@@ -1,9 +1,9 @@
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import SeePostsButton from "../../components/ui/SeePostsButton";
+import UserProfileAvatar from "../../components/ui/UserProfileAvatar";
 
 const UserRow = ({ user, onSeePostsClick }) => {
   return (
@@ -22,16 +22,7 @@ const UserRow = ({ user, onSeePostsClick }) => {
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-          <Avatar
-            src={user.profile_image_90}
-            alt={user.name}
-            sx={{
-              width: 44,
-              height: 44,
-              border: "1.5px solid",
-              borderColor: "divider",
-            }}
-          />
+          <UserProfileAvatar src={user.profile_image_90} alt={user.name} />
           <Box>
             <Typography fontWeight={600} fontSize={14} lineHeight={1.3}>
               {user.name}

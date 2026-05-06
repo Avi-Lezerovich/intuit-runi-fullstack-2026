@@ -11,7 +11,7 @@ import { createPost } from "../../api/posts";
 
 const initialValues = { title: "", body: "" };
 
-export default function NewPostForm() {
+const NewPostForm = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
@@ -58,17 +58,24 @@ export default function NewPostForm() {
       setSubmitError(err instanceof Error ? err.message : "Failed to publish post");
       setLoading(false);
     }
-  };
+  }; 
 
   return (
     <Box sx={{ p: 3, maxWidth: 760, mx: "auto" }}>
-      <Paper elevation={1} sx={{ p: 3 }}>
-        <Typography variant="h5" component="h1" sx={{ mb: 3, fontWeight: "bold" }}>
+      <Paper 
+        elevation={0} 
+        sx={{ 
+          p: 4, 
+          borderRadius: 3, 
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" // Matches the soft shadow in the mockup
+        }}
+      >
+        <Typography variant="h5" component="h1" sx={{ mb: 3, fontWeight: 600, color: '#111827' }}>
           Create New Post
         </Typography>
 
         {submitError && (
-          <Alert severity="error" sx={{ mb: 2 }}>
+          <Alert severity="error" sx={{ mb: 3 }}>
             {submitError}
           </Alert>
         )}
@@ -84,7 +91,8 @@ export default function NewPostForm() {
             error={Boolean(errors.title)}
             helperText={errors.title}
             disabled={loading}
-            sx={{ mb: 2 }}
+            InputLabelProps={{ shrink: true }}
+            sx={{ mb: 3 }}
           />
 
           <TextField
@@ -99,15 +107,38 @@ export default function NewPostForm() {
             error={Boolean(errors.body)}
             helperText={errors.body}
             disabled={loading}
-            sx={{ mb: 3 }}
+            InputLabelProps={{ shrink: true }}
+            sx={{ mb: 4 }}
           />
 
           <Box sx={{ display: "flex", gap: 2 }}>
-            <Button type="submit" variant="contained" disabled={loading} sx={{ minWidth: 120 }}>
+            <Button 
+              type="submit" 
+              variant="contained" 
+              disabled={loading} 
+              sx={{ 
+                minWidth: 120,
+                textTransform: 'none', // Removes uppercase
+                fontWeight: 500,
+                bgcolor: '#1e293b', // Dark navy/black from the image
+                '&:hover': { bgcolor: '#0f172a' }
+              }}
+            >
               {loading ? <CircularProgress size={24} color="inherit" /> : "Publish"}
             </Button>
 
-            <Button variant="outlined" onClick={() => navigate("/")} disabled={loading}>
+            <Button 
+              variant="outlined" 
+              onClick={() => navigate("/")} 
+              disabled={loading}
+              sx={{
+                textTransform: 'none',
+                fontWeight: 500,
+                color: '#475569',
+                borderColor: '#cbd5e1',
+                '&:hover': { bgcolor: '#f8fafc', borderColor: '#94a3b8' }
+              }}
+            >
               Cancel
             </Button>
           </Box>
@@ -116,3 +147,4 @@ export default function NewPostForm() {
     </Box>
   );
 }
+export default NewPostForm;

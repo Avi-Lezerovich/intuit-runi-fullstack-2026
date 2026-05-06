@@ -6,10 +6,11 @@ interface SignInPageProps {
 }
 
 // Thin page-level component: just routes-level concerns + composition.
-export default function SignInPage({ disableCustomTheme }: SignInPageProps) {
+const SignInPage = ({ disableCustomTheme }: SignInPageProps) => {
   return (
     <AuthLayout disableCustomTheme={disableCustomTheme}>
       <SignInForm />
     </AuthLayout>
   );
 }
+export default SignInPage;

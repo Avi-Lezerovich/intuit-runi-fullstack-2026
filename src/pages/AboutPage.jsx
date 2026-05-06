@@ -7,7 +7,7 @@ const AboutPage = () => (
       About
     </Typography>
     <Typography color="text.secondary">
-      AgentHub helps you browse and manage content.
+      coming soon.
     </Typography>
   </Box>
 );
