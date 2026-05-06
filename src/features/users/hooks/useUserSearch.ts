@@ -31,9 +31,9 @@ export const useUserSearch = (
 
     let isActive = true;
     setUsers([]);
+    setLoading(true);
 
-    const runSearch = async () => {
-      setLoading(true);
+    const timeoutId = setTimeout(async () => {
       setError(null);
 
       try {
@@ -59,12 +59,11 @@ export const useUserSearch = (
           setLoading(false);
         }
       }
-    };
-
-    runSearch();
+    }, 350);
 
     return () => {
       isActive = false;
+      clearTimeout(timeoutId);
     };
   }, [query, limit]);
 

@@ -5,11 +5,22 @@ import { PAGE_SIZE, PROFILE_BASE_URL } from "../constants/config";
 import { mergeUniqueItems } from "../utils/mergeUtils";
 import type { Article, User, FetchUsersResult } from "../types";
 
-// dev.to does not expose a post-count endpoint, so we scrape the profile page.
+const postCountCache = new Map<string, number>();
+
 export const fetchUserPostCount = async (username: string): Promise<number> => {
-  const html = await apiFetchText(`${PROFILE_BASE_URL}/${username}`);
-  const match = html.match(/(\d+)\s+posts?\s+published/i);
-  return match ? Number(match[1]) : 0;
+  if (postCountCache.has(username)) {
+    return postCountCache.get(username)!;
+  }
+  try {
+    // We fetch a high number of articles for this user to get a count.
+    const articles = await apiFetch<Article[]>(`/articles?username=${username}&per_page=1000`);
+    const count = articles.length;
+    postCountCache.set(username, count);
+    return count;
+  } catch {
+    postCountCache.set(username, 0);
+    return 0;
+  }
 };
 
 // Fetches a page of articles, derives the unique authors, then enriches each
