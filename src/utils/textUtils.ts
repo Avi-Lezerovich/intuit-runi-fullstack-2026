@@ -1,10 +1,15 @@
+interface TruncateResult {
+  truncated: string;
+  isLong: boolean;
+}
+
 /**
  * Truncates text to a maximum length, breaking at word boundaries.
- * @param {string} text - The text to truncate
- * @param {number} maxLength - Maximum length before truncation
- * @returns {object} { truncated: string, isLong: boolean }
+ * @param text - The text to truncate
+ * @param maxLength - Maximum length before truncation
+ * @returns { truncated: string, isLong: boolean }
  */
-export const truncateText = (text, maxLength) => {
+export const truncateText = (text: string | undefined, maxLength: number): TruncateResult => {
   if (!text) {
     return { truncated: "", isLong: false };
   }
