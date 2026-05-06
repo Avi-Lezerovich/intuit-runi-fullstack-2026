@@ -1,10 +1,11 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
+import { apiFetch } from "../api/client";
 
 interface UseAuthSubmitOptions {
   endpoint: string;
   redirectPath: string;
-  onSuccess?: (data: any) => void;
+  onSuccess?: (data: unknown) => void;
 }
 
 interface UseAuthSubmitReturn {
@@ -24,20 +25,12 @@ export const useAuthSubmit = ({
 
   const submit = React.useCallback(
     async (payload: Record<string, string>) => {
-      const response = await fetch(endpoint, {
+      const data = await apiFetch<unknown>(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.message || `Request failed with status ${response.status}`
-        );
-      }
-
-      const data = await response.json();
       onSuccess?.(data);
       navigate(redirectPath, { replace: true });
       return data;

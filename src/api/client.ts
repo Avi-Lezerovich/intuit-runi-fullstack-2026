@@ -8,7 +8,9 @@ export const apiFetch = async <T = unknown>(path: string, options: RequestInit =
   const response = await fetch(url, options);
 
   if (!response.ok) {
-    throw new Error(`Request failed: ${response.status} ${response.statusText}`);
+    const errorData = await response.json().catch(() => null);
+    const msg = errorData?.message || `${response.status} ${response.statusText}`;
+    throw new Error(msg);
   }
 
   return response.json() as Promise<T>;

@@ -2,29 +2,29 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
+import { Link as RouterLink } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import Divider from "@mui/material/Divider";
 import { AUTH_API_URL } from "../../constants/config";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import { useAuthSubmit } from "../../hooks/useAuthSubmit";
-import { useFieldValidators } from "../../hooks/useFieldValidators";
+import { emailValidators, passwordValidators } from "../../utils/validators";
 import AuthCard from "../../components/ui/AuthCard";
 import FormTextField from "../../components/ui/FormTextField";
 
 const initialValues = { email: "", password: "" };
 
+const validationRules = {
+  email: emailValidators,
+  password: passwordValidators,
+};
+
 const SignInForm = () => {
-  const fieldValidators = useFieldValidators();
   const { submit } = useAuthSubmit({
     endpoint: `${AUTH_API_URL}/posts`,
     redirectPath: "/",
   });
-
-  const validationRules = {
-    email: fieldValidators.emailValidators,
-    password: fieldValidators.passwordValidators,
-  };
 
   const form = useFormValidation({
     initialValues,
@@ -101,7 +101,7 @@ const SignInForm = () => {
       </Divider>
       <Typography sx={{ textAlign: "center" }}>
         Don&apos;t have an account?{" "}
-        <Link href="/signup" variant="body2" sx={{ alignSelf: "center" }}>
+        <Link component={RouterLink} to="/signup" variant="body2" sx={{ alignSelf: "center" }}>
           Sign up
         </Link>
       </Typography>

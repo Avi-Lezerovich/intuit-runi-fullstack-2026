@@ -2,38 +2,43 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
+import { Link as RouterLink } from "react-router-dom";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import { AUTH_API_URL } from "../../constants/config";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import { useAuthSubmit } from "../../hooks/useAuthSubmit";
-import { useFieldValidators } from "../../hooks/useFieldValidators";
+import { 
+  nameValidators, 
+  emailValidators, 
+  passwordValidators, 
+  getPasswordMatchValidators 
+} from "../../utils/validators";
 import AuthCard from "../../components/ui/AuthCard";
 import FormTextField from "../../components/ui/FormTextField";
 
 const initialValues = { name: "", email: "", password: "", repeatPassword: "" };
 
 const SignUpForm = () => {
-  const fieldValidators = useFieldValidators();
   const { submit } = useAuthSubmit({
     endpoint: `${AUTH_API_URL}/users`,
     redirectPath: "/login",
   });
 
-  // Validation rules for sign-up form
-  const validationRules = {
-    name: fieldValidators.nameValidators,
-    email: fieldValidators.emailValidators,
-    password: fieldValidators.passwordValidators,
-    // Empty array - password match is validated separately in handleSubmit
-    repeatPassword: [],
-  };
-
   const form = useFormValidation({
     initialValues,
-    validationRules,
-  }); 
+    // Note: To use passwordMatchValidators accurately, it requires the current password state.
+    // However, useFormValidation evaluates validationRules on initial mount if they are static.
+    // To cleanly integrate, we will perform repeat password validation inside handleSubmit,
+    // but fix the bug by setting the submit error instead of returning silently.
+    validationRules: {
+      name: nameValidators,
+      email: emailValidators,
+      password: passwordValidators,
+      repeatPassword: [],
+    },
+  });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,7 +48,7 @@ const SignUpForm = () => {
 
     // Custom validation for password match
     if (!form.values.repeatPassword) {
-      form.clearError("repeatPassword");
+      form.setSubmitError("Please confirm your password");
       return;
     }
     if (form.values.repeatPassword !== form.values.password) {
@@ -137,7 +142,7 @@ const SignUpForm = () => {
       </Divider>
       <Typography sx={{ textAlign: "center" }}>
         Already have an account?{" "}
-        <Link href="/login" variant="body2" sx={{ alignSelf: "center" }}>
+        <Link component={RouterLink} to="/login" variant="body2" sx={{ alignSelf: "center" }}>
           Sign in
         </Link>
       </Typography>
