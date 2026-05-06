@@ -3,9 +3,13 @@ import SinglePost from "./SinglePost";
 import LoadMoreButton from "../../components/ui/LoadMoreButton";
 import { usePosts } from "./hooks/usePosts";
 
+interface FeedProps {
+  userId?: string;
+}
+
 // Pure presentational component — all data lifecycle lives in usePosts().
-const Feed = () => {
-  const { posts, loading, error, hasMore, loadMore } = usePosts();
+const Feed = ({ userId }: FeedProps = {}) => {
+  const { posts, loading, error, hasMore, loadMore } = usePosts(userId);
 
   // If the initial load fails, show a full-width error state instead of the feed.
   if (error && posts.length === 0) {

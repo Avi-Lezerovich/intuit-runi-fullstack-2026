@@ -1,5 +1,6 @@
 // src/pages/UsersPage.tsx
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -8,11 +9,13 @@ import Typography from "@mui/material/Typography";
 import SearchIcon from "@mui/icons-material/Search";
 import LoadMoreButton from "../components/ui/LoadMoreButton";
 import UsersList from "../features/users/UsersList";
-import { useUsers, type User } from "../features/users/hooks/useUsers";
+import { useUsers } from "../features/users/hooks/useUsers";
 import { useUserSearch } from "../features/users/hooks/useUserSearch";
 import { mergeUniqueUsers } from "../features/users/utils/mergeUniqueUsers";
+import type { User } from "../types";
 
 const UsersPage = () => {
+  const navigate = useNavigate();
   const { users, loading, error, hasMore, loadMore } = useUsers();
   const [query, setQuery] = useState("");
   const { users: searchedUsers, loading: searchLoading, error: searchError } =
@@ -37,7 +40,7 @@ const UsersPage = () => {
   }, [searchedUsers, trimmedQuery, users]);
 
   const handleSeePosts = (user: User) => {
-    console.log(`See posts for ${user.username}`);
+    navigate(`/user-posts/${user.username}`);
   };
 
   if (error && users.length === 0) {

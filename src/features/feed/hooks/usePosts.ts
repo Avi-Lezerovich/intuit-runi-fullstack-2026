@@ -1,7 +1,7 @@
-import { useEffect, useState, useCallback } from "react";
+import * as React from "react";
 import { fetchPosts } from "../../../api/posts";
 import { PAGE_SIZE } from "../../../constants/config";
-import { mergeUniquePosts } from "../utils/mergeUniquePosts";
+import { usePaginatedFetch } from "../../../hooks/usePaginatedFetch";
 import type { Article } from "../../../types";
 
 interface UsePostsReturn {
@@ -12,70 +12,22 @@ interface UsePostsReturn {
   loadMore: () => void;
 }
 
-// Encapsulates the feed data lifecycle: initial load, pagination, error state.
-// Returning a clean { posts, loading, error, hasMore, loadMore } object lets
-// the Feed component stay purely presentational.
-export const usePosts = (limit: number = PAGE_SIZE): UsePostsReturn => {
-  const [posts, setPosts] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-
-  const loadPage = useCallback(
-    async (pageNumber: number) => {
-      setLoading(true);
-      setError(null);
-      try {
-        const newPosts = await fetchPosts(pageNumber, limit);
-        if (newPosts.length < limit) setHasMore(false);
-        setPosts((prev) => mergeUniquePosts(prev, newPosts));
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
-      } finally {
-        setLoading(false);
-      }
+export const usePosts = (userId?: string, limit: number = PAGE_SIZE): UsePostsReturn => {
+  const fetcher = React.useCallback(
+    async (page: number, lim: number) => {
+      const items = await fetchPosts(page, lim, userId);
+      return { items, hasMore: items.length === lim };
     },
-    [limit]
+    [userId]
   );
 
-  // Initial fetch on mount.
-  useEffect(() => {
-    let isActive = true;
+  const result = usePaginatedFetch<Article>(fetcher, limit);
 
-    const loadInitialPage = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const newPosts = await fetchPosts(1, limit);
-
-        if (!isActive) return;
-
-        if (newPosts.length < limit) setHasMore(false);
-        setPosts(newPosts);
-      } catch (err) {
-        if (!isActive) return;
-        setError(err instanceof Error ? err.message : "An error occurred");
-      } finally {
-        if (isActive) {
-          setLoading(false);
-        }
-      }
-    };
-
-    loadInitialPage();
-
-    return () => {
-      isActive = false;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const loadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    loadPage(nextPage);
+  return { 
+    posts: result.items, 
+    loading: result.loading, 
+    error: result.error, 
+    hasMore: result.hasMore, 
+    loadMore: result.loadMore 
   };
-
-  return { posts, loading, error, hasMore, loadMore };
 };

@@ -1,11 +1,8 @@
 import * as React from "react";
 import { fetchUsers } from "../../../api/users";
 import { PAGE_SIZE } from "../../../constants/config";
-import { mergeUniqueUsers } from "../utils/mergeUniqueUsers";
+import { usePaginatedFetch } from "../../../hooks/usePaginatedFetch";
 import type { User } from "../../../types";
-
-// Re-export User type so consumers can import from here
-export type { User };
 
 interface UseUsersReturn {
   users: User[];
@@ -17,36 +14,21 @@ interface UseUsersReturn {
 
 // Encapsulates the users data lifecycle for UsersPage.
 export const useUsers = (limit: number = PAGE_SIZE): UseUsersReturn => {
-  const [users, setUsers] = React.useState<User[]>([]);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState<string | null>(null);
-  const [page, setPage] = React.useState(1);
-  const [hasMore, setHasMore] = React.useState(true);
+  const fetcher = React.useCallback(
+    async (page: number, lim: number) => {
+      const fetchResult = await fetchUsers(page, lim);
+      return { items: fetchResult.users, hasMore: fetchResult.hasMore };
+    },
+    []
+  );
 
-  const loadPage = async (pageNumber: number) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const result = await fetchUsers(pageNumber, limit);
-      setHasMore(result.hasMore);
-      setUsers((prev) => mergeUniqueUsers(prev, result.users));
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
-    } finally {
-      setLoading(false);
-    }
+  const result = usePaginatedFetch<User>(fetcher, limit);
+
+  return {
+    users: result.items,
+    loading: result.loading,
+    error: result.error,
+    hasMore: result.hasMore,
+    loadMore: result.loadMore
   };
-
-  React.useEffect(() => {
-    loadPage(1);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const loadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    loadPage(nextPage);
-  };
-
-  return { users, loading, error, hasMore, loadMore };
 };

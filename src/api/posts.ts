@@ -4,13 +4,23 @@ import { apiFetch } from "./client";
 import { PAGE_SIZE } from "../constants/config";
 import type { Article } from "../types";
 
-export const fetchPosts = (page = 1, limit = PAGE_SIZE): Promise<Article[]> =>
-  apiFetch<Article[]>(`/articles?page=${page}&per_page=${limit}`);
+export const fetchPosts = (page = 1, limit = PAGE_SIZE, userId?: string): Promise<Article[]> =>
+  apiFetch<Article[]>(
+    userId
+      ? `/articles?username=${userId}&page=${page}&per_page=${limit}`
+      : `/articles?page=${page}&per_page=${limit}`
+  );
 
 // Placeholder create endpoint used by the New Post form.
-export const createPost = ({ title, body }: { title: string; body: string }) =>
-  apiFetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title, body, userId: 1 }),
-  });
+export const createPost = async ({ title, body }: { title: string; body: string }) => {
+  // Simulate network latency
+  await new Promise((resolve) => setTimeout(resolve, 800));
+
+  // Return a mock successful response
+  return {
+    id: Math.floor(Math.random() * 10000),
+    title,
+    body,
+    userId: 1,
+  };
+};
