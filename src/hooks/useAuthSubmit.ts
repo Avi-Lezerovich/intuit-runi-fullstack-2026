@@ -9,7 +9,7 @@ interface UseAuthSubmitOptions {
 }
 
 interface UseAuthSubmitReturn {
-  submit: (payload: Record<string, string>) => Promise<void>;
+  submit: (payload: Record<string, string>) => Promise<unknown>;
 }
 
 /**

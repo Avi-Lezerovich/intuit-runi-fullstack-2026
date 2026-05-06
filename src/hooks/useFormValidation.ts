@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Validator } from "./useFieldValidators";
+import { Validator } from "../utils/validators";
 
 interface UseFormValidationOptions {
   initialValues: Record<string, string>;

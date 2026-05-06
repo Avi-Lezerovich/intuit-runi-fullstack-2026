@@ -12,8 +12,7 @@ import { useAuthSubmit } from "../../hooks/useAuthSubmit";
 import { 
   nameValidators, 
   emailValidators, 
-  passwordValidators, 
-  getPasswordMatchValidators 
+    passwordValidators
 } from "../../utils/validators";
 import AuthCard from "../../components/ui/AuthCard";
 import FormTextField from "../../components/ui/FormTextField";

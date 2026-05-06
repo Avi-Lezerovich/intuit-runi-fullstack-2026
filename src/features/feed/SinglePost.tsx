@@ -33,7 +33,7 @@ const SinglePost = ({ post }: SinglePostProps) => {
   const { displayName, avatarImage, avatarLetter } = getAuthorInfo(user, organization);
 
   // Truncate description for preview
-  const { truncated: shortText, isLong } = truncateText(description, POST_PREVIEW_LENGTH);
+  const { isLong } = truncateText(description, POST_PREVIEW_LENGTH);
 
   return (
     <Card

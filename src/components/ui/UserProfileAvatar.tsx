@@ -3,9 +3,10 @@ import { Avatar } from "@mui/material";
 interface UserProfileAvatarProps {
   src?: string;
   alt?: string;
+  sx?: any;
 }
 
-const UserProfileAvatar = ({ src, alt }: UserProfileAvatarProps) => (
+const UserProfileAvatar = ({ src, alt, sx }: UserProfileAvatarProps) => (
   <Avatar
     src={src}
     alt={alt}
@@ -14,6 +15,7 @@ const UserProfileAvatar = ({ src, alt }: UserProfileAvatarProps) => (
       height: 60,
       border: "1.5px solid",
       borderColor: "divider",
+      ...(sx || {}),
     }}
   />
 );

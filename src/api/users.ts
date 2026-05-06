@@ -1,7 +1,7 @@
 // All user-related API calls live here.
 
-import { apiFetch, apiFetchText } from "./client";
-import { PAGE_SIZE, PROFILE_BASE_URL } from "../constants/config";
+import { apiFetch } from "./client";
+import { PAGE_SIZE } from "../constants/config";
 import { mergeUniqueItems } from "../utils/mergeUtils";
 import type { Article, User, FetchUsersResult } from "../types";
 
