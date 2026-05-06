@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
-import UserProfileAvatar from "../../components/ui/UserProfileAvatar";
+import ProfilePicture from "../../components/ui/ProfilePicture";
 
 import type { User } from "../../types";
 
@@ -29,7 +29,7 @@ const UserCard = ({ user, onSeePostsClick }: UserCardProps) => {
         minWidth: 180,
       }}
     >
-      <UserProfileAvatar src={user.profile_image_90} alt={user.name} sx={{ width: 72, height: 72, mb: 1.5 }} />
+      <ProfilePicture src={user.profile_image_90} alt={user.name} sx={{ width: 72, height: 72, mb: 1.5 }} />
       <Typography sx={{ fontWeight: 700, fontSize: 15 }}>{user.name}</Typography>
       <Typography variant="caption" color="text.secondary" sx={{ mb: 1 }}>
         @{user.username}

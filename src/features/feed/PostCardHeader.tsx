@@ -1,6 +1,6 @@
 import { CardHeader, IconButton, Typography, Chip, Box } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import AuthorAvatar from "../../components/ui/AuthorAvatar";
+import ProfilePicture from "../../components/ui/ProfilePicture";
 
 interface PostCardHeaderProps {
   title: string;
@@ -17,7 +17,7 @@ interface PostCardHeaderProps {
 const PostCardHeader = ({ title, url, displayName, avatarImage, avatarLetter, publishDate }: PostCardHeaderProps) => {
   return (
     <CardHeader
-      avatar={<AuthorAvatar src={avatarImage} letter={avatarLetter} />}
+      avatar={<ProfilePicture src={avatarImage} alt={displayName} sx={{ width: 72, height: 72, mb: 1.5 }} />}
       action={
         <IconButton aria-label="settings">
           <MoreVertIcon />
