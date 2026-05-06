@@ -2,10 +2,19 @@ import { CardHeader, IconButton, Typography, Chip, Box } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AuthorAvatar from "../../components/ui/AuthorAvatar";
 
+interface PostCardHeaderProps {
+  title: string;
+  url: string;
+  displayName: string;
+  avatarImage?: string;
+  avatarLetter?: string;
+  publishDate: string;
+}
+
 /**
  * PostCardHeader - Renders the card header with author avatar, title, and publish date.
  */
-const PostCardHeader = ({ title, url, displayName, avatarImage, avatarLetter, publishDate }) => {
+const PostCardHeader = ({ title, url, displayName, avatarImage, avatarLetter, publishDate }: PostCardHeaderProps) => {
   return (
     <CardHeader
       avatar={<AuthorAvatar src={avatarImage} letter={avatarLetter} />}

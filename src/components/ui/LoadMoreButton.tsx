@@ -1,6 +1,11 @@
 import { Box, Button } from "@mui/material";
 
-const LoadMoreButton = ({ onClick, label = "Load More" }) => {
+interface LoadMoreButtonProps {
+  onClick: () => void;
+  label?: string;
+}
+
+const LoadMoreButton = ({ onClick, label = "Load More" }: LoadMoreButtonProps) => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
       <Button

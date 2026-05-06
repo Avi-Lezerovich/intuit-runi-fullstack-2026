@@ -1,6 +1,11 @@
 import { Avatar } from "@mui/material";
 
-const UserProfileAvatar = ({ src, alt }) => (
+interface UserProfileAvatarProps {
+  src?: string;
+  alt?: string;
+}
+
+const UserProfileAvatar = ({ src, alt }: UserProfileAvatarProps) => (
   <Avatar
     src={src}
     alt={alt}

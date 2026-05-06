@@ -5,7 +5,14 @@ import Divider from "@mui/material/Divider";
 import SeePostsButton from "../../components/ui/SeePostsButton";
 import UserProfileAvatar from "../../components/ui/UserProfileAvatar";
 
-const UserRow = ({ user, onSeePostsClick }) => {
+import type { User } from "../../types";
+
+interface UserRowProps {
+  user: User;
+  onSeePostsClick: (user: User) => void;
+}
+
+const UserRow = ({ user, onSeePostsClick }: UserRowProps) => {
   return (
     <>
       <Box
@@ -24,7 +31,7 @@ const UserRow = ({ user, onSeePostsClick }) => {
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
           <UserProfileAvatar src={user.profile_image_90} alt={user.name} />
           <Box>
-            <Typography fontWeight={600} fontSize={14} lineHeight={1.3}>
+            <Typography sx={{ fontWeight: 600, fontSize: 14, lineHeight: 1.3 }}>
               {user.name}
             </Typography>
             <Typography variant="caption" color="text.disabled">
@@ -46,7 +53,7 @@ const UserRow = ({ user, onSeePostsClick }) => {
               color: "text.secondary",
             }}
           />
-          <SeePostsButton onClick={() => onSeePostsClick(user.username)} />
+          <SeePostsButton onClick={() => onSeePostsClick(user)} />
         </Box>
       </Box>
       <Divider />

@@ -1,9 +1,17 @@
 import { CardContent, Collapse, Typography, Chip, Box } from "@mui/material";
 
+interface PostContentProps {
+  description: string;
+  shortText: string;
+  expanded: boolean;
+  isLong: boolean;
+  tagList: string[];
+}
+
 /**
  * PostContent - Renders the post content in collapsed (preview) or expanded (full) mode.
  */
-const PostContent = ({ description, shortText, expanded, isLong, tagList }) => {
+const PostContent = ({ description, shortText, expanded, isLong, tagList }: PostContentProps) => {
   return (
     <>
       {/* Render the short preview while the card is collapsed. */}

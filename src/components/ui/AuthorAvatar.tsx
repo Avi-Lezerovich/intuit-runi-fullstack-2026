@@ -1,6 +1,12 @@
 import { Avatar } from "@mui/material";
 
-const AuthorAvatar = ({ src, letter, ariaLabel = "author" }) => (
+interface AuthorAvatarProps {
+  src?: string;
+  letter?: string;
+  ariaLabel?: string;
+}
+
+const AuthorAvatar = ({ src, letter, ariaLabel = "author" }: AuthorAvatarProps) => (
   <Avatar
     src={src}
     sx={{ bgcolor: "primary.main" }}

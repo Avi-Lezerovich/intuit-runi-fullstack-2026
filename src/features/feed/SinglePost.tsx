@@ -7,8 +7,14 @@ import PostCardHeader from "./PostCardHeader";
 import PostContent from "./PostContent";
 import PostCardFooter from "./PostCardFooter";
 
+import type { Article } from "../../types";
+
+interface SinglePostProps {
+  post: Article;
+}
+
 // `post` is the article object returned by the dev.to API.
-const SinglePost = ({ post }) => {
+const SinglePost = ({ post }: SinglePostProps) => {
   const [expanded, setExpanded] = useState(false);
 
   const {

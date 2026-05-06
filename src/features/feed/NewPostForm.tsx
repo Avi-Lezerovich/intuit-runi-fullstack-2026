@@ -23,12 +23,12 @@ const BODY_MIN = 10;
 const NewPostForm = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setValues((prev) => ({ ...prev, [name]: value }));
     // Clear the field error as soon as the user starts editing.
@@ -38,7 +38,7 @@ const NewPostForm = () => {
   };
 
   const validate = () => {
-    const result = {};
+    const result: Record<string, string> = {};
     const title = values.title.trim();
     const body = values.body.trim();
 
@@ -58,7 +58,7 @@ const NewPostForm = () => {
     return Object.keys(result).length === 0;
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validate()) return;
 
@@ -97,7 +97,7 @@ const NewPostForm = () => {
         }}
       >
         <Stack spacing={1} sx={{ mb: 3 }}>
-          <Typography variant="h5" component="h1" fontWeight={600}>
+          <Typography variant="h5" component="h1" sx={{ fontWeight: 600 }}>
             Create New Post
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -144,7 +144,7 @@ const NewPostForm = () => {
             <Stack
               direction={{ xs: "column-reverse", sm: "row" }}
               spacing={1.5}
-              justifyContent="flex-end"
+              sx={{ justifyContent: "flex-end" }}
             >
               <Button
                 variant="outlined"

@@ -3,13 +3,14 @@ import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import CreateIcon from "@mui/icons-material/Create";
 
+const MENU_ITEMS = [
+  { label: "Home", to: "/" },
+  { label: "Users", to: "/users" },
+  { label: "About", to: "/about" },
+  { label: "Login", to: "/login" },
+];
+
 const TopBar = () => {
-  const menuItems = [
-    { label: "Home", to: "/" },
-    { label: "Users", to: "/users" },
-    { label: "About", to: "/about" },
-    { label: "Login", to: "/login" },
-  ];
 
   return (
     <AppBar >
@@ -35,7 +36,7 @@ const TopBar = () => {
             New Post
           </Button>
 
-          {menuItems.map((item) => (
+          {MENU_ITEMS.map((item) => (
             <Button key={item.label} color="inherit" component={RouterLink} to={item.to}>
               {item.label}
             </Button>

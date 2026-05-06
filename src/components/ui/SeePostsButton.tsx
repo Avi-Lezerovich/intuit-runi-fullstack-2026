@@ -1,6 +1,11 @@
 import { Button } from "@mui/material";
 
-const SeePostsButton = ({ onClick, label = "See Posts" }) => (
+interface SeePostsButtonProps {
+  onClick: () => void;
+  label?: string;
+}
+
+const SeePostsButton = ({ onClick, label = "See Posts" }: SeePostsButtonProps) => (
   <Button
     variant="contained"
     size="small"
