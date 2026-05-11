@@ -8,7 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
 import Users from "./pages/Users";
-import UserPosts from "./pages/UserPosts";
+import ProfilePage from "./pages/ProfilePage";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -23,7 +23,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/user-posts/:userId" element={<UserPosts />} />
+          <Route path="/user-posts/:userId" element={<ProfilePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
