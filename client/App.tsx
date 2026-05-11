@@ -42,4 +42,5 @@ const App = () => {
       <Footer />
     </Box>
   );
-} export default App;
+};
+export default App;
