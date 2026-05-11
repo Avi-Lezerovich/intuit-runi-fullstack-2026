@@ -25,7 +25,7 @@ import { useNotify } from "../components/Notifications";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_PASSWORD = 6;
 
-function scorePassword(p: string): { score: number; label: string; color: "error" | "warning" | "success" } {
+const scorePassword = (p: string): { score: number; label: string; color: "error" | "warning" | "success" } => {
   let s = 0;
   if (p.length >= MIN_PASSWORD) s += 25;
   if (p.length >= 10) s += 20;

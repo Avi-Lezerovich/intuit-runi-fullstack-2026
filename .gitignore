@@ -1,26 +1,21 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Node
+client/node_modules/
+client/dist/
+client/.vite/
 
-node_modules
-dist
-dist-ssr
-*.local
+# Python
+server/.venv/
+server/venv/
+server/__pycache__/
+server/**/__pycache__/
+server/*.pyc
+server/.env
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Editor
+.vscode/
+.idea/
+*.swp
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
 
-dist
+# Logs
+*.log
