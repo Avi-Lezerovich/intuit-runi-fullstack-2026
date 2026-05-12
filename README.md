@@ -1,5 +1,7 @@
 # Suit for Fun - Assignment 4 Solved Code
 
+[![Live site](https://img.shields.io/badge/Live-site-brightgreen)](https://avi-lezerovich.github.io/intuit-runi-fullstack-2026/)
+
 This repository contains the solved frontend code for Assignment 4.
 It is set up with a frontend-only mock data mode so the app can be reviewed
 and demonstrated without the backend.
@@ -32,3 +34,7 @@ All demo users use the same password:
 - The frontend uses mock data automatically in development.
 - Mock state is stored in the browser, so create/delete/vote actions stay visible after refresh.
 - To use the real backend instead, build with `VITE_USE_MOCK_DATA=false`.
+
+## Live demo
+
+- The app is deployed to GitHub Pages: https://avi-lezerovich.github.io/intuit-runi-fullstack-2026/

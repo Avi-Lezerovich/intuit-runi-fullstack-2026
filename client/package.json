@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "postbuild": "cp dist/index.html dist/404.html",
+    "deploy": "npx gh-pages -d dist",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   },
