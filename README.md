@@ -6,6 +6,10 @@ This repository contains the solved frontend code for Assignment 4.
 It is set up with a frontend-only mock data mode so the app can be reviewed
 and demonstrated without the backend.
 
+## Live demo
+
+- The frontend mock demo is published on GitHub Pages (mock data). Open in a new tab: <a href="https://avi-lezerovich.github.io/intuit-runi-fullstack-2026/" target="_blank" rel="noopener noreferrer">Open live demo</a>
+
 ## Demo login
 
 All demo users use the same password:
@@ -28,6 +32,3 @@ All demo users use the same password:
 - Mock state is stored in the browser, so create/delete/vote actions stay visible after refresh.
 - To use the real backend instead, build with `VITE_USE_MOCK_DATA=false`.
 
-## Live demo
-
-- The frontend mock demo is published on GitHub Pages (mock data). Open in a new tab: <a href="https://avi-lezerovich.github.io/intuit-runi-fullstack-2026/" target="_blank" rel="noopener noreferrer">Open live demo</a>
