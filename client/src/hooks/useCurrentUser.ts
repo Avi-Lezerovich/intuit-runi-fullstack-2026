@@ -1,4 +1,3 @@
-/** Hook returning the currently logged-in user, kept in sync with login/logout events. */
 import { useState, useEffect } from "react";
 import { getStoredUser } from "../api";
 import type { User } from "../types";

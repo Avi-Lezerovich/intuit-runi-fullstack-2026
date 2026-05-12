@@ -1,10 +1,11 @@
-/**
- * Small "חם" (hot) chip pinned to the top-right of a Post card.
- * Rendered by <SinglePost /> when total votes pass the hot threshold (200).
- */
 import { Chip } from "@mui/material";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
+/**
+ * Renders a small "חם" (hot) chip badge pinned to the top-right of a Post card.
+ * Shown only when total votes exceed the hot threshold (200).
+ * Displays a gavel icon and hebrew label with secondary color styling.
+ */
 export const PostHotBadge = () => (
   <Chip
     icon={<LocalFireDepartmentIcon sx={{ fontSize: "1rem !important", color: "primary.main !important" }} />}

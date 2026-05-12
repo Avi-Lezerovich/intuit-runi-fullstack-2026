@@ -9,6 +9,11 @@ interface PostChargesListProps {
   charges: string[];
 }
 
+/**
+ * Renders one outlined Chip per charge/cause in a flexible row.
+ * Parent should skip rendering this component entirely when the array is empty.
+ * @param charges - Array of charge/cause labels to display as chips.
+ */
 export const PostChargesList = ({ charges }: PostChargesListProps) => (
   <Stack direction="row" spacing={0.75} sx={{ mb: 1.5, flexWrap: "wrap", gap: 0.75 }}>
     {charges.map((c) => (

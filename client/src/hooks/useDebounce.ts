@@ -1,4 +1,3 @@
-/** Generic debounce hook — delays a value until it stops changing. */
 import { useState, useEffect } from "react";
 
 /**

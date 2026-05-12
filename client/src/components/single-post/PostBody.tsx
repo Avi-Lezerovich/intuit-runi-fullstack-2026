@@ -14,6 +14,12 @@ interface PostBodyProps {
   preview?: boolean;
 }
 
+/**
+ * Renders the post body with read-more / read-less toggle for long entries (>180 chars).
+ * In preview mode the body is always fully expanded and the toggle button is hidden.
+ * @param text - The body content to display.
+ * @param preview - If true, always expand and hide toggle button (used by NewPost preview).
+ */
 export const PostBody = ({ text, preview = false }: PostBodyProps) => {
   const { expanded, isLong, toggle } = useExpandableText({ text, forceExpanded: preview });
 

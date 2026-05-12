@@ -10,6 +10,12 @@ interface PostTitleProps {
   preview?: boolean;
 }
 
+/**
+ * Renders the lawsuit title in serif font (Frank Ruhl Libre).
+ * Shows a Hebrew placeholder in preview mode when the title field is empty.
+ * @param title - The lawsuit title text to display.
+ * @param preview - If true, shows placeholder text when empty (used by NewPost preview).
+ */
 export const PostTitle = ({ title, preview = false }: PostTitleProps) => (
   <Typography
     variant="h5"

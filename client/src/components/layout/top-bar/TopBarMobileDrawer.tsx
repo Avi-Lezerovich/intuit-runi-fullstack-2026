@@ -1,11 +1,3 @@
-/**
- * Mobile navigation: a right-anchored Drawer containing the route list and auth controls.
- * The same NavItem array used by the desktop nav is rendered here as ListItemButtons
- * so the source of truth (active state, link order) stays in <TopBar />.
- *
- * Opens via the hamburger IconButton in <TopBar />; the drawer auto-closes on route
- * change (effect on location.pathname in the orchestrator).
- */
 import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
@@ -27,6 +19,16 @@ interface TopBarMobileDrawerProps {
   onLogout: () => void;
 }
 
+/**
+ * Mobile navigation drawer (right-anchored) containing the route list and auth controls.
+ * Shares the NavItem array with desktop nav so active state and link order stay in sync.
+ * Opens via hamburger IconButton in TopBar; auto-closes on route change.
+ * @param open - Whether the drawer is currently visible.
+ * @param onClose - Callback to close the drawer.
+ * @param navItems - Array of navigation items (route, label, active).
+ * @param user - Current logged-in user (null if anonymous).
+ * @param onLogout - Callback when user clicks logout.
+ */
 export const TopBarMobileDrawer = ({
   open,
   onClose,

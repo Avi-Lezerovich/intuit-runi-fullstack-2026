@@ -1,8 +1,3 @@
-/**
- * Visual vote tally: a left-red / right-green stacked bar with percentages above and
- * a small "your vote was recorded" indicator below when `myVote` is set.
- * Stays read-only — actual vote buttons live in <PostActions />.
- */
 import { Box, Stack, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import type { VoteSide } from "../../types";
@@ -15,6 +10,13 @@ interface PostVoteBarProps {
   myVote: VoteSide | null;
 }
 
+/**
+ * Renders the vote-tally bar (guilty %% / innocent %%) and the "your vote was recorded"
+ * indicator when `myVote` is set. Read-only display only — actual vote buttons live in <PostActions />.
+ * @param guiltyVotes - Count of guilty votes.
+ * @param innocentVotes - Count of innocent votes.
+ * @param myVote - Current user's vote ("guilty", "innocent", or null).
+ */
 export const PostVoteBar = ({ guiltyVotes, innocentVotes, myVote }: PostVoteBarProps) => {
   const totalVotes = guiltyVotes + innocentVotes;
   const guiltyPct = totalVotes ? Math.round((guiltyVotes / totalVotes) * 100) : 0;

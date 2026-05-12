@@ -1,11 +1,12 @@
-/**
- * Brand mark on the left side of the AppBar: gavel icon + "Suit for Fun" wordmark.
- * Wrapped in a RouterLink to "/" so clicking the logo always returns to the feed.
- */
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import GavelIcon from "@mui/icons-material/Gavel";
 
+/**
+ * Renders the brand mark: gavel icon + "Suit for Fun" wordmark on the left side of the AppBar.
+ * Wrapped in a RouterLink to "/" so clicking always returns to the home feed.
+ * No props; renders as a fixed, non-interactive semantic element except for the link.
+ */
 export const TopBarLogo = () => (
   <Box
     component={RouterLink}

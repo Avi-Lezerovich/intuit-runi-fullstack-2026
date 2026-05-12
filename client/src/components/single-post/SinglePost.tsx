@@ -1,11 +1,3 @@
-/**
- * The lawsuit card — used everywhere a Post is rendered: feed (Home), profile (ProfilePage),
- * and live preview (PostPreviewPanel).
- * Orchestrator only: derives flags (isOwner / canVote / isHot), runs usePostVote, and
- * composes the sub-components. Every visual section lives in its own file in this folder.
- *
- * The `preview` prop renders a static, action-free card for the NewPost preview panel.
- */
 import { Card, CardActions, CardContent, Divider, Typography } from "@mui/material";
 
 import type { Post, VoteSide } from "../../types";
@@ -32,6 +24,17 @@ interface Props {
 
 const HOT_THRESHOLD = 200;
 
+/**
+ * The lawsuit card component — the main Post display used in Home feed, ProfilePage, and NewPost preview.
+ * Orchestrator: derives flags (isOwner / canVote / isHot), runs usePostVote hook, composes sub-components.
+ * Every visual section (author header, title, banner, etc.) lives in its own file.
+ * The `preview` prop renders a static, action-free card for the NewPost preview panel.
+ * @param post - The Post object to render.
+ * @param currentUserId - Current logged-in user's ID (if any) for ownership and vote checks.
+ * @param onDelete - Callback when the post owner clicks delete. Only shown if isOwner is true.
+ * @param preview - If true, renders a static read-only card (used by NewPost preview).
+ * @param onVoteChange - Callback when vote tallies change (so parent can update its list).
+ */
 const SinglePost = ({ post, currentUserId, onDelete, preview = false, onVoteChange }: Props) => {
   const isAuthenticated = !!currentUserId;
   const isOwner = isAuthenticated && currentUserId === post.author_id;

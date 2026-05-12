@@ -1,10 +1,6 @@
-/**
- * Loading placeholder for the /users route — mirrors the shape of <UsersList />
- * (both the desktop Table and mobile card variants) so the layout doesn't jump
- * when real data arrives.
- */
 import { Table, TableHead, TableBody, TableRow, TableCell, TableContainer, Paper, Box, Stack, Skeleton } from "@mui/material";
 
+/** Renders the loading skeleton for /users — mirrors the same desktop / mobile split as <UsersList />. */
 export const UsersSkeleton = () => (
   <>
     {/* Desktop Skeleton */}

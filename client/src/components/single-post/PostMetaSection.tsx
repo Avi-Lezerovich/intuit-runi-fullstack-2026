@@ -11,6 +11,12 @@ interface PostMetaSectionProps {
   damages?: string | null;
 }
 
+/**
+ * Renders the optional location + damages-sought metadata rows at the bottom of a Post card.
+ * Each row is individually conditional; the parent skips this whole component when both are empty.
+ * @param location - Optional location string; if provided, renders with LocationOnOutlinedIcon.
+ * @param damages - Optional damages-sought string; if provided, renders with RequestQuoteOutlinedIcon.
+ */
 export const PostMetaSection = ({ location, damages }: PostMetaSectionProps) => (
   <Stack
     spacing={0.75}

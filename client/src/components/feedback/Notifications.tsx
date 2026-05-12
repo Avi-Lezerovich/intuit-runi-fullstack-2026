@@ -1,3 +1,4 @@
+/** App-wide toast/snackbar layer — exports both the Provider component and the useNotify hook. */
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { Alert, Snackbar, Slide } from "@mui/material";

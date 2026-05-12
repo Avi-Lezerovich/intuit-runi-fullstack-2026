@@ -1,16 +1,14 @@
-/**
- * New lawsuit page — route `/new-post`. Guarded by <ProtectedRoute /> in App.tsx,
- * so currentUser is always defined when this renders (despite the typing).
- * Two-pane layout: form on one side, live preview on the other. All form state,
- * validation, charge-toggling, and submit live in useNewPostForm — both panes
- * share the same hook instance so the preview stays in sync as the user types.
- */
 import { Container, Box, Typography, Stack } from "@mui/material";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useNewPostForm } from "../hooks/useNewPostForm";
 import { CreatePostForm } from "../components/new-post/CreatePostForm";
 import { PostPreviewPanel } from "../components/new-post/PostPreviewPanel";
 
+/**
+ * New lawsuit page — route `/new-post`. Guarded by ProtectedRoute so currentUser is always defined.
+ * Two-pane layout: form (left) and live preview (right). Both panes share the same hook
+ * instance (useNewPostForm) so the preview stays in sync as the user types.
+ */
 const NewPost = () => {
   const currentUser = useCurrentUser();
   const formHookData = useNewPostForm(currentUser);

@@ -1,4 +1,3 @@
-/** Form state, validation, and submit for the Login page. */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { login as apiLogin, saveSession, isLoggedIn } from "../api";

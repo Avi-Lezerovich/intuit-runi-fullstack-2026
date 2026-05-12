@@ -1,4 +1,3 @@
-/** Hook managing read-more / read-less toggle state for long text blocks. */
 import { useState } from "react";
 
 /**

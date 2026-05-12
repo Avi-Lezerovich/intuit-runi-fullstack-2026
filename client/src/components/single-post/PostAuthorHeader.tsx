@@ -1,7 +1,3 @@
-/**
- * Top row of a Post card: avatar (initials), author name (link to their profile),
- * and a relative timestamp. The link is disabled in preview mode.
- */
 import { Link as RouterLink } from "react-router-dom";
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 import { getInitials } from "../../utils/stringUtils";
@@ -15,6 +11,14 @@ interface PostAuthorHeaderProps {
   preview?: boolean;
 }
 
+/**
+ * Renders the author row: avatar (initials), name link, and relative timestamp.
+ * The name link is suppressed in `preview` mode (used by the NewPost preview panel).
+ * @param authorId - Author's user ID for the profile link.
+ * @param authorName - Author's display name for avatar initials and link text.
+ * @param createdAt - ISO timestamp for relative formatting (e.g., "2 minutes ago").
+ * @param preview - If true, renders static text instead of a profile link.
+ */
 export const PostAuthorHeader = ({
   authorId,
   authorName,

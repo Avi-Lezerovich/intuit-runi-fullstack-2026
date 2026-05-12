@@ -1,8 +1,3 @@
-/**
- * Login page — route `/login`.
- * Thin view: state, validation, and submission live in useLoginForm.
- * Already-logged-in visitors are bounced to "/" so they don't see the form.
- */
 import { Link as RouterLink, Navigate } from "react-router-dom";
 import { Container, Paper, TextField, Button, Typography, Box, Alert, Stack, Link, CircularProgress, InputAdornment, IconButton } from "@mui/material";
 import GavelIcon from "@mui/icons-material/Gavel";
@@ -22,6 +17,11 @@ const Login = () => {
   // Block rendering for already-authenticated visitors — bounce them to the feed.
   if (isLoggedIn()) return <Navigate to="/" replace />;
 
+  /**
+   * Login page — route `/login`.
+   * Thin view: state, validation, and submission live in useLoginForm.
+   * Already-logged-in visitors are bounced to "/" to avoid showing the form.
+   */
   return (
     <Container maxWidth="sm" sx={{ py: { xs: 4, sm: 8 } }}>
       <Paper sx={{ p: { xs: 3, sm: 5 } }}>

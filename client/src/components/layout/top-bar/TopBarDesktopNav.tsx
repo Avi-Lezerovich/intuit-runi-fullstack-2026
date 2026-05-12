@@ -22,6 +22,11 @@ interface TopBarDesktopNavProps {
   onLogout: () => void;
 }
 
+/**
+ * Renders the desktop nav cluster: route buttons (with active-tab underline) plus
+ * auth controls — greeting + logout for logged-in users, or a login CTA otherwise.
+ * Receives the pre-computed navItems array so active-state logic lives in the parent.
+ */
 export const TopBarDesktopNav = ({ navItems, user, onLogout }: TopBarDesktopNavProps) => (
   <Stack direction="row" spacing={1} alignItems="center">
     {navItems.map((l) => (

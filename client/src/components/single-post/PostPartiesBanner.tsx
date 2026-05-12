@@ -11,6 +11,13 @@ interface PostPartiesBannerProps {
   preview?: boolean;
 }
 
+/**
+ * Renders the plaintiff-vs-defendant banner with legal-themed styling.
+ * Falls back to "—" for the defendant field in preview mode when the user hasn't filled it in yet.
+ * @param plaintiffName - The plaintiff name to display.
+ * @param defendantName - The defendant name to display.
+ * @param preview - If true, shows "—" when defendantName is empty (used by NewPost preview).
+ */
 export const PostPartiesBanner = ({
   plaintiffName,
   defendantName,

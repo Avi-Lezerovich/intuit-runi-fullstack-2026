@@ -1,9 +1,3 @@
-/**
- * About / manifest page — route `/about`.
- * Static marketing content: hero, mission statement, four principles, glossary,
- * humorous disclaimer, and a final CTA. No data fetching, just one auth-state
- * check (isLoggedIn) to switch the CTA between "file a lawsuit" and "sign up".
- */
 import { Link as RouterLink } from "react-router-dom";
 import {
   Container,
@@ -21,7 +15,11 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import ChecklistIcon from "@mui/icons-material/Checklist";
 
 import { isLoggedIn } from "../api";
-
+/**
+ * About / manifest page — route `/about`.
+ * Static marketing content: hero, mission, four core principles, glossary, disclaimer, and CTA.
+ * No data fetching. Auth state switches CTA between "file a lawsuit" (logged-in) and "sign up" (anon).
+ */
 const PRINCIPLES = [
   {
     icon: <GavelIcon sx={{ fontSize: 36, color: "secondary.main" }} />,

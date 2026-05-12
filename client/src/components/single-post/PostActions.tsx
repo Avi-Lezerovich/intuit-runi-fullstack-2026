@@ -1,9 +1,3 @@
-/**
- * Footer of a Post card: the two vote buttons (חייב / זכאי) and an owner-only delete icon.
- * Returns a Fragment so the parent's <CardActions> can provide the flex layout
- * (space-between between vote buttons and delete).
- * Not rendered at all in preview mode — the orchestrator omits it entirely.
- */
 import { Button, IconButton, Stack, Tooltip } from "@mui/material";
 import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -23,6 +17,18 @@ interface PostActionsProps {
   onDelete?: () => void;
 }
 
+/**
+ * Renders the vote buttons (חייב / זכאי) and owner-only delete icon in the Post card footer.
+ * Returns a Fragment so the parent's <CardActions> can provide flex layout (vote buttons spaced away from delete).
+ * Not rendered at all in preview mode — the orchestrator omits this entirely.
+ * @param myVote - Current user's vote ("guilty", "innocent", or null if not voted).
+ * @param voting - If true, show loading state on the vote buttons.
+ * @param canVote - If false, disable vote buttons (e.g., if user is post owner).
+ * @param isOwner - If true, show the delete icon.
+ * @param isAuthenticated - If false, disable vote buttons and show login tooltip.
+ * @param onVote - Callback when a vote button is clicked.
+ * @param onDelete - Callback when delete icon is clicked (only passed if isOwner is true).
+ */
 const voteTooltip = (isAuthenticated: boolean, isOwner: boolean): string => {
   if (!isAuthenticated) return "התחבר כדי להצביע";
   if (isOwner) return "אינך יכול להצביע על תביעתך";

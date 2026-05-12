@@ -1,4 +1,3 @@
-/** Home feed data layer: posts list, sort tab, pagination, and optimistic local mutations. */
 import { useState, useEffect, useCallback } from "react";
 import { fetchPosts } from "../api";
 import type { Post, Sort } from "../types";

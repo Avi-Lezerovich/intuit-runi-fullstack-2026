@@ -1,9 +1,3 @@
-/**
- * Home feed — route `/`. The landing screen for the whole app.
- * Sort tabs (hot / new / closed) drive the usePostsFeed hook; the page owns only the
- * delete-confirmation modal locally. Vote and delete actions update the feed list
- * optimistically via callbacks exposed by the hook.
- */
 import { useState } from "react";
 import { Container, Tabs, Tab, Stack, Box, CircularProgress, Button, Typography, Alert } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -40,6 +34,10 @@ const Home = () => {
   const [pendingDelete, setPendingDelete] = useState<Post | null>(null);
   const [deleting, setDeleting] = useState(false);
 
+  /**
+   * Removes a post after user confirmation.
+   * Updates the feed optimistically and shows a success message.
+   */
   const confirmDelete = async () => {
     if (!pendingDelete) return;
     setDeleting(true);
@@ -55,6 +53,11 @@ const Home = () => {
     }
   };
 
+  /**
+   * Home feed — route `/`. Landing screen for the whole app with sort tabs (hot / new / closed).
+   * Sort tabs drive usePostsFeed hook; the page owns the delete-confirmation modal.
+   * Vote and delete actions update the feed optimistically via the hook.
+   */
   return (
     <Container maxWidth="md" sx={{ py: { xs: 2, sm: 4 } }}>
       <Box sx={{ mb: 3, textAlign: "center" }}>
