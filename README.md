@@ -1,6 +1,6 @@
 # Suit for Fun - Assignment 4 Solved Code
 
-[a href="https://avi-lezerovich.github.io/intuit-runi-fullstack-2026/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live-site-brightgreen" alt="Live site"></a>
+<a href="https://avi-lezerovich.github.io/intuit-runi-fullstack-2026/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live-site-brightgreen" alt="Live site"></a>
 
 This repository contains the solved frontend code for Assignment 4.
 It is set up with a frontend-only mock data mode so the app can be reviewed
