@@ -15,7 +15,11 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import ChecklistIcon from "@mui/icons-material/Checklist";
 
 import { isLoggedIn } from "../api";
-
+/**
+ * About / manifest page — route `/about`.
+ * Static marketing content: hero, mission, four core principles, glossary, disclaimer, and CTA.
+ * No data fetching. Auth state switches CTA between "file a lawsuit" (logged-in) and "sign up" (anon).
+ */
 const PRINCIPLES = [
   {
     icon: <GavelIcon sx={{ fontSize: 36, color: "secondary.main" }} />,

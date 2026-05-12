@@ -12,8 +12,20 @@ import type {
   VoteResponse,
   VoteSide,
 } from "./types";
+import {
+  mockCreatePost,
+  mockDeletePost,
+  mockFetchPost,
+  mockFetchPosts,
+  mockFetchUserProfile,
+  mockFetchUsers,
+  mockLogin,
+  mockSignup,
+  mockVotePost,
+} from "./mockApi";
 
 const BASE = "/api";
+const USE_MOCK_DATA = import.meta.env.DEV || import.meta.env.VITE_USE_MOCK_DATA === "true";
 
 // ---------------------------------------------------------------- helpers
 
@@ -62,6 +74,7 @@ const authHeaders = (): Record<string, string> => {
 // ----------------------------------------------------------------- auth
 
 export const signup = (name: string, email: string, password: string): Promise<AuthResponse> => {
+  if (USE_MOCK_DATA) return mockSignup(name, email, password);
   return request<AuthResponse>(`${BASE}/auth/signup`, {
     method: "POST",
     body: JSON.stringify({ name, email, password }),
@@ -69,15 +82,16 @@ export const signup = (name: string, email: string, password: string): Promise<A
 }
 
 export const login = (email: string, password: string): Promise<AuthResponse> => {
+  if (USE_MOCK_DATA) return mockLogin(email, password);
   return request<AuthResponse>(`${BASE}/auth/login`, {
     method: "POST",
     body: JSON.stringify({ email, password }),
   });
 }
-
 // ----------------------------------------------------------------- posts
 
 export const fetchPosts = (opts: { sort?: Sort; limit?: number; offset?: number } = {}): Promise<Post[]> => {
+  if (USE_MOCK_DATA) return mockFetchPosts(opts);
   const sp = new URLSearchParams();
   if (opts.sort) sp.set("sort", opts.sort);
   if (typeof opts.limit === "number") sp.set("limit", String(opts.limit));
@@ -86,6 +100,7 @@ export const fetchPosts = (opts: { sort?: Sort; limit?: number; offset?: number 
 }
 
 export const fetchPost = (id: number): Promise<Post> => {
+  if (USE_MOCK_DATA) return mockFetchPost(id);
   return request<Post>(`${BASE}/posts/${id}`);
 }
 
@@ -97,6 +112,7 @@ export const createPost = (payload: {
   charges?: string[];
   damages?: string;
 }): Promise<Post> => {
+  if (USE_MOCK_DATA) return mockCreatePost(payload);
   return request<Post>(`${BASE}/posts`, {
     method: "POST",
     headers: authHeaders(),
@@ -105,6 +121,7 @@ export const createPost = (payload: {
 }
 
 export const deletePost = (id: number): Promise<{ deleted: number }> => {
+  if (USE_MOCK_DATA) return mockDeletePost(id);
   return request<{ deleted: number }>(`${BASE}/posts/${id}`, {
     method: "DELETE",
     headers: authHeaders(),
@@ -112,16 +129,17 @@ export const deletePost = (id: number): Promise<{ deleted: number }> => {
 }
 
 export const votePost = (id: number, side: VoteSide): Promise<VoteResponse> => {
+  if (USE_MOCK_DATA) return mockVotePost(id, side);
   return request<VoteResponse>(`${BASE}/posts/${id}/vote`, {
     method: "POST",
     headers: authHeaders(),
     body: JSON.stringify({ side }),
   });
 }
-
 // ----------------------------------------------------------------- users
 
 export const fetchUsers = (opts: { search?: string; limit?: number; offset?: number } = {}): Promise<UserListItem[]> => {
+  if (USE_MOCK_DATA) return mockFetchUsers(opts);
   const sp = new URLSearchParams();
   if (opts.search) sp.set("search", opts.search);
   if (typeof opts.limit === "number") sp.set("limit", String(opts.limit));
@@ -130,6 +148,7 @@ export const fetchUsers = (opts: { search?: string; limit?: number; offset?: num
 }
 
 export const fetchUserProfile = (id: number): Promise<UserProfileResponse> => {
+  if (USE_MOCK_DATA) return mockFetchUserProfile(id);
   return request<UserProfileResponse>(`${BASE}/users/${id}`);
 }
 

@@ -1,13 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 import type { ThemeOptions } from "@mui/material/styles";
 
-/**
- * Legal-themed palette: deep navy + parchment + brass-gold accent.
- * Two display fonts:
- *   - Frank Ruhl Libre — serif, used for titles and "kvetch" headlines.
- *   - Heebo — clean sans, used for body and UI.
- */
-
 const themeOptions: ThemeOptions = {
   direction: "rtl",
   palette: {
@@ -121,4 +114,9 @@ const themeOptions: ThemeOptions = {
   },
 };
 
+/**
+ * MUI theme for the application — the visual identity of the whole app.
+ * Legal-themed palette: deep navy + parchment + brass-gold accent.
+ * Two display fonts: Frank Ruhl Libre (serif, titles) and Heebo (sans, body & UI).
+ */
 export const theme = createTheme(themeOptions);
