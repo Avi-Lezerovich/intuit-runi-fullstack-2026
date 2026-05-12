@@ -1,14 +1,19 @@
 import { Box, Typography } from "@mui/material";
-import GavelIcon from "@mui/icons-material/Gavel";
+import { ReactNode } from "react";
 
 interface AuthHeaderProps {
   title: string;
   subtitle: string;
+  icon?: ReactNode; // תמיכה באייקון דינאמי
 }
 
-export const AuthHeader = ({ title, subtitle }: AuthHeaderProps) => (
+export const AuthHeader = ({ title, subtitle, icon }: AuthHeaderProps) => (
   <Box sx={{ textAlign: "center", mb: 3 }}>
-    <GavelIcon sx={{ fontSize: 48, color: "secondary.main" }} />
+    {icon && (
+      <Box sx={{ display: 'inline-flex', color: 'secondary.main', '& > svg': { fontSize: 48 } }}>
+        {icon}
+      </Box>
+    )}
     <Typography
       variant="h4"
       component="h1"
