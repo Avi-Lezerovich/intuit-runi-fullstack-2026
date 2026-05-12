@@ -8,7 +8,11 @@ export const useCurrentUser = () => {
   useEffect(() => {
     const refresh = () => setCurrentUser(getStoredUser());
     window.addEventListener("auth-change", refresh);
-    return () => window.removeEventListener("auth-change", refresh);
+    window.addEventListener("storage", refresh); // cross-tab sync
+    return () => {
+      window.removeEventListener("auth-change", refresh);
+      window.removeEventListener("storage", refresh);
+    };
   }, []);
 
   return currentUser;

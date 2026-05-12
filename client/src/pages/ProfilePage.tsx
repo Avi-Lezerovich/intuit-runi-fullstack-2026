@@ -6,9 +6,9 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SinglePost from "../components/single-post/SinglePost";
 import UserProfileCard from "../components/profile/UserProfileCard";
 import EmptyPostsState from "../components/profile/EmptyPostsState";
-import ConfirmDialog from "../components/ConfirmDialog";
+import ConfirmDialog from "../components/feedback/ConfirmDialog";
 import { ProfileSkeleton } from "../components/profile/ProfileSkeleton";
-import { useNotify } from "../components/Notifications";
+import { useNotify } from "../components/feedback/Notifications";
 import { deletePost as apiDeletePost } from "../api";
 
 import { useCurrentUser } from "../hooks/useCurrentUser";

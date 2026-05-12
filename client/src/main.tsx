@@ -9,7 +9,7 @@ import rtlPlugin from "stylis-plugin-rtl";
 
 import App from "./App";
 import { theme } from "./theme";
-import { NotificationsProvider } from "./components/Notifications";
+import { NotificationsProvider } from "./components/feedback/Notifications";
 
 // Emotion cache configured for RTL — required by MUI to flip styles correctly.
 const cacheRtl = createCache({

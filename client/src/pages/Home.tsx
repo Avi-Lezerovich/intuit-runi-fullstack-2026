@@ -7,10 +7,10 @@ import FiberNewIcon from "@mui/icons-material/FiberNew";
 import BalanceIcon from "@mui/icons-material/Balance";
 
 import SinglePost from "../components/single-post/SinglePost";
-import PostSkeleton from "../components/PostSkeleton";
-import ConfirmDialog from "../components/ConfirmDialog";
+import PostSkeleton from "../components/single-post/PostSkeleton";
+import ConfirmDialog from "../components/feedback/ConfirmDialog";
 import { EmptyFeedState } from "../components/feed/EmptyFeedState";
-import { useNotify } from "../components/Notifications";
+import { useNotify } from "../components/feedback/Notifications";
 import { deletePost as apiDeletePost } from "../api";
 
 import { useCurrentUser } from "../hooks/useCurrentUser";

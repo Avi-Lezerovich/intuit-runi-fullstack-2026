@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import type { ReactNode } from "react";
 
-import { isLoggedIn } from "../api";
+import { isLoggedIn } from "../../api";
 
 /**
  * Wraps a route that requires a logged-in user.

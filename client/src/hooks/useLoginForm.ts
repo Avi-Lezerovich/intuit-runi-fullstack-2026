@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { login as apiLogin, saveSession, isLoggedIn } from "../api";
-import { useNotify } from "../components/Notifications";
+import { useNotify } from "../components/feedback/Notifications";
 import { EMAIL_RE } from "../utils/validationUtils";
 
 export const useLoginForm = () => {

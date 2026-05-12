@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
-import TopBar from "./components/TopBar";
-import Footer from "./components/Footer";
-import ProtectedRoute from "./components/ProtectedRoute";
-import ScrollToTop from "./components/ScrollToTop";
+import TopBar from "./components/layout/top-bar/TopBar";
+import Footer from "./components/layout/Footer";
+import ProtectedRoute from "./components/routing/ProtectedRoute";
+import ScrollToTop from "./components/routing/ScrollToTop";
 
 import Home from "./pages/Home";
 import Users from "./pages/Users";

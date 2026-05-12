@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "../api";
-import { useNotify } from "../components/Notifications";
+import { useNotify } from "../components/feedback/Notifications";
 import type { Post, User } from "../types";
 
 export const MAX_BODY = 500;

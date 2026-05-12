@@ -1,5 +1,5 @@
 import { Container, Skeleton, Paper, Stack, Box, Divider } from "@mui/material";
-import PostSkeleton from "../PostSkeleton";
+import PostSkeleton from "../single-post/PostSkeleton";
 
 export const ProfileSkeleton = () => (
   <Container maxWidth="md" sx={{ py: { xs: 2, sm: 4 } }}>

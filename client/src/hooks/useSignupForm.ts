@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { signup as apiSignup, saveSession, isLoggedIn } from "../api";
-import { useNotify } from "../components/Notifications";
+import { useNotify } from "../components/feedback/Notifications";
 import { EMAIL_RE, MIN_PASSWORD, scorePassword } from "../utils/validationUtils";
 
 export const useSignupForm = () => {
