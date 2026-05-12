@@ -6,7 +6,7 @@ import { Typography } from "@mui/material";
 
 interface PostTitleProps {
   title: string;
-  /** ב-preview mode מציג fallback "כותרת התביעה תופיע כאן" כשאין כותרת. */
+  /** In preview mode, shows a "כותרת התביעה תופיע כאן" placeholder when the title is empty. */
   preview?: boolean;
 }
 

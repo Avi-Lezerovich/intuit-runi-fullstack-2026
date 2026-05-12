@@ -10,7 +10,7 @@ import { useExpandableText } from "../../hooks/useExpandableText";
 
 interface PostBodyProps {
   text: string;
-  /** ב-preview mode הטקסט תמיד מורחב וכפתור "קרא עוד" לא מוצג. */
+  /** In preview mode, the text is always fully expanded and the "read more" button is hidden. */
   preview?: boolean;
 }
 

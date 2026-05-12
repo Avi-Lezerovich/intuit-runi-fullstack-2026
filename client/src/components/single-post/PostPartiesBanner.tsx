@@ -7,7 +7,7 @@ import { Box, Typography } from "@mui/material";
 interface PostPartiesBannerProps {
   plaintiffName: string;
   defendantName: string;
-  /** ב-preview mode מציג fallback "—" כשאין נתבע. */
+  /** In preview mode, falls back to "—" when the defendant field is empty. */
   preview?: boolean;
 }
 

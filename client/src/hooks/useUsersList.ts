@@ -1,3 +1,4 @@
+/** Users page data layer: list, debounced search, pagination, and loading/error state. */
 import { useState, useEffect } from "react";
 import { fetchUsers } from "../api";
 import type { UserListItem } from "../types";

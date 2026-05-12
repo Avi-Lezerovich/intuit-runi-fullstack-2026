@@ -1,3 +1,4 @@
+/** Form state, validation, live preview, and submit for the NewPost page. */
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "../api";

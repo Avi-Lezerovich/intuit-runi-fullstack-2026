@@ -1,3 +1,4 @@
+/** Vote-on-a-post flow: hydration from localStorage + API submit + loading/error state. */
 import { useState } from "react";
 import { votePost, getMyVote, setMyVote } from "../api";
 import type { VoteSide, VoteResponse } from "../types";

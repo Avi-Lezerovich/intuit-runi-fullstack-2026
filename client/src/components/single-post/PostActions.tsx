@@ -19,7 +19,7 @@ interface PostActionsProps {
   isOwner: boolean;
   isAuthenticated: boolean;
   onVote: (side: VoteSide) => void;
-  /** מועבר רק אם המשתמש הוא הבעלים ומעוניין באפשרות מחיקה. */
+  /** Passed only when the user is the post's owner and the parent wants to offer deletion. */
   onDelete?: () => void;
 }
 

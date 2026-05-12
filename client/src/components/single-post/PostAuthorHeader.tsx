@@ -11,7 +11,7 @@ interface PostAuthorHeaderProps {
   authorId: number;
   authorName: string;
   createdAt: string;
-  /** משבית את הקישור לפרופיל המחבר ב-preview mode. */
+  /** Disables the link to the author's profile when true (used by preview mode). */
   preview?: boolean;
 }
 

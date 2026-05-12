@@ -1,3 +1,4 @@
+/** ProfilePage data layer: user record + stats + posts with client-side pagination. */
 import { useState, useEffect } from "react";
 import { fetchUserProfile } from "../api";
 import type { Post, User, UserStats } from "../types";

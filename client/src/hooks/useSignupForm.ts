@@ -1,3 +1,4 @@
+/** Form state, validation, password-strength meter, and submit for the Signup page. */
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { signup as apiSignup, saveSession, isLoggedIn } from "../api";
