@@ -6,7 +6,7 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import FiberNewIcon from "@mui/icons-material/FiberNew";
 import BalanceIcon from "@mui/icons-material/Balance";
 
-import SinglePost from "../components/SinglePost";
+import SinglePost from "../components/single-post/SinglePost";
 import PostSkeleton from "../components/PostSkeleton";
 import ConfirmDialog from "../components/ConfirmDialog";
 import { EmptyFeedState } from "../components/feed/EmptyFeedState";

@@ -3,7 +3,7 @@ import { useParams, Link as RouterLink } from "react-router-dom";
 import { Container, Typography, Stack, Alert, Button, Box } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-import SinglePost from "../components/SinglePost";
+import SinglePost from "../components/single-post/SinglePost";
 import UserProfileCard from "../components/profile/UserProfileCard";
 import EmptyPostsState from "../components/profile/EmptyPostsState";
 import ConfirmDialog from "../components/ConfirmDialog";

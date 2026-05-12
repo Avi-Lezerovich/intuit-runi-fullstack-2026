@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import SinglePost from "../SinglePost";
+import SinglePost from "../single-post/SinglePost";
 import type { Post } from "../../types";
 
 export const PostPreviewPanel = ({ previewPost }: { previewPost: Post }) => (
