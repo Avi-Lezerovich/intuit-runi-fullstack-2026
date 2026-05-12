@@ -4,9 +4,17 @@ import { createPost } from "../api";
 import { useNotify } from "../components/feedback/Notifications";
 import type { Post, User } from "../types";
 
+/** Max characters allowed in the post body — also enforced via maxLength on the textarea. */
 export const MAX_BODY = 500;
+
+/** Max number of charges/causes the user can pick from CHARGES_OPTIONS. */
 export const MAX_CHARGES = 3;
 
+/**
+ * State, validation, charge-toggling, live preview, and submit for the NewPost page.
+ * The page splits into a form (left) and a preview panel (right) — both consume this hook's
+ * return value, so the preview stays perfectly in sync with the form as the user types.
+ */
 export const useNewPostForm = (currentUser: User | null) => {
   const navigate = useNavigate();
   const notify = useNotify();
@@ -18,7 +26,7 @@ export const useNewPostForm = (currentUser: User | null) => {
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
-  // ולידציה
+  // Field-level errors. Only surface for touched fields so we don't yell on first paint.
   const errors = {
     defendant: touched.defendant && !formData.defendant.trim() ? "שם הנתבע הוא שדה חובה" : "",
     title: touched.title && !formData.title.trim() ? "כותרת היא שדה חובה" : "",
@@ -31,11 +39,10 @@ export const useNewPostForm = (currentUser: User | null) => {
   const formValid = !errors.defendant && !errors.title && !errors.body &&
     formData.defendant.trim() && formData.title.trim() && formData.body.trim() && formData.body.length <= MAX_BODY;
 
-  // עדכון שדות פשוט
   const handleChange = (field: string, value: string) => setFormData((prev) => ({ ...prev, [field]: value }));
   const handleBlur = (field: string) => setTouched((prev) => ({ ...prev, [field]: true }));
 
-  // לוגיקה ייעודית לבחירת עילות
+  // Toggle a charge in/out of the selection, enforcing the MAX_CHARGES cap.
   const toggleCharge = (charge: string) => {
     setFormData((prev) => {
       const currentCharges = prev.charges;
@@ -45,7 +52,10 @@ export const useNewPostForm = (currentUser: User | null) => {
     });
   };
 
-  // יצירת פוסט דמה עבור התצוגה המקדימה
+  // Synthetic Post object used ONLY by the preview panel — never sent to the server.
+  // id=0 + created_at=now are placeholders so SinglePost can render it like a real post.
+  // Memoized on formData + currentUser so the preview reacts to every keystroke without
+  // re-allocating an object on every render of the parent.
   const previewPost: Post = useMemo(() => ({
     id: 0,
     title: formData.title.trim(),
@@ -60,7 +70,6 @@ export const useNewPostForm = (currentUser: User | null) => {
     created_at: new Date().toISOString(),
   }), [formData, currentUser]);
 
-  // שליחת הטופס לשרת
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setTouched({ defendant: true, title: true, body: true });

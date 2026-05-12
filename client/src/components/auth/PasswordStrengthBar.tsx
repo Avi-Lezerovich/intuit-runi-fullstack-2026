@@ -1,8 +1,16 @@
 import { Box, LinearProgress, Typography } from "@mui/material";
 
+/**
+ * Visual strength meter for the Signup password field.
+ * Pure presentational — the score/label/color come from `scorePassword` in validationUtils.
+ */
+
 interface PasswordStrengthBarProps {
+  /** 0–100, drives the LinearProgress fill width. */
   score: number;
+  /** Localized label shown under the bar (e.g. "סיסמה חזקה"). */
   label: string;
+  /** MUI palette key — picks the bar color. */
   color: "error" | "warning" | "success";
 }
 

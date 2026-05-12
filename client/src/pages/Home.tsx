@@ -1,4 +1,9 @@
-// נתיב: client/src/pages/Home.tsx
+/**
+ * Home feed — route `/`. The landing screen for the whole app.
+ * Sort tabs (hot / new / closed) drive the usePostsFeed hook; the page owns only the
+ * delete-confirmation modal locally. Vote and delete actions update the feed list
+ * optimistically via callbacks exposed by the hook.
+ */
 import { useState } from "react";
 import { Container, Tabs, Tab, Stack, Box, CircularProgress, Button, Typography, Alert } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";

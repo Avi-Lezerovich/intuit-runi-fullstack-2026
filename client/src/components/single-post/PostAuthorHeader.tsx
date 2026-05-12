@@ -1,3 +1,7 @@
+/**
+ * Top row of a Post card: avatar (initials), author name (link to their profile),
+ * and a relative timestamp. The link is disabled in preview mode.
+ */
 import { Link as RouterLink } from "react-router-dom";
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 import { getInitials } from "../../utils/stringUtils";

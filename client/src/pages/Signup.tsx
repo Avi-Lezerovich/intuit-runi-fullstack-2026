@@ -1,4 +1,8 @@
-// נתיב: client/src/pages/Signup.tsx
+/**
+ * Signup page — route `/signup`.
+ * Thin view: state, validation, and submission live in useSignupForm.
+ * Already-logged-in visitors are bounced to "/" so they don't see the form.
+ */
 import { Link as RouterLink, Navigate } from "react-router-dom";
 import { Container, Paper, TextField, Button, Typography, Box, Alert, Stack, Link, CircularProgress, InputAdornment, IconButton } from "@mui/material";
 import HowToRegIcon from "@mui/icons-material/HowToReg";

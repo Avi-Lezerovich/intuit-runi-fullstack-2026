@@ -2,8 +2,17 @@ import { useState, useEffect } from "react";
 import { fetchUserProfile } from "../api";
 import type { Post, User, UserStats } from "../types";
 
+/** Number of posts to reveal at a time when the user clicks "load more". */
 const PAGE_SIZE = 10;
 
+/**
+ * Owner of all data on the ProfilePage route: the user record, the aggregated stats,
+ * the full post list, and a "visible window" cursor for client-side pagination.
+ *
+ * Unlike usePostsFeed which paginates against the server, this hook fetches all of the
+ * user's posts upfront (they're rarely numerous) and reveals them PAGE_SIZE at a time
+ * from local memory. That keeps stats accurate without re-fetching after each delete.
+ */
 export const useProfileData = (numericUserId: number) => {
   const [user, setUser] = useState<User | null>(null);
   const [stats, setStats] = useState<UserStats | null>(null);
@@ -18,7 +27,8 @@ export const useProfileData = (numericUserId: number) => {
       setLoading(false);
       return;
     }
-    
+
+    // Same race-condition guard pattern as usePostsFeed — see that file for details.
     let cancelled = false;
     setLoading(true);
     setError(null);
@@ -44,7 +54,12 @@ export const useProfileData = (numericUserId: number) => {
 
   const loadMore = () => setVisibleCount((n) => n + PAGE_SIZE);
 
-  // לוגיקה לחישוב מחדש של הסטטיסטיקות (מנותק מה-UI של המחיקה)
+  /**
+   * Optimistic delete + stats recompute. Since the API doesn't return a verdict flag,
+   * we infer it from the post's current vote ratio (more guilty than innocent → guilty).
+   * It's not exact (the post might have been mid-vote when deleted) but it keeps the
+   * stats row believable until the next full refetch.
+   */
   const removePostFromState = (deletedPost: Post) => {
     setAllPosts((prev) => prev.filter((p) => p.id !== deletedPost.id));
     setStats((s) => {

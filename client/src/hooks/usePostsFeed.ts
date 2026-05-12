@@ -2,8 +2,18 @@ import { useState, useEffect, useCallback } from "react";
 import { fetchPosts } from "../api";
 import type { Post, Sort } from "../types";
 
+/** Page size for both initial load and "load more". Keep aligned with the server's default. */
 const PAGE_SIZE = 10;
 
+/**
+ * Owner of the home feed's data: the post list, current sort tab, pagination cursor,
+ * loading/error state, and helpers the page uses to react to deletes and votes.
+ *
+ * `removePostFromState` / `updateVotesInState` are exposed so child components
+ * (SinglePost, ConfirmDialog) can update the feed optimistically without forcing a refetch.
+ *
+ * `reload` triggers a fresh fetch (used by the "try again" button on errors).
+ */
 export const usePostsFeed = (initialSort: Sort = "hot") => {
   const [sort, setSort] = useState<Sort>(initialSort);
   const [posts, setPosts] = useState<Post[]>([]);
@@ -16,6 +26,10 @@ export const usePostsFeed = (initialSort: Sort = "hot") => {
   const reload = () => setReloadKey((k) => k + 1);
 
   useEffect(() => {
+    // `cancelled` is a race-condition guard: if the user switches sort tabs while a
+    // fetch is in-flight, the cleanup function flips this to `true` and we ignore
+    // the stale response when it eventually resolves. This is the standard fetch-in-
+    // useEffect pattern; the same idiom appears in useProfileData and useUsersList.
     let cancelled = false;
     setLoading(true);
     setError(null);
@@ -53,7 +67,8 @@ export const usePostsFeed = (initialSort: Sort = "hot") => {
     }
   }, [posts.length, sort, loadingMore, hasMore]);
 
-  // פונקציות לעדכון המצב המקומי אחרי פעולות משתמש
+  // Optimistic local mutations — let the UI react instantly to user actions
+  // without round-tripping through a fresh fetchPosts call.
   const removePostFromState = (postId: number) => {
     setPosts((prev) => prev.filter((p) => p.id !== postId));
   };

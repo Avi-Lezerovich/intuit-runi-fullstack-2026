@@ -2,11 +2,17 @@ import { Box, Divider, Stack, Typography } from "@mui/material";
 
 import type { UserStats } from "../../types";
 
+/**
+ * Three-up stats row shown under the profile header: total lawsuits filed,
+ * "guilty" verdicts won, and success rate (%).
+ * Used inside <UserProfileCard /> on the ProfilePage route.
+ */
+
 interface ProfileStatsProps {
   stats: UserStats;
 }
 
-const ProfileStats = ({ stats }: ProfileStatsProps) => {
+export const ProfileStats = ({ stats }: ProfileStatsProps) => {
   return (
     <Stack direction="row" spacing={2} justifyContent="space-around">
       <Box sx={{ textAlign: "center" }}>
@@ -38,5 +44,3 @@ const ProfileStats = ({ stats }: ProfileStatsProps) => {
     </Stack>
   );
 };
-
-export default ProfileStats;

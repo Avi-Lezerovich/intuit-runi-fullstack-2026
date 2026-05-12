@@ -1,3 +1,9 @@
+/**
+ * Footer of a Post card: the two vote buttons (חייב / זכאי) and an owner-only delete icon.
+ * Returns a Fragment so the parent's <CardActions> can provide the flex layout
+ * (space-between between vote buttons and delete).
+ * Not rendered at all in preview mode — the orchestrator omits it entirely.
+ */
 import { Button, IconButton, Stack, Tooltip } from "@mui/material";
 import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";

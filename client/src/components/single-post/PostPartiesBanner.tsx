@@ -1,3 +1,7 @@
+/**
+ * "Plaintiff vs. Defendant" banner — the legal-themed framing strip on every Post card.
+ * In preview mode, shows "—" when defendant is empty so the placeholder isn't blank.
+ */
 import { Box, Typography } from "@mui/material";
 
 interface PostPartiesBannerProps {

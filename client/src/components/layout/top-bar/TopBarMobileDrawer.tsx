@@ -1,3 +1,11 @@
+/**
+ * Mobile navigation: a right-anchored Drawer containing the route list and auth controls.
+ * The same NavItem array used by the desktop nav is rendered here as ListItemButtons
+ * so the source of truth (active state, link order) stays in <TopBar />.
+ *
+ * Opens via the hamburger IconButton in <TopBar />; the drawer auto-closes on route
+ * change (effect on location.pathname in the orchestrator).
+ */
 import { Link as RouterLink } from "react-router-dom";
 import {
   Box,

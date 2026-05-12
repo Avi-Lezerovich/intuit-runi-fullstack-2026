@@ -1,10 +1,17 @@
 import { useState } from "react";
 
+/**
+ * Manages the "read more / read less" state for a possibly-long text block.
+ * Generic enough to reuse for any expandable text section (post bodies today,
+ * comments/reviews in the future).
+ */
+
 interface UseExpandableTextArgs {
   text: string;
-  /** ברירת מחדל: 180 תווים. */
+  /** Character length above which the text is considered "long". Defaults to 180. */
   threshold?: number;
-  /** ל-preview mode — מתעלם מ-state הפנימי ומחזיר expanded=true. */
+  /** When true, the hook always reports expanded=true regardless of internal state.
+   *  Used by the NewPost preview to show the full body without a "read more" button. */
   forceExpanded?: boolean;
 }
 

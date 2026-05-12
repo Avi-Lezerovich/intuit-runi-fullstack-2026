@@ -1,3 +1,7 @@
+/**
+ * Lawsuit title — serif H3 with brand styling.
+ * In preview mode shows a "כותרת התביעה תופיע כאן" placeholder so the empty form looks alive.
+ */
 import { Typography } from "@mui/material";
 
 interface PostTitleProps {

@@ -1,3 +1,10 @@
+/**
+ * Desktop navigation cluster: route buttons (with an active-tab underline) plus
+ * auth controls — either a logged-in user's greeting + "submit / logout" pair,
+ * or a "login" CTA for anonymous visitors. Rendered when isMobile is false.
+ *
+ * The shared NavItem type is exported here and reused by <TopBarMobileDrawer />.
+ */
 import { Link as RouterLink } from "react-router-dom";
 import { Button, Stack, Typography } from "@mui/material";
 import GavelIcon from "@mui/icons-material/Gavel";

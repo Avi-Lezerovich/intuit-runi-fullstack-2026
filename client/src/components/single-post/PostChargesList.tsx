@@ -1,3 +1,8 @@
+/**
+ * Row of outlined chips, one per charge/cause picked on the post.
+ * The orchestrator skips rendering this entirely when `charges` is empty,
+ * so the component itself can assume at least one charge.
+ */
 import { Chip, Stack } from "@mui/material";
 
 interface PostChargesListProps {

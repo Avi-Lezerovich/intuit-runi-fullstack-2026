@@ -1,3 +1,7 @@
+/**
+ * Optional metadata row at the bottom of a Post body: location and/or damages-sought.
+ * The orchestrator skips rendering this entirely when both fields are empty.
+ */
 import { Stack, Typography } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";

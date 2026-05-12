@@ -4,8 +4,8 @@ import { Container, Typography, Stack, Alert, Button, Box } from "@mui/material"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import SinglePost from "../components/single-post/SinglePost";
-import UserProfileCard from "../components/profile/UserProfileCard";
-import EmptyPostsState from "../components/profile/EmptyPostsState";
+import { UserProfileCard } from "../components/profile/UserProfileCard";
+import { EmptyPostsState } from "../components/profile/EmptyPostsState";
 import ConfirmDialog from "../components/feedback/ConfirmDialog";
 import { ProfileSkeleton } from "../components/profile/ProfileSkeleton";
 import { useNotify } from "../components/feedback/Notifications";
@@ -15,19 +15,25 @@ import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useProfileData } from "../hooks/useProfileData";
 import type { Post } from "../types";
 
+/**
+ * Profile page route — `/user-posts/:userId`.
+ * Shows a user's avatar/header/stats card and their feed of lawsuits.
+ * Data fetching, pagination, and optimistic vote/delete state live in useProfileData;
+ * this component only orchestrates the delete-confirmation modal locally.
+ */
 const ProfilePage = () => {
   const { userId } = useParams<{ userId: string }>();
   const numericUserId = userId ? parseInt(userId, 10) : NaN;
   const notify = useNotify();
 
-  // Custom Hooks לניהול נתונים ולוגיקה
+  // Data + derived state come from hooks; this page does not own any of it.
   const currentUser = useCurrentUser();
   const {
     user, stats, visiblePosts, hasMore, loading, error,
     loadMore, removePostFromState, updateVotesInState,
   } = useProfileData(numericUserId);
 
-  // Local UI State עבור מודל המחיקה בלבד
+  // Local-only UI state — just the delete-confirmation modal.
   const [pendingDelete, setPendingDelete] = useState<Post | null>(null);
   const [deleting, setDeleting] = useState(false);
 
@@ -87,7 +93,7 @@ const ProfilePage = () => {
               key={p.id}
               post={p}
               currentUserId={currentUser?.id}
-              onDelete={() => setPendingDelete(p)} // פעולה ישירה שמפשטת את הקוד
+              onDelete={() => setPendingDelete(p)}
               onVoteChange={updateVotesInState}
             />
           ))}

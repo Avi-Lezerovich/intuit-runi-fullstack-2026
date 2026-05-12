@@ -2,6 +2,13 @@ import { Link as RouterLink } from "react-router-dom";
 import { Paper, Typography, Button } from "@mui/material";
 import GavelIcon from "@mui/icons-material/Gavel";
 
+/**
+ * Empty-state shown on the Home feed when there are no posts to display
+ * (e.g. on first launch, or when a filter returns nothing).
+ * CTA adapts to auth state: logged-in users get a "file a lawsuit" button,
+ * anonymous visitors get a prompt to sign in first.
+ */
+
 interface EmptyFeedStateProps {
   isLoggedIn: boolean;
 }

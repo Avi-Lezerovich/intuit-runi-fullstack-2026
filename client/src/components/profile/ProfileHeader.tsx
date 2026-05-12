@@ -3,28 +3,22 @@ import GavelIcon from "@mui/icons-material/Gavel";
 import { Link as RouterLink } from "react-router-dom";
 
 import type { User } from "../../types";
+import { getInitials } from "../../utils/stringUtils";
+import { formatHebrewDate } from "../../utils/dateUtils";
+
+/**
+ * Top section of a user profile card: avatar (initials), name, email, joined-on date,
+ * and a "submit new lawsuit" CTA shown only to the profile owner.
+ * Used inside <UserProfileCard /> on the ProfilePage route.
+ */
 
 interface ProfileHeaderProps {
   user: User;
+  /** Logged-in user's id (or null/undefined when anonymous). Controls the owner-only CTA. */
   currentUserId?: number | null;
 }
 
-const initials = (name: string): string => {
-  return name
-    .split(/\s+/)
-    .map((part) => part[0])
-    .filter(Boolean)
-    .slice(0, 2)
-    .join("");
-};
-
-const HEBREW_DATE = new Intl.DateTimeFormat("he-IL", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-});
-
-const ProfileHeader = ({ user, currentUserId }: ProfileHeaderProps) => {
+export const ProfileHeader = ({ user, currentUserId }: ProfileHeaderProps) => {
   const isOwner = currentUserId === user.id;
 
   return (
@@ -41,7 +35,7 @@ const ProfileHeader = ({ user, currentUserId }: ProfileHeaderProps) => {
           borderColor: "secondary.main",
         }}
       >
-        {initials(user.name)}
+        {getInitials(user.name)}
       </Avatar>
       <Box sx={{ flex: 1, textAlign: { xs: "center", sm: "right" } }}>
         <Typography
@@ -52,7 +46,7 @@ const ProfileHeader = ({ user, currentUserId }: ProfileHeaderProps) => {
         </Typography>
         <Typography sx={{ color: "text.secondary" }}>{user.email}</Typography>
         <Typography variant="caption" sx={{ color: "text.secondary", display: "block", mt: 0.5 }}>
-          חבר/ה במערכת מאז {HEBREW_DATE.format(new Date(user.created_at))}
+          חבר/ה במערכת מאז {formatHebrewDate(user.created_at)}
         </Typography>
         {isOwner && (
           <Button
@@ -71,5 +65,3 @@ const ProfileHeader = ({ user, currentUserId }: ProfileHeaderProps) => {
     </Stack>
   );
 };
-
-export default ProfileHeader;

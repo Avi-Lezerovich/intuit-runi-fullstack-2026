@@ -1,3 +1,15 @@
+/**
+ * Top-level app shell + route table.
+ * Renders the TopBar on every page and a single Footer at the bottom.
+ *
+ * ScrollToTop is mounted as a *sibling* of Routes (not a wrapper) on purpose:
+ * it only needs the useLocation effect — it renders nothing — so wrapping the
+ * routes would only add a no-op layer.
+ *
+ * ProtectedRoute guards /new-post; unauthenticated visitors hitting it are
+ * redirected to /login. The wildcard route at the bottom redirects unknown
+ * URLs to "/" so the address bar matches what the user is actually seeing.
+ */
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Box } from "@mui/material";
 

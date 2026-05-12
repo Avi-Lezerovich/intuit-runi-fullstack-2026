@@ -1,3 +1,7 @@
+/**
+ * Brand mark on the left side of the AppBar: gavel icon + "Suit for Fun" wordmark.
+ * Wrapped in a RouterLink to "/" so clicking the logo always returns to the feed.
+ */
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import GavelIcon from "@mui/icons-material/Gavel";

@@ -1,3 +1,7 @@
+/**
+ * Small "חם" (hot) chip pinned to the top-right of a Post card.
+ * Rendered by <SinglePost /> when total votes pass the hot threshold (200).
+ */
 import { Chip } from "@mui/material";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 

@@ -1,3 +1,9 @@
+/**
+ * About / manifest page — route `/about`.
+ * Static marketing content: hero, mission statement, four principles, glossary,
+ * humorous disclaimer, and a final CTA. No data fetching, just one auth-state
+ * check (isLoggedIn) to switch the CTA between "file a lawsuit" and "sign up".
+ */
 import { Link as RouterLink } from "react-router-dom";
 import {
   Container,

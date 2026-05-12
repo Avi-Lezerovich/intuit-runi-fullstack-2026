@@ -4,6 +4,14 @@ import { login as apiLogin, saveSession, isLoggedIn } from "../api";
 import { useNotify } from "../components/feedback/Notifications";
 import { EMAIL_RE } from "../utils/validationUtils";
 
+/**
+ * State + validation + submit handler for the Login page.
+ * Returns everything the <Login /> view needs — the page stays a thin renderer.
+ *
+ * Validation is "touched-based": errors only show after the user has blurred a field,
+ * to avoid yelling at them before they've had a chance to type. On submit we mark all
+ * touched so missing fields light up at once.
+ */
 export const useLoginForm = () => {
   const navigate = useNavigate();
   const notify = useNotify();
@@ -15,7 +23,8 @@ export const useLoginForm = () => {
   const [serverError, setServerError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  // חסימת גישה למשתמשים מחוברים
+  // If the user is already logged in, bounce them to the feed —
+  // landing on /login while authenticated is almost always a mistake.
   useEffect(() => {
     if (isLoggedIn()) navigate("/", { replace: true });
   }, [navigate]);
@@ -33,6 +42,7 @@ export const useLoginForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Mark everything touched so missing-field errors surface at once on submit.
     setTouched({ email: true, password: true });
     if (!formValid) return;
 

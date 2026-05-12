@@ -1,3 +1,8 @@
+/**
+ * The post body, with collapse/expand behavior for long entries.
+ * Internally calls useExpandableText to manage the toggle state. In preview mode the
+ * body is forced expanded (the NewPost preview should never hide content).
+ */
 import { Box, Button, Collapse, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";

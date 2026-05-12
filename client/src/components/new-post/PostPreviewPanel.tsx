@@ -3,6 +3,14 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import SinglePost from "../single-post/SinglePost";
 import type { Post } from "../../types";
 
+/**
+ * Right-side panel of the NewPost route: a live preview of the lawsuit as it would
+ * appear on the public feed. The `previewPost` is a synthetic Post built in
+ * useNewPostForm — it has id=0 and never reaches the server.
+ *
+ * Renders <SinglePost preview /> so the styling is identical to the real feed card,
+ * but with voting/delete actions disabled and the body never truncated.
+ */
 export const PostPreviewPanel = ({ previewPost }: { previewPost: Post }) => (
   <Box sx={{ flex: 1, width: "100%", position: { lg: "sticky" }, top: { lg: 80 } }}>
     <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1.5 }}>

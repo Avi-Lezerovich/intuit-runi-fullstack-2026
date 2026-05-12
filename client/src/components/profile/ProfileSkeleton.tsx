@@ -1,3 +1,8 @@
+/**
+ * Loading placeholder for the ProfilePage route — mirrors the shape of the real layout:
+ * profile card (avatar + name + stats row) plus a couple of post skeletons underneath.
+ * Reuses <PostSkeleton /> so the post placeholders look identical to the feed's.
+ */
 import { Container, Skeleton, Paper, Stack, Box, Divider } from "@mui/material";
 import PostSkeleton from "../single-post/PostSkeleton";
 

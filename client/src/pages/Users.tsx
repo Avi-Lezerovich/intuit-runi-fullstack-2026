@@ -1,4 +1,9 @@
-// נתיב: client/src/pages/Users.tsx
+/**
+ * Users directory — route `/users`.
+ * Search box (debounced 300ms via useDebounce) drives useUsersList; the page itself
+ * owns only the controlled search input. Results render as a Table on desktop and
+ * a stacked card list on mobile (see <UsersList />).
+ */
 import { useState } from "react";
 import { Container, TextField, InputAdornment, Box, Typography, Button, CircularProgress, Alert, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";

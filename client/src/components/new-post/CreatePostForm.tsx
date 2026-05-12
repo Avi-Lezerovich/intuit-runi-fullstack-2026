@@ -1,10 +1,18 @@
 import { Paper, Box, Stack, TextField, Button, Typography, Chip, Alert, Divider, CircularProgress } from "@mui/material";
 import GavelIcon from "@mui/icons-material/Gavel";
 import { CHARGES_OPTIONS } from "../../types";
-import { MAX_BODY, MAX_CHARGES } from "../../hooks/useNewPostForm";
+import { MAX_BODY, MAX_CHARGES, useNewPostForm } from "../../hooks/useNewPostForm";
+
+/**
+ * Left-side panel of the NewPost route: the controlled form for filing a new lawsuit.
+ * All form state, validation, and submission live inside the useNewPostForm hook;
+ * this component is pure presentation — it consumes the hook's return value via `hookData`.
+ * Mirrors the live preview on the right (<PostPreviewPanel />).
+ */
 
 interface CreatePostFormProps {
-  hookData: any; // כדי לחסוך קוד כאן, אנו מקבלים את האובייקט שמוחזר מה-Hook
+  /** Full return value of the useNewPostForm hook — keeps the form-state contract in one place. */
+  hookData: ReturnType<typeof useNewPostForm>;
   authorName: string;
 }
 
@@ -32,7 +40,7 @@ export const CreatePostForm = ({ hookData, authorName }: CreatePostFormProps) =>
         </Typography>
         <Stack spacing={2}>
           <TextField label="כותרת התביעה *" value={formData.title} onChange={(e) => handleChange("title", e.target.value)} onBlur={() => handleBlur("title")} error={!!errors.title} helperText={errors.title || " "} fullWidth placeholder="הכלב שסירב לזוז מהספה" />
-          
+
           <Box>
             <Typography sx={{ fontWeight: 500, mb: 1, color: "text.primary" }}>
               עילות (עד {MAX_CHARGES} מתוך {CHARGES_OPTIONS.length})

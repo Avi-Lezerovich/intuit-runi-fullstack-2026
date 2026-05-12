@@ -1,10 +1,17 @@
 import { Box, Typography } from "@mui/material";
 import { ReactNode } from "react";
 
+/**
+ * Shared title block for the Login and Signup pages.
+ * Renders an optional icon, a serif H1, and a muted subtitle — keeps both auth pages
+ * visually consistent without duplicating the markup.
+ */
+
 interface AuthHeaderProps {
   title: string;
   subtitle: string;
-  icon?: ReactNode; // תמיכה באייקון דינאמי
+  /** Optional MUI icon node rendered above the title (Signup uses HowToRegIcon). */
+  icon?: ReactNode;
 }
 
 export const AuthHeader = ({ title, subtitle, icon }: AuthHeaderProps) => (

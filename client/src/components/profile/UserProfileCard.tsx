@@ -1,9 +1,14 @@
 import { Divider, Paper, Stack } from "@mui/material";
 
-import ProfileHeader from "./ProfileHeader";
-import ProfileStats from "./ProfileStats";
+import { ProfileHeader } from "./ProfileHeader";
+import { ProfileStats } from "./ProfileStats";
 
 import type { User, UserStats } from "../../types";
+
+/**
+ * Paper container that combines the header (avatar + name + joined date)
+ * with the three-up stats row underneath. Rendered at the top of the ProfilePage route.
+ */
 
 interface UserProfileCardProps {
   user: User;
@@ -11,7 +16,7 @@ interface UserProfileCardProps {
   currentUserId?: number | null;
 }
 
-const UserProfileCard = ({ user, stats, currentUserId }: UserProfileCardProps) => {
+export const UserProfileCard = ({ user, stats, currentUserId }: UserProfileCardProps) => {
   return (
     <Paper sx={{ p: { xs: 2, sm: 4 }, mb: 3 }}>
       <Stack spacing={0}>
@@ -22,5 +27,3 @@ const UserProfileCard = ({ user, stats, currentUserId }: UserProfileCardProps) =
     </Paper>
   );
 };
-
-export default UserProfileCard;

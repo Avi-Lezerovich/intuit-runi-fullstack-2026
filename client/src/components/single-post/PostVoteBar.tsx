@@ -1,3 +1,8 @@
+/**
+ * Visual vote tally: a left-red / right-green stacked bar with percentages above and
+ * a small "your vote was recorded" indicator below when `myVote` is set.
+ * Stays read-only — actual vote buttons live in <PostActions />.
+ */
 import { Box, Stack, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import type { VoteSide } from "../../types";

@@ -1,3 +1,11 @@
+/**
+ * The lawsuit card — used everywhere a Post is rendered: feed (Home), profile (ProfilePage),
+ * and live preview (PostPreviewPanel).
+ * Orchestrator only: derives flags (isOwner / canVote / isHot), runs usePostVote, and
+ * composes the sub-components. Every visual section lives in its own file in this folder.
+ *
+ * The `preview` prop renders a static, action-free card for the NewPost preview panel.
+ */
 import { Card, CardActions, CardContent, Divider, Typography } from "@mui/material";
 
 import type { Post, VoteSide } from "../../types";

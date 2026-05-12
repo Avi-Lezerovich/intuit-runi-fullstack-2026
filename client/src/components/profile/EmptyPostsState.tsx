@@ -2,12 +2,19 @@ import { Button, Paper, Typography } from "@mui/material";
 import GavelIcon from "@mui/icons-material/Gavel";
 import { Link as RouterLink } from "react-router-dom";
 
+/**
+ * Empty-state shown on the ProfilePage when the user has no lawsuits.
+ * Two variants:
+ *   - owner viewing their own profile → CTA to file the first lawsuit
+ *   - anyone else viewing this profile → plain "no lawsuits yet" message
+ */
+
 interface EmptyPostsStateProps {
   isOwner: boolean;
   userName: string;
 }
 
-const EmptyPostsState = ({ isOwner, userName }: EmptyPostsStateProps) => {
+export const EmptyPostsState = ({ isOwner, userName }: EmptyPostsStateProps) => {
   return (
     <Paper
       elevation={0}
@@ -41,5 +48,3 @@ const EmptyPostsState = ({ isOwner, userName }: EmptyPostsStateProps) => {
     </Paper>
   );
 };
-
-export default EmptyPostsState;

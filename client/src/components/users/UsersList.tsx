@@ -1,3 +1,9 @@
+/**
+ * Renders the users directory on the /users route as two views:
+ *   - Desktop (≥sm): a full Table with avatar, name, lawsuit count, guilty-%, and a "view file" CTA.
+ *   - Mobile (<sm): a stacked Paper card per user with the same data condensed.
+ * Both views are rendered side-by-side and toggled via MUI's `display: { xs, sm }` breakpoints.
+ */
 import { Link as RouterLink } from "react-router-dom";
 import { Table, TableHead, TableBody, TableRow, TableCell, TableContainer, Paper, Box, Stack, Avatar, Typography, Button, Chip } from "@mui/material";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";

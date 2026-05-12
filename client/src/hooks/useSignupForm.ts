@@ -4,6 +4,11 @@ import { signup as apiSignup, saveSession, isLoggedIn } from "../api";
 import { useNotify } from "../components/feedback/Notifications";
 import { EMAIL_RE, MIN_PASSWORD, scorePassword } from "../utils/validationUtils";
 
+/**
+ * State + validation + submit handler for the Signup page.
+ * Same touched-based validation pattern as useLoginForm, plus a memoized password-strength
+ * score that drives the colored progress bar in the UI.
+ */
 export const useSignupForm = () => {
   const navigate = useNavigate();
   const notify = useNotify();
@@ -17,10 +22,12 @@ export const useSignupForm = () => {
   const [serverError, setServerError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
+  // Already authenticated? Skip signup and go home.
   useEffect(() => {
     if (isLoggedIn()) navigate("/", { replace: true });
   }, [navigate]);
 
+  // Memoized so the strength bar doesn't recompute on unrelated re-renders.
   const strength = useMemo(() => scorePassword(password), [password]);
 
   const errors = {
