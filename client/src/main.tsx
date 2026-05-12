@@ -12,7 +12,7 @@
  */
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
@@ -36,11 +36,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <CacheProvider value={cacheRtl}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <BrowserRouter>
+        <HashRouter>
           <NotificationsProvider>
             <App />
           </NotificationsProvider>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </CacheProvider>
   </React.StrictMode>,
