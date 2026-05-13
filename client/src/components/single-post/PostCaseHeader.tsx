@@ -13,33 +13,64 @@ const formatCaseNumber = (postId: number, createdAt: string): string => {
 };
 
 /**
- * Thin docket-style header rendered at the top of each post card.
- * Mimics the case-number + court-name strip of an Israeli legal filing.
- *   ת.פ. 0123/2026                       בית המשפט של LolSuit
- *   ───────────────────────────────────────────────────────────
+ * Centered docket-style header at the top of each post card. Mimics how an
+ * Israeli court filing opens: court name on top, case number underneath, a
+ * double-rule divider below the block.
+ *
+ *                  בית המשפט של LolSuit
+ *                     ת.פ. 0010/2026
+ *      ═══════════════════════════════════════════
  */
 export const PostCaseHeader = ({ postId, createdAt }: PostCaseHeaderProps) => (
   <Box
     sx={{
       display: "flex",
-      justifyContent: "space-between",
-      alignItems: "baseline",
-      gap: 1,
+      flexDirection: "column",
+      alignItems: "center",
+      mb: 1.75,
       pb: 0.75,
-      mb: 1.5,
+      // Double-rule divider: two stacked 1px lines, 2px apart.
       borderBottom: "1px solid",
       borderColor: "divider",
-      fontFamily: DOC_FONT,
-      fontSize: "0.78rem",
-      color: "text.secondary",
-      letterSpacing: "0.02em",
+      position: "relative",
+      "&::after": {
+        content: '""',
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: -3,
+        borderBottom: "1px solid",
+        borderColor: "divider",
+      },
     }}
   >
-    <Typography component="span" sx={{ fontFamily: "inherit", fontSize: "inherit", fontWeight: 600 }}>
-      {formatCaseNumber(postId, createdAt)}
-    </Typography>
-    <Typography component="span" sx={{ fontFamily: "inherit", fontSize: "inherit" }}>
+    <Typography
+      component="span"
+      sx={{
+        fontFamily: DOC_FONT,
+        fontWeight: 700,
+        fontSize: "0.82rem",
+        letterSpacing: "0.18em",
+        color: "text.secondary",
+        textAlign: "center",
+        lineHeight: 1.3,
+      }}
+    >
       בית המשפט של LolSuit
+    </Typography>
+    <Typography
+      component="span"
+      sx={{
+        fontFamily: DOC_FONT,
+        fontWeight: 500,
+        fontSize: "0.72rem",
+        letterSpacing: "0.04em",
+        color: "text.secondary",
+        textAlign: "center",
+        mt: 0.25,
+      }}
+    >
+      {formatCaseNumber(postId, createdAt)}
     </Typography>
   </Box>
 );

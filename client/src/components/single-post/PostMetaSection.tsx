@@ -2,17 +2,20 @@
  * Optional metadata row at the bottom of a Post body: location and/or damages-sought.
  * The orchestrator skips rendering this entirely when both fields are empty.
  */
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
 import { DOC_FONT } from "../../theme";
+import { formatRelative } from "../../utils/dateUtils";
 
 interface PostMetaSectionProps {
   location?: string | null;
   damages?: string | null;
-  /** Signing party shown in the italic signature line under the metadata. */
+  /** Signing party shown in the signature block (italic name above a rule). */
   signedBy?: string;
-  /** In preview mode the signature line is suppressed. */
+  /** ISO timestamp used to render the "ניתן · X" date line under the signature. */
+  createdAt?: string;
+  /** In preview mode the signature block is suppressed. */
   preview?: boolean;
 }
 
@@ -22,7 +25,7 @@ interface PostMetaSectionProps {
  * @param location - Optional location string; if provided, renders with LocationOnOutlinedIcon.
  * @param damages - Optional damages-sought string; if provided, renders with RequestQuoteOutlinedIcon.
  */
-export const PostMetaSection = ({ location, damages, signedBy, preview = false }: PostMetaSectionProps) => (
+export const PostMetaSection = ({ location, damages, signedBy, createdAt, preview = false }: PostMetaSectionProps) => (
   <Stack
     spacing={0.75}
     sx={{
@@ -55,18 +58,50 @@ export const PostMetaSection = ({ location, damages, signedBy, preview = false }
       </Stack>
     )}
     {!preview && signedBy && (
-      <Typography
+      <Box
         sx={{
-          mt: 1,
+          mt: 1.5,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-end",
           textAlign: "end",
-          fontStyle: "italic",
-          fontFamily: DOC_FONT,
-          color: "text.secondary",
-          fontSize: "0.9rem",
         }}
       >
-        — נחתם בידי {signedBy}
-      </Typography>
+        <Box
+          sx={{
+            width: 160,
+            borderTop: "1px solid",
+            borderColor: "text.secondary",
+            opacity: 0.7,
+            mb: 0.4,
+          }}
+        />
+        <Typography
+          sx={{
+            fontStyle: "italic",
+            fontFamily: DOC_FONT,
+            fontWeight: 600,
+            color: "text.primary",
+            fontSize: "0.95rem",
+            lineHeight: 1.2,
+          }}
+        >
+          {signedBy}
+        </Typography>
+        {createdAt && (
+          <Typography
+            variant="caption"
+            sx={{
+              fontFamily: DOC_FONT,
+              color: "text.secondary",
+              fontSize: "0.72rem",
+              mt: 0.15,
+            }}
+          >
+            ניתן · {formatRelative(createdAt)}
+          </Typography>
+        )}
+      </Box>
     )}
   </Stack>
 );

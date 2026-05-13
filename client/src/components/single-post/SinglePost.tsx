@@ -1,4 +1,4 @@
-import { Card, CardActions, CardContent, Divider, Typography } from "@mui/material";
+import { Box, Card, CardActions, CardContent, Divider, Typography } from "@mui/material";
 
 import type { Post, VoteSide } from "../../types";
 import { usePostVote } from "../../hooks/usePostVote";
@@ -59,7 +59,28 @@ const SinglePost = ({ post, currentUserId, onDelete, preview = false, onVoteChan
     <Card sx={{ overflow: "visible", position: "relative" }}>
       {isHot && !preview && <PostHotBadge />}
 
-      <CardContent sx={{ pb: 1 }}>
+      {!preview && (
+        <Box
+          component="img"
+          src={`${import.meta.env.BASE_URL}lolsuit-seal.svg`}
+          alt=""
+          aria-hidden
+          sx={{
+            position: "absolute",
+            top: "50%",
+            insetInlineEnd: 16,
+            transform: "translateY(-50%) rotate(-6deg)",
+            width: 200,
+            height: 200,
+            opacity: 0.04,
+            pointerEvents: "none",
+            zIndex: 0,
+            display: { xs: "none", sm: "block" },
+          }}
+        />
+      )}
+
+      <CardContent sx={{ pb: 1, position: "relative", zIndex: 1 }}>
         {!preview && <PostCaseHeader postId={post.id} createdAt={post.created_at} />}
 
         <PostAuthorHeader
@@ -86,6 +107,7 @@ const SinglePost = ({ post, currentUserId, onDelete, preview = false, onVoteChan
             location={post.location}
             damages={post.damages}
             signedBy={post.author_name}
+            createdAt={post.created_at}
             preview={preview}
           />
         )}
@@ -106,7 +128,7 @@ const SinglePost = ({ post, currentUserId, onDelete, preview = false, onVoteChan
       {!preview && (
         <>
           <Divider />
-          <CardActions sx={{ px: 2, py: 1.25, justifyContent: "space-between", flexWrap: "wrap", gap: 1 }}>
+          <CardActions sx={{ px: 2, py: 1.25, justifyContent: "space-between", flexWrap: "wrap", gap: 1, position: "relative", zIndex: 1 }}>
             <PostActions
               myVote={myVote}
               voting={voting}
