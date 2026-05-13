@@ -3,6 +3,7 @@ import { Card, CardActions, CardContent, Divider, Typography } from "@mui/materi
 import type { Post, VoteSide } from "../../types";
 import { usePostVote } from "../../hooks/usePostVote";
 import { PostHotBadge } from "./PostHotBadge";
+import { PostCaseHeader } from "./PostCaseHeader";
 import { PostAuthorHeader } from "./PostAuthorHeader";
 import { PostTitle } from "./PostTitle";
 import { PostPartiesBanner } from "./PostPartiesBanner";
@@ -42,6 +43,7 @@ const SinglePost = ({ post, currentUserId, onDelete, preview = false, onVoteChan
   const isHot = post.guilty_votes + post.innocent_votes >= HOT_THRESHOLD;
   const hasCharges = !!post.charges && post.charges.length > 0;
   const hasMeta = !!(post.location || post.damages);
+  const showMetaSection = hasMeta || !preview; // signature line renders even without location/damages
 
   const { myVote, voting, voteError, vote } = usePostVote({
     postId: post.id,
@@ -58,6 +60,8 @@ const SinglePost = ({ post, currentUserId, onDelete, preview = false, onVoteChan
       {isHot && !preview && <PostHotBadge />}
 
       <CardContent sx={{ pb: 1 }}>
+        {!preview && <PostCaseHeader postId={post.id} createdAt={post.created_at} />}
+
         <PostAuthorHeader
           authorId={post.author_id}
           authorName={post.author_name}
@@ -77,7 +81,14 @@ const SinglePost = ({ post, currentUserId, onDelete, preview = false, onVoteChan
 
         <PostBody text={post.body} preview={preview} />
 
-        {hasMeta && <PostMetaSection location={post.location} damages={post.damages} />}
+        {showMetaSection && (
+          <PostMetaSection
+            location={post.location}
+            damages={post.damages}
+            signedBy={post.author_name}
+            preview={preview}
+          />
+        )}
 
         <PostVoteBar
           guiltyVotes={post.guilty_votes}

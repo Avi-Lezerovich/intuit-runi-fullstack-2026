@@ -15,6 +15,9 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import ChecklistIcon from "@mui/icons-material/Checklist";
 
 import { isLoggedIn } from "../api";
+import { DOC_FONT } from "../theme";
+
+const BASE = import.meta.env.BASE_URL;
 /**
  * About / manifest page — route `/about`.
  * Static marketing content: hero, mission, four core principles, glossary, disclaimer, and CTA.
@@ -59,19 +62,30 @@ const About = () => {
           position: "relative",
         }}
       >
-        <Typography sx={{ fontSize: "4rem", lineHeight: 1, mb: 1 }}>⚖️</Typography>
+        <Box
+          component="img"
+          src={`${BASE}lolsuit-lockup-card.svg`}
+          alt="LolSuit"
+          sx={{
+            display: "block",
+            mx: "auto",
+            mb: 2,
+            maxWidth: { xs: 260, sm: 320 },
+            width: "100%",
+          }}
+        />
         <Typography
-          variant="h2"
           component="h1"
           sx={{
-            fontFamily: '"Frank Ruhl Libre", serif',
-            fontWeight: 900,
-            color: "primary.dark",
-            letterSpacing: "-0.02em",
-            mb: 1,
+            // Visually-hidden h1 for SEO / a11y. The card SVG is the visible "headline".
+            position: "absolute",
+            left: -9999,
+            width: 1,
+            height: 1,
+            overflow: "hidden",
           }}
         >
-          Suit for Fun
+          LolSuit
         </Typography>
         <Typography
           sx={{
@@ -80,6 +94,7 @@ const About = () => {
             fontSize: { xs: "1.05rem", sm: "1.2rem" },
             maxWidth: 560,
             mx: "auto",
+            fontFamily: DOC_FONT,
           }}
         >
           הרשת החברתית של תביעות מגוחכות. כל פוסט הוא כתב אישום, כל לייק הוא הצבעת מושבע, כל יציאה היא "שחרור באולם".
@@ -117,12 +132,12 @@ const About = () => {
         >
           הצהרת כוונות
         </Typography>
-        <Typography sx={{ color: "text.primary", lineHeight: 1.9, fontSize: "1.05rem" }}>
+        <Typography sx={{ color: "text.primary", lineHeight: 1.9, fontSize: "1.05rem", fontFamily: DOC_FONT }}>
           החיים מלאים בעוולות קטנות. רובן לא יגיעו לבית משפט, רובן לא ראויות לעורך דין יקר, וכמעט אף אחת מהן
           לא תזכה אותך בפיצויים אמיתיים. אבל זה לא אומר שהן לא מגיעות להן יום בבית המשפט.
           <br />
           <br />
-          <strong>Suit for Fun</strong> הוא בית המשפט הזה. מקום שבו הקופאית שסירבה לפתוח עוד קופה, הילד
+          <strong>LolSuit</strong> הוא בית המשפט הזה. מקום שבו הקופאית שסירבה לפתוח עוד קופה, הילד
           שצרח 11 שעות בטיסה, והאחות שגנבה את המטען — כולם זוכים למשפט הוגן. או לפחות לפוסט מצחיק.
           <br />
           <br />
@@ -180,7 +195,7 @@ const About = () => {
                 </Typography>
                 {p.title}
               </Typography>
-              <Typography sx={{ color: "text.primary", lineHeight: 1.7 }}>{p.body}</Typography>
+              <Typography sx={{ color: "text.primary", lineHeight: 1.7, fontFamily: DOC_FONT }}>{p.body}</Typography>
             </Box>
           </Paper>
         ))}
@@ -215,7 +230,7 @@ const About = () => {
               >
                 {term}
               </Typography>
-              <Typography component="dd" sx={{ color: "text.primary", flex: 1, m: 0 }}>
+              <Typography component="dd" sx={{ color: "text.primary", flex: 1, m: 0, fontFamily: DOC_FONT }}>
                 {def}
               </Typography>
             </Box>
@@ -235,12 +250,22 @@ const About = () => {
         <Typography variant="overline" sx={{ color: "error.main", fontWeight: 700, letterSpacing: 1.5 }}>
           הבהרה משפטית (חצי-רצינית)
         </Typography>
-        <Typography sx={{ color: "text.primary", mt: 1, lineHeight: 1.7 }}>
+        <Typography sx={{ color: "text.primary", mt: 1, lineHeight: 1.7, fontFamily: DOC_FONT }}>
           האתר הזה הוא בדיחה. שום תביעה כאן לא מחייבת אף אחד משפטית. אם הכלב שלך מסרב לזוז מהספה, אנחנו
           ממליצים על ביסקוויט, לא על עורך דין. שמות הנתבעים הם המצאה ספרותית — אל תזהה אנשים אמיתיים, ואל תזהיר
           את השכן שלי שאני בדרך לתבוע אותו על "Wonderwall".
         </Typography>
       </Paper>
+
+      {/* Official seal mark above the CTA */}
+      <Box sx={{ textAlign: "center", py: 2 }}>
+        <Box
+          component="img"
+          src={`${BASE}lolsuit-seal.svg`}
+          alt=""
+          sx={{ width: 130, opacity: 0.85, display: "inline-block" }}
+        />
+      </Box>
 
       {/* CTA */}
       <Box sx={{ textAlign: "center", py: 4 }}>

@@ -4,6 +4,7 @@
  * so the component itself can assume at least one charge.
  */
 import { Chip, Stack } from "@mui/material";
+import { DOC_FONT } from "../../theme";
 
 interface PostChargesListProps {
   charges: string[];
@@ -25,7 +26,11 @@ export const PostChargesList = ({ charges }: PostChargesListProps) => (
         sx={{
           borderColor: "primary.main",
           color: "primary.main",
-          backgroundColor: "rgba(26, 46, 79, 0.04)",
+          backgroundColor: "rgba(60, 52, 137, 0.05)",
+          fontFamily: DOC_FONT,
+          fontWeight: 700,
+          letterSpacing: "0.04em",
+          borderRadius: "4px",
         }}
       />
     ))}

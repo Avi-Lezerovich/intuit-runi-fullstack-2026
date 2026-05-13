@@ -7,6 +7,7 @@ import { Box, Button, Collapse, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { useExpandableText } from "../../hooks/useExpandableText";
+import { DOC_FONT } from "../../theme";
 
 interface PostBodyProps {
   text: string;
@@ -30,8 +31,9 @@ export const PostBody = ({ text, preview = false }: PostBodyProps) => {
           sx={{
             whiteSpace: "pre-wrap",
             color: "text.primary",
-            lineHeight: 1.7,
-            fontSize: "0.97rem",
+            lineHeight: 1.75,
+            fontSize: "1rem",
+            fontFamily: DOC_FONT,
             "&::before": {
               content: '"\\201E"',
               fontSize: "2rem",

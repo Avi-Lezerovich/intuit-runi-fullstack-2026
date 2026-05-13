@@ -30,7 +30,7 @@ interface PostActionsProps {
  * @param onDelete - Callback when delete icon is clicked (only passed if isOwner is true).
  */
 const voteTooltip = (isAuthenticated: boolean, isOwner: boolean): string => {
-  if (!isAuthenticated) return "התחבר כדי להצביע";
+  if (!isAuthenticated) return "התייצב כדי להצביע";
   if (isOwner) return "אינך יכול להצביע על תביעתך";
   return "";
 };
@@ -60,7 +60,7 @@ export const PostActions = ({
               startIcon={myVote === "guilty" ? <CheckIcon /> : <GavelOutlinedIcon />}
               sx={{ fontWeight: myVote === "guilty" ? 700 : 500 }}
             >
-              חייב!
+              חייב
             </Button>
           </span>
         </Tooltip>

@@ -1,5 +1,6 @@
 {
-  "name": "suit-for-fun-client",
+  "name": "lolsuit-client",
+  "description": "LolSuit — בית המשפט לתביעות מצחיקות",
   "private": true,
   "version": "1.0.0",
   "type": "module",

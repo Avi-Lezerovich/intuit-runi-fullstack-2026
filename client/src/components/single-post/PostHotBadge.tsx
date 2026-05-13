@@ -9,7 +9,7 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 export const PostHotBadge = () => (
   <Chip
     icon={<LocalFireDepartmentIcon sx={{ fontSize: "1rem !important", color: "primary.main !important" }} />}
-    label="חם"
+    label="חם עכשיו"
     size="small"
     sx={{
       position: "absolute",

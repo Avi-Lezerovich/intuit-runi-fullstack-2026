@@ -41,7 +41,7 @@ export const PostPartiesBanner = ({
   >
     <Typography sx={{ fontSize: "0.9rem", color: "text.secondary" }}>תובע:</Typography>
     <Typography sx={{ fontWeight: 700, color: "primary.main" }}>{plaintiffName}</Typography>
-    <Typography sx={{ color: "secondary.dark", fontStyle: "italic", fontWeight: 700, fontSize: "1.1rem" }}>
+    <Typography sx={{ color: "primary.main", fontStyle: "italic", fontWeight: 700, fontSize: "1.1rem" }}>
       נ׳
     </Typography>
     <Typography sx={{ fontSize: "0.9rem", color: "text.secondary" }}>נתבע:</Typography>

@@ -1,5 +1,4 @@
 import { Box, Container, Typography, Stack } from "@mui/material";
-import GavelIcon from "@mui/icons-material/Gavel";
 
 /**
  * Small credit strip rendered at the bottom of every page.
@@ -27,7 +26,12 @@ const Footer = () => {
           justifyContent="space-between"
         >
           <Stack direction="row" spacing={1} alignItems="center">
-            <GavelIcon sx={{ color: "secondary.main", fontSize: 20 }} />
+            <Box
+              component="img"
+              src={`${import.meta.env.BASE_URL}lolsuit-seal.svg`}
+              alt=""
+              sx={{ height: 32, width: 32, filter: "brightness(0) invert(1)" }}
+            />
             <Typography
               sx={{
                 fontFamily: '"Frank Ruhl Libre", serif',
@@ -35,7 +39,7 @@ const Footer = () => {
                 color: "background.default",
               }}
             >
-              Suit for Fun
+              LolSuit
             </Typography>
           </Stack>
           <Typography variant="caption" sx={{ color: "rgba(250, 246, 233, 0.7)" }}>

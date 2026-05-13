@@ -38,12 +38,20 @@ export const TopBarMobileDrawer = ({
 }: TopBarMobileDrawerProps) => (
   <Drawer anchor="right" open={open} onClose={onClose}>
     <Box sx={{ width: 260, pt: 2 }} role="navigation">
-      <Typography
-        variant="h6"
-        sx={{ px: 2, fontFamily: '"Frank Ruhl Libre", serif', color: "primary.main" }}
-      >
-        ⚖️ Suit for Fun
-      </Typography>
+      <Box sx={{ px: 2, display: "flex", alignItems: "center", gap: 1 }}>
+        <Box
+          component="img"
+          src={`${import.meta.env.BASE_URL}lolsuit-icon.svg`}
+          alt=""
+          sx={{ height: 26, width: 26 }}
+        />
+        <Typography
+          variant="h6"
+          sx={{ fontFamily: '"Frank Ruhl Libre", serif', color: "primary.main" }}
+        >
+          LolSuit
+        </Typography>
+      </Box>
       {user && (
         <Typography
           variant="caption"

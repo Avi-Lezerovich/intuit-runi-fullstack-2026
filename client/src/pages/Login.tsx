@@ -68,7 +68,7 @@ const Login = () => {
               }}
             />
             <Button type="submit" variant="contained" color="secondary" size="large" disabled={submitting} startIcon={submitting ? <CircularProgress size={18} /> : <GavelIcon />}>
-              {submitting ? "מתייצב..." : "כנס לאולם"}
+              {submitting ? "מתייצב..." : "התייצב"}
             </Button>
           </Stack>
         </Box>

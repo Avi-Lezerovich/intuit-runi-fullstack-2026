@@ -1,37 +1,44 @@
 import { Link as RouterLink } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
-import GavelIcon from "@mui/icons-material/Gavel";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+
+const BASE = import.meta.env.BASE_URL;
 
 /**
- * Renders the brand mark: gavel icon + "Suit for Fun" wordmark on the left side of the AppBar.
- * Wrapped in a RouterLink to "/" so clicking always returns to the home feed.
- * No props; renders as a fixed, non-interactive semantic element except for the link.
+ * Renders the LolSuit brand mark on the left side of the AppBar.
+ * Desktop: light-fill horizontal lockup. Narrow (<400px): just the circular icon.
+ * Wrapped in a RouterLink to "/" so clicking always returns home.
  */
-export const TopBarLogo = () => (
-  <Box
-    component={RouterLink}
-    to="/"
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      gap: 1,
-      color: "#FAF6E9",
-      textDecoration: "none",
-      flexShrink: 0,
-    }}
-  >
-    <GavelIcon sx={{ color: "secondary.main", fontSize: 28 }} />
-    <Typography
-      variant="h5"
-      component="span"
+export const TopBarLogo = () => {
+  const theme = useTheme();
+  const narrow = useMediaQuery(theme.breakpoints.down("sm"));
+
+  return (
+    <Box
+      component={RouterLink}
+      to="/"
       sx={{
-        fontFamily: '"Frank Ruhl Libre", serif',
-        fontWeight: 700,
-        color: "#FAF6E9",
-        letterSpacing: "-0.01em",
+        display: "flex",
+        alignItems: "center",
+        textDecoration: "none",
+        flexShrink: 0,
       }}
+      aria-label="LolSuit — לעמוד הבית"
     >
-      Suit for Fun
-    </Typography>
-  </Box>
-);
+      {narrow ? (
+        <Box
+          component="img"
+          src={`${BASE}lolsuit-icon.svg`}
+          alt="LolSuit"
+          sx={{ height: 32, width: 32, display: "block" }}
+        />
+      ) : (
+        <Box
+          component="img"
+          src={`${BASE}lolsuit-lockup-horizontal-light.svg`}
+          alt="LolSuit"
+          sx={{ height: 42, display: "block" }}
+        />
+      )}
+    </Box>
+  );
+};

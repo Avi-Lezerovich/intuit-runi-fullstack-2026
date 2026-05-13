@@ -3,6 +3,7 @@
  * In preview mode shows a "כותרת התביעה תופיע כאן" placeholder so the empty form looks alive.
  */
 import { Typography } from "@mui/material";
+import { DOC_FONT } from "../../theme";
 
 interface PostTitleProps {
   title: string;
@@ -21,7 +22,7 @@ export const PostTitle = ({ title, preview = false }: PostTitleProps) => (
     variant="h5"
     component="h3"
     sx={{
-      fontFamily: '"Frank Ruhl Libre", serif',
+      fontFamily: DOC_FONT,
       fontWeight: 700,
       mb: 1.5,
       lineHeight: 1.3,

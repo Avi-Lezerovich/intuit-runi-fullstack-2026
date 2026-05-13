@@ -5,10 +5,15 @@
 import { Stack, Typography } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
+import { DOC_FONT } from "../../theme";
 
 interface PostMetaSectionProps {
   location?: string | null;
   damages?: string | null;
+  /** Signing party shown in the italic signature line under the metadata. */
+  signedBy?: string;
+  /** In preview mode the signature line is suppressed. */
+  preview?: boolean;
 }
 
 /**
@@ -17,7 +22,7 @@ interface PostMetaSectionProps {
  * @param location - Optional location string; if provided, renders with LocationOnOutlinedIcon.
  * @param damages - Optional damages-sought string; if provided, renders with RequestQuoteOutlinedIcon.
  */
-export const PostMetaSection = ({ location, damages }: PostMetaSectionProps) => (
+export const PostMetaSection = ({ location, damages, signedBy, preview = false }: PostMetaSectionProps) => (
   <Stack
     spacing={0.75}
     sx={{
@@ -48,6 +53,20 @@ export const PostMetaSection = ({ location, damages }: PostMetaSectionProps) => 
           {damages}
         </Typography>
       </Stack>
+    )}
+    {!preview && signedBy && (
+      <Typography
+        sx={{
+          mt: 1,
+          textAlign: "end",
+          fontStyle: "italic",
+          fontFamily: DOC_FONT,
+          color: "text.secondary",
+          fontSize: "0.9rem",
+        }}
+      >
+        — נחתם בידי {signedBy}
+      </Typography>
     )}
   </Stack>
 );

@@ -28,7 +28,7 @@ const Signup = () => {
       <Paper sx={{ p: { xs: 3, sm: 5 } }}>
         
         <AuthHeader 
-          title="הצטרף לרשימת התובעים" 
+          title="רישום לרשימת התובעים"
           subtitle="רישום קצר. תסכולים אינסופיים."
           icon={<HowToRegIcon />}
         />
@@ -69,7 +69,7 @@ const Signup = () => {
             <TextField label="אימות סיסמה" type={showPassword ? "text" : "password"} value={confirm} onChange={(e) => setConfirm(e.target.value)} onBlur={() => setTouched((t) => ({ ...t, confirm: true }))} error={!!errors.confirm} helperText={errors.confirm || " "} fullWidth autoComplete="new-password" />
             
             <Button type="submit" variant="contained" color="secondary" size="large" disabled={submitting} startIcon={submitting ? <CircularProgress size={18} /> : <HowToRegIcon />}>
-              {submitting ? "רושם..." : "השבע אמונים"}
+              {submitting ? "רושם..." : "הצטרף לרשימת המושבעים"}
             </Button>
           </Stack>
         </Box>
