@@ -258,12 +258,12 @@ const About = () => {
       </Paper>
 
       {/* Official seal mark above the CTA */}
-      <Box sx={{ textAlign: "center", py: 2 }}>
+      <Box sx={{ textAlign: "center", py: 3 }}>
         <Box
           component="img"
           src={`${BASE}lolsuit-seal.svg`}
           alt=""
-          sx={{ width: 130, opacity: 0.85, display: "inline-block" }}
+          sx={{ width: { xs: 200, sm: 240 }, opacity: 0.9, display: "inline-block" }}
         />
       </Box>
 
@@ -302,7 +302,7 @@ const About = () => {
               </Button>
             </>
           )}
-          <Button component={RouterLink} to="/" variant="text" size="large">
+          <Button component={RouterLink} to="/" variant="outlined" size="large">
             לכל הפיד
           </Button>
         </Stack>

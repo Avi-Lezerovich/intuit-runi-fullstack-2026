@@ -37,7 +37,7 @@ const themeOptions: ThemeOptions = {
     divider: "rgba(60, 52, 137, 0.15)",
   },
   typography: {
-    fontFamily: '"Heebo", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"David Libre", "Frank Ruhl Libre", "Heebo", "Times New Roman", serif',
     h1: { fontFamily: '"Frank Ruhl Libre", serif', fontWeight: 700, letterSpacing: "-0.02em" },
     h2: { fontFamily: '"Frank Ruhl Libre", serif', fontWeight: 700, letterSpacing: "-0.01em" },
     h3: { fontFamily: '"Frank Ruhl Libre", serif', fontWeight: 700 },
